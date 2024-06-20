@@ -1,18 +1,15 @@
 package com.example.hotel_arcana.notice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@ToString
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class NoticeDTO {
-
 
     private Long N_NO;
     private String N_TITLE;
