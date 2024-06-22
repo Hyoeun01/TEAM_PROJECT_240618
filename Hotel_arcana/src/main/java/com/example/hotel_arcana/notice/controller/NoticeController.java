@@ -23,10 +23,10 @@ public class NoticeController {
         model.addAttribute("list",noticeService.getAll());
         return "/notice/list";
     }
-    @PostMapping("/add")
-    public String addNotice(NoticeDTO noticeDTO) {
-        noticeService.register(noticeDTO);
-        return "redirect:/";
-    }
+//    @PostMapping("/add")
+//    public String addNotice(NoticeDTO noticeDTO) {
+//        noticeService.register(noticeDTO);
+//        return "redirect:/";
+//    }
 
 }

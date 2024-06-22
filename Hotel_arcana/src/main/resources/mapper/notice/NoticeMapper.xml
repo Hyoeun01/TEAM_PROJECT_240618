@@ -2,20 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.com.example.hotel_arcana.mapper.NoticeMapper">
+<mapper namespace="com.example.hotel_arcana.notice.mapper.NoticeMapper">
 
 <!--    현재시간-->
-    <select id="getTime" resultType="string">
-        SELECT now()
+<!--    <select id="getTime" resultType="string">-->
+<!--        SELECT now()-->
+<!--    </select>-->
+
+
+    <select id="selectAll" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT * FROM hotel_notice ORDER BY N_NO DESC
     </select>
 
 
-    <select id="selectAll" resultType="org.com.example.hotel_arcana.dto.NoticeDTO">
-        SELECT * FROM tbl_todo ORDER BY tno DESC
-    </select>
-
-
-    <insert id="insert">
-        INSERT INTO tbl_todo (title,dueDate,writer)
-        VALUES (#{title}, #{dueDate}, #{writer})
-    </insert>
+<!--    <insert id="insert">-->
+<!--        INSERT INTO hotel_notice (title,dueDate,writer)-->
+<!--        VALUES (#{title}, #{dueDate}, #{writer})-->
+<!--    </insert>-->
