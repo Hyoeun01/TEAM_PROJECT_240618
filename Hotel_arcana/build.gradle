@@ -68,12 +68,16 @@ dependencies {
     // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
     implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.2.1.Final'
 
+<<<<<<< HEAD
     implementation group: 'org.springframework', name: 'spring-core', version: '5.3.19'
     implementation group: 'org.springframework', name: 'spring-context', version: '5.3.19'
     implementation group: 'org.springframework', name: 'spring-test', version: '5.3.19'
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.19'
     implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.19'
     implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.19'
+=======
+    implementation 'org.springframework.boot:spring-boot-starter'
+>>>>>>> c1d106eccf4a41fd5fc2e929208b4a010df07f3c
 
 }
 

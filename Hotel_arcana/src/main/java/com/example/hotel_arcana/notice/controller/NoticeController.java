@@ -18,15 +18,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoticeController {
     private final NoticeService noticeService;
-    @GetMapping("/")
+    @GetMapping("/list")
     public String getNotices(Model model) {
         model.addAttribute("list",noticeService.getAll());
         return "/notice/list";
     }
-    @PostMapping("/add")
-    public String addNotice(NoticeDTO noticeDTO) {
-        noticeService.register(noticeDTO);
-        return "redirect:/";
-    }
+//    @PostMapping("/add")
+//    public String addNotice(NoticeDTO noticeDTO) {
+//        noticeService.register(noticeDTO);
+//        return "redirect:/";
+//    }
 
 }

@@ -26,8 +26,15 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeList;
     }
 
-    @Override
-    public void register(NoticeDTO noticeDTO) {
-        noticeMapper.insert(noticeDTO);
-    }
+//@Override
+//public List<NoticeDTO> getAll() {
+//    return noticeMapper.selectAll().stream()
+//            .map(dto -> modelMapper.map(dto, NoticeDTO.class))
+//            .collect(Collectors.toList());
+//}
+
+//    @Override
+//    public void register(NoticeDTO noticeDTO) {
+//        noticeMapper.insert(noticeDTO);
+//    }
 }

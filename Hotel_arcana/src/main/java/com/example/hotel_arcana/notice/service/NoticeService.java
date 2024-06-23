@@ -7,5 +7,5 @@ import java.util.List;
 public interface NoticeService {
 
     List<NoticeDTO> getAll();
-    void register(NoticeDTO noticeDTO);
+//    void register(NoticeDTO noticeDTO);
 }

@@ -11,5 +11,5 @@ public interface NoticeMapper {
 
     List<NoticeDTO> selectAll();
 
-    void insert(NoticeDTO noticeDTO);
+//    void insert(NoticeDTO noticeDTO);
 }
