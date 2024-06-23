@@ -1,4 +1,4 @@
-package com.example.hotel_arcana.config;
+package com.example.hotel_arcana.notice.config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
