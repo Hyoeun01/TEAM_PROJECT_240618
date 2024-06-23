@@ -25,7 +25,7 @@ public class NoticeServiceImpl implements NoticeService {
                 .collect(Collectors.toList());
         return noticeList;
     }
-    
+
 //@Override
 //public List<NoticeDTO> getAll() {
 //    return noticeMapper.selectAll().stream()
