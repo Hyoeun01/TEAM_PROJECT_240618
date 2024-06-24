@@ -15,7 +15,7 @@ public class NoticeDTO {
     private String N_TITLE;
     private String N_CONTENT;
     private String N_WRITER;
-    private String VIEW;
+    private String N_VIEW;
     private LocalDateTime N_DATE;
 
 }

@@ -15,7 +15,3 @@
     </select>
 
 
-<!--    <insert id="insert">-->
-<!--        INSERT INTO hotel_notice (title,dueDate,writer)-->
-<!--        VALUES (#{title}, #{dueDate}, #{writer})-->
-<!--    </insert>-->
