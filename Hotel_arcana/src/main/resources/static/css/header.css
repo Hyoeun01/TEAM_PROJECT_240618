@@ -1,5 +1,6 @@
 body {
-    min-width: 1670px;
+    min-width:
+            1670px;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -33,14 +34,13 @@ nav {
     margin-left: 20px;
     display: flex;
     flex: 1;
-    justify-content: center; /* 가로 방향 가운데 정렬 */
+    justify-content: center;
     overflow: hidden;
 }
-nav h3{
-    display: flex;
-    gap: 40px;
+nav h3 {
+    display: flex; /* Flexbox 사용 */
+    gap: 40px; /* 여백 조정 */
 }
-
 nav a {
     color: #000000;
     text-decoration: none;
@@ -56,10 +56,20 @@ nav button {
 }
 .container {
     max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 section {
     padding: 20px 0;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 .auth-buttons {
     position: relative;
@@ -76,27 +86,33 @@ section {
     width: 30px;
     height: 30px;
 }
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 40px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
+.host_back {
+    background-color: rgba(72, 72, 72, 1);
+    width: 160px;
+    height: 50%;
+    border-radius: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.dropdown-menu a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #000;
+.host_back {
+    background-color: rgba(72, 72, 72, 1);
+    width: 160px;
+    height: 50%;
+    border-radius: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.dropdown-menu a:hover {
-    background-color: #f0f0f0;
+.host_text {
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    letter-spacing: 0;
+}
+.host_text {
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    letter-spacing: 0;
 }
 .host_back {
     background-color: #EEA550;
