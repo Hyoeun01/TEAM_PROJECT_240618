@@ -1,0 +1,72 @@
+diff a/Hotel_arcana/src/main/resources/templates/join.html b/Hotel_arcana/src/main/resources/templates/join.html	(rejected hunks)
+@@ -1,4 +1,4 @@
+-!DOCTYPE html>
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+@@ -10,35 +10,35 @@
+     <title>join</title>
+ </head>
+ <body>
+-<form action="/register" method="post">
+-    <div>
+-        <label>Username:</label>
+-        <input type="text" name="username" required />
+-    </div>
+-    <div>
+-        <label>Password:</label>
+-        <input type="password" name="password" required />
+-    </div>
+-    <div>
+-        <label>Email:</label>
+-        <input type="email" name="email" required />
+-    </div>
+-    <div>
+-        <label>Username:</label>
+-        <input type="text" name="username" required />
+-    </div><div>
+-    <label>Username:</label>
+-    <input type="text" name="username" required />
++<div class="d-flex justify-content-center">
++    <form action="/register" method="post" class="col-md-6">
++        <img src="/img/logo.png" alt="Logo" />
++        <div class="mb-3">
++            <input class="form-control" placeholder="아이디" type="text" name="USER_ID" >
++        </div>
++        <div class="mb-3">
++            <input class="form-control" placeholder="닉네임" type="text" name="USER_NIK" >
++        </div>
++        <div class="mb-3">
++            <input class="form-control" placeholder="비밀번호" type="password" name="USER_PW" >
++        </div>
++        <div class="mb-3">
++            <input class="form-control" placeholder="이름" type="text" name="USER_NM" >
++        </div>
++        <div class="mb-3">
++            <input class="form-control" placeholder="주소" type="text" name="USER_ADR" >
++        </div>
++        <div class="mb-3">
++            <input class="form-control" placeholder="이메일" type="email" name="USER_EML" >
++        </div>
++        <div class="mb-3">
++            <input class="form-control" placeholder="전화번호" type="tel" name="USER_TEL" >
++        </div>
++        <div class="mb-3">
++            <button type="submit" class="btn btn-primary">회원 가입 →</button>
++        </div>
++    </form>
+ </div>
+-    <div>
+-        <label>Username:</label>
+-        <input type="text" name="username" required />
+-    </div>
+-
+-    <div>
+-        <button type="submit">Register</button>
+-    </div>
+-</form>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ </body>
+ </html>
+\ No newline at end of file
