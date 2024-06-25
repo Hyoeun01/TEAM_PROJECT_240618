@@ -1,4 +1,4 @@
-package com.example.hotel_arcana.controller;
+package com.example.hotel_arcana.login.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

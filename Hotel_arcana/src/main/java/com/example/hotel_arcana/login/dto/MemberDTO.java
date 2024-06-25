@@ -1,4 +1,4 @@
-package com.example.hotel_arcana.dto;
+package com.example.hotel_arcana.login.dto;
 
 import lombok.Data;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class memberDTO {
+public class MemberDTO {
     private String user_id;
     private String user_pw;
     private String user_nm;

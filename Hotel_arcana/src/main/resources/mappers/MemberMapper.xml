@@ -1,6 +1,6 @@
 
     <mapper namespace="com.example.hotel_arcana.mapper.UserMapper">
-        <resultMap id="UserResultMap" type="com.example.hotel_arcana.dto.memberDTO">
+        <resultMap id="UserResultMap" type="com.example.hotel_arcana.login.dto.MemberDTO">
             <id property="user_id" column="user_id" />
             <result property="user_pw" column="user_pw" />
             <result property="user_nm" column="user_nm" />
@@ -16,7 +16,7 @@
             SELECT * FROM users WHERE user_id = #{user_id}
         </select>
 
-        <insert id="insertUser" parameterType="com.example.hotel_arcana.dto.memberDTO">
+        <insert id="insertUser" parameterType="com.example.hotel_arcana.login.dto.MemberDTO">
             INSERT INTO users (user_id, user_pw, user_nm,user_adr,user_eml,user_tel,user_nik) VALUES (#{user_id}, #{user_pw}, #{user_nm}, #{user_adr}, #{user_eml}, #{user_tel}, #{user_nik})
         </insert>
     </mapper>
