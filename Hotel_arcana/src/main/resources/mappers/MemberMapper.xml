@@ -1,5 +1,8 @@
-
-    <mapper namespace="com.example.hotel_arcana.mapper.UserMapper">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.example.hotel_arcana.login.mapper.MemberMapper">
         <resultMap id="UserResultMap" type="com.example.hotel_arcana.login.dto.MemberDTO">
             <id property="user_id" column="user_id" />
             <result property="user_pw" column="user_pw" />
@@ -12,11 +15,11 @@
 
         </resultMap>
 
-        <select id="findByuserid" parameterType="String" resultMap="UserResultMap">
+        <select id="findByuserid">
             SELECT * FROM users WHERE user_id = #{user_id}
         </select>
 
-        <insert id="insertUser" parameterType="com.example.hotel_arcana.login.dto.MemberDTO">
+        <insert id="insertMember" >
             INSERT INTO users (user_id, user_pw, user_nm,user_adr,user_eml,user_tel,user_nik) VALUES (#{user_id}, #{user_pw}, #{user_nm}, #{user_adr}, #{user_eml}, #{user_tel}, #{user_nik})
         </insert>
     </mapper>
