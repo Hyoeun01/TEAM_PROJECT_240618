@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <span>번호</span>
+    <input type="text" name="N_NO" th:value="${notice.N_NO}" readonly>
+</div>
+<div>
+    <span>제목</span>
+    <input type="text" name="N_TITLE" th:value="${notice.N_TITLE}" readonly>
+</div>
+<div>
+    <span>내용</span>
+    <textarea rows="5" name="N_CONTENT" readonly>[[${notice.N_CONTENT}]]</textarea>
+</div>
+<div>
+    <span>작성자</span>
+    <input type="text" name="N_WRITER" th:value="${notice.N_WRITER}" readonly>
+</div>
+<div>
+    <span>작성일</span>
+    <input type="text" name="N_DATE" th:value="${notice.N_DATE}" readonly>
+</div>
+<a href="/notice/list" class="btn btn-outline-secondary" >목록</a>
+<a href="/notice/modify" class="btn btn-outline-secondary" >수정</a>
+</body>
+</html>

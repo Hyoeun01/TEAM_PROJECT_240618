@@ -7,9 +7,11 @@ import java.util.List;
 
 @Mapper
 public interface NoticeMapper {
-//    String getTime();
+    String getTime();
 
     List<NoticeDTO> selectAll();
 
-//    void insert(NoticeDTO noticeDTO);
+    void insert(NoticeDTO noticeDTO);
+
+    NoticeDTO selectOne(Long N_NO);
 }

@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -15,8 +16,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class NoticeServiceImpl implements NoticeService {
 
-//    private final ModelMapper modelMapper;
     private final NoticeMapper noticeMapper;
+    private NoticeDTO noticeDTO;
+
+//    @Override
+//    public String getTime() {
+//        String time = NoticeMapper.getTime();
+//        return time;
+//    }
 
     @Override
     public List<NoticeDTO> getAll() {
@@ -24,15 +31,16 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeList;
     }
 
-//@Override
-//public List<NoticeDTO> getAll() {
-//    return noticeMapper.selectAll().stream()
-//            .map(dto -> modelMapper.map(dto, NoticeDTO.class))
-//            .collect(Collectors.toList());
-//}
+    @Override
+    public Long register(NoticeDTO noticeDTO) {
+        noticeMapper.insert(noticeDTO);
 
-//    @Override
-//    public void register(NoticeDTO noticeDTO) {
-//        noticeMapper.insert(noticeDTO);
-//    }
+        return noticeDTO.getN_NO();
+    }
+
+    @Override
+    public NoticeDTO readOne(Long N_NO) {
+
+        return noticeMapper.selectOne(N_NO);
+    }
 }

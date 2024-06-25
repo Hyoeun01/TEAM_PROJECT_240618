@@ -9,8 +9,20 @@
         SELECT now()
     </select>
 
-
+<!--    게시판 목록-->
     <select id="selectAll" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
         SELECT * FROM hotel_notice ORDER BY N_NO DESC
     </select>
+
+<!--    게시글 추가-->
+    <insert id="insert">
+        INSERT INTO hotel_notice (N_TITLE, N_DATE, N_CONTENT, N_WRITER, N_VIEW)
+        VALUES (#{N_TITLE}, #{N_DATE}, #{N_CONTENT}, #{N_WRITER}, #{N_VIEW})
+    </insert>
+
+<!--    게시글 보기-->
+    <select id="selectOne" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT * FROM hotel_notice WHERE N_NO = #{N_NO}
+    </select>
+
 </mapper>

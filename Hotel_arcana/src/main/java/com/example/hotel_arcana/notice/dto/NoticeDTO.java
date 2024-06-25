@@ -16,7 +16,8 @@ public class NoticeDTO {
     private String N_CONTENT;
     private String N_WRITER;
 
-    private Integer N_VIEW;
+    @Builder.Default
+    private Long N_VIEW = 0L;
 
     private LocalDateTime N_DATE;
 
