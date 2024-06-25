@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hotel_arcana.reservation.mapper.ReservationMapper">
+
+    <select id="selectAll" resultType="com.example.hotel_arcana.reservation.dto.ReservationDTO">
+        SELECT * FROM reservation order by RV_ID desc
+    </select>
+
+<!--    <select id="selectOne" resultType="com.example.hotel_arcana.reservation.dto.ReservationDTO">-->
+<!--        select * from reservation WHERE RV_ID = #{RV_ID}-->
+<!--    </select>-->
+
+<!--    <insert id="insert">-->
+<!--        insert into reservation (START_DATE,END_DATE,TOTAL_NUM)-->
+<!--        VALUES (#{START_DATE},#{END_DATE},#{TOTAL_NUM})-->
+<!--    </insert>-->
+
+<!--    <delete id="delete">-->
+<!--        delete from reservation where id = #{RV_ID}-->
+<!--    </delete>-->
+
+<!--    <update id="update">-->
+<!--        update reservation set START_DATE=#{START_DATE}, END_DATE=#{END_DATE}, TOTAL_NUM=#{TOTAL_NUM}, RV_ROOM_NUMBER=#{RV_ROOM_NUMBER}-->
+<!--        WHERE RV_ID = #{RV_ID}-->
+<!--    </update>-->
+</mapper>
