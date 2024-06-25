@@ -5,13 +5,12 @@
 <mapper namespace="com.example.hotel_arcana.notice.mapper.NoticeMapper">
 
 <!--    현재시간-->
-<!--    <select id="getTime" resultType="string">-->
-<!--        SELECT now()-->
-<!--    </select>-->
+    <select id="getTime" resultType="string">
+        SELECT now()
+    </select>
 
 
     <select id="selectAll" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
         SELECT * FROM hotel_notice ORDER BY N_NO DESC
     </select>
-
-
+</mapper>

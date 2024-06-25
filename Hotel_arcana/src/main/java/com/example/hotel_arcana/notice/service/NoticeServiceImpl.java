@@ -15,14 +15,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class NoticeServiceImpl implements NoticeService {
 
-    private final ModelMapper modelMapper;
+//    private final ModelMapper modelMapper;
     private final NoticeMapper noticeMapper;
 
     @Override
     public List<NoticeDTO> getAll() {
-        List<NoticeDTO> noticeList = noticeMapper.selectAll().stream()
-                .map(dto -> modelMapper.map( dto,NoticeDTO.class))
-                .collect(Collectors.toList());
+        List<NoticeDTO> noticeList = noticeMapper.selectAll();
         return noticeList;
     }
 
