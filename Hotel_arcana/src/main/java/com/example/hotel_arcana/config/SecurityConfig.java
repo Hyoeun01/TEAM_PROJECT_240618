@@ -1,4 +1,4 @@
-package com.example.hotel_arcana.login.config;
+package com.example.hotel_arcana.config;
 
 import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
@@ -16,14 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import java.util.ArrayList;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig {
-    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public SecurityConfig(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -32,6 +26,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         return http.build();
     }
 

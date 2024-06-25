@@ -3,23 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="com.example.hotel_arcana.login.mapper.MemberMapper">
-        <resultMap id="UserResultMap" type="com.example.hotel_arcana.login.dto.MemberDTO">
-            <id property="user_id" column="user_id" />
-            <result property="user_pw" column="user_pw" />
-            <result property="user_nm" column="user_nm" />
-            <result property="user_adr" column="user_adr" />
-            <result property="user_eml" column="user_eml" />
-            <result property="user_tel" column="user_tel" />
-            <result property="user_nik" column="user_nik" />
+<!--        <resultMap id="UserResultMap" type="com.example.hotel_arcana.login.dto.MemberDTO">-->
+<!--            <id property="USER_ID" column="USER_ID" />-->
+<!--            <result property="USER_PW" column="USER_PW" />-->
+<!--            <result property="USER_NM" column="USER_NM" />-->
+<!--            <result property="USER_ADR" column="USER_ADR" />-->
+<!--            <result property="USER_EML" column="USER_EML" />-->
+<!--            <result property="USER_TEL" column="USER_TEL" />-->
+<!--            <result property="USER_NIK" column="USER_NIK" />-->
 
 
-        </resultMap>
+<!--        </resultMap>-->
 
-        <select id="findByuserid">
-            SELECT * FROM users WHERE user_id = #{user_id}
+        <select id="findMemberById">
+            SELECT * FROM hotel_member WHERE USER_ID = #{USER_ID}
         </select>
 
         <insert id="insertMember" >
-            INSERT INTO users (user_id, user_pw, user_nm,user_adr,user_eml,user_tel,user_nik) VALUES (#{user_id}, #{user_pw}, #{user_nm}, #{user_adr}, #{user_eml}, #{user_tel}, #{user_nik})
+            INSERT INTO hotel_member (USER_ID, USER_PW, USER_NM,USER_ADR,USER_EML,USER_TEL,USER_NIK) VALUES (#{USER_ID}, #{USER_PW}, #{USER_NM}, #{USER_ADR}, #{USER_EML}, #{USER_TEL}, #{USER_NIK})
         </insert>
     </mapper>

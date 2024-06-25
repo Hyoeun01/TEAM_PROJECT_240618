@@ -25,8 +25,9 @@ public class MemberController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute MemberDTO memberDTO) {
+        log.info(memberDTO);
         memberService.insertMember(memberDTO);
-        return "redirect:/login";
+        return "redirect:/index";
     }
 
     @GetMapping("/login")
