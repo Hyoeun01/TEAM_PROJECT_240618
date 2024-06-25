@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel_arcana.notice.mapper.NoticeMapper">
+
+<!--    현재시간-->
+    <select id="getTime" resultType="string">
+        SELECT now()
+    </select>
+
+
+    <select id="selectAll" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT * FROM hotel_notice ORDER BY N_NO DESC
+    </select>
+</mapper>
