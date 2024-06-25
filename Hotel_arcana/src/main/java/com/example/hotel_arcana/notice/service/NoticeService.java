@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface NoticeService {
 
-//    public String getTime();
     List<NoticeDTO> getAll();
 
     Long register(NoticeDTO noticeDTO);

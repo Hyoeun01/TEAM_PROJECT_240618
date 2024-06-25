@@ -19,12 +19,6 @@ public class NoticeServiceImpl implements NoticeService {
     private final NoticeMapper noticeMapper;
     private NoticeDTO noticeDTO;
 
-//    @Override
-//    public String getTime() {
-//        String time = NoticeMapper.getTime();
-//        return time;
-//    }
-
     @Override
     public List<NoticeDTO> getAll() {
         List<NoticeDTO> noticeList = noticeMapper.selectAll();

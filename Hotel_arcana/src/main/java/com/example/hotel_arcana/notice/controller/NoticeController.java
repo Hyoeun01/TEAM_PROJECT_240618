@@ -46,12 +46,14 @@ public class NoticeController {
     public String PostNotice(@Valid NoticeDTO noticeDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("error", bindingResult.getAllErrors());
-//        return "redirect:/";
+            log.info("실패");
+
             return "redirect:/notice/register";
         }
 
         Long N_NO = noticeService.register(noticeDTO);
         redirectAttributes.addFlashAttribute("result", N_NO);
+        log.info("noticeDTO");
         return "redirect:/notice/list";
     }
 
