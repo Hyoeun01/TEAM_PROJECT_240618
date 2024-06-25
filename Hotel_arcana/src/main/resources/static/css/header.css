@@ -1,9 +1,9 @@
 body {
-    min-width:
-            1527px;
+    min-width: 1670px;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    /*text-align: center;*/
 }
 header {
     background-color: #EAE4DD;
@@ -12,8 +12,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap; /* nowrap으로 변경 */
-    min-width: 150px; /* 최소 너비 설정 */
+    flex-wrap: nowrap;
+    min-width: 150px;
     overflow: hidden;
 }
 header img {
@@ -31,11 +31,16 @@ nav {
     text-align: center;
     padding: 5px 0;
     margin-left: 20px;
-    display: flex; /* Flexbox 사용 */
+    display: flex;
     flex: 1;
     justify-content: center; /* 가로 방향 가운데 정렬 */
     overflow: hidden;
 }
+nav h3{
+    display: flex;
+    gap: 40px;
+}
+
 nav a {
     color: #000000;
     text-decoration: none;
@@ -51,20 +56,10 @@ nav button {
 }
 .container {
     max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
 }
 section {
     padding: 20px 0;
-}
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 .auth-buttons {
     position: relative;
@@ -102,4 +97,18 @@ footer {
 
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
+}
+.host_back {
+    background-color: #EEA550;
+    width: 160px;
+    height: 50%;
+    border-radius: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.host_text {
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    letter-spacing: 0;
 }
