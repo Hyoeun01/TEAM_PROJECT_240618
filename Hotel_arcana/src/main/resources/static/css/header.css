@@ -1,0 +1,105 @@
+body {
+    min-width:
+            1527px;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #EAE4DD;
+    color: #000000;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap; /* nowrap으로 변경 */
+    min-width: 150px; /* 최소 너비 설정 */
+    overflow: hidden;
+}
+header img {
+    max-width: 250px;
+    height: auto;
+    margin-right: 40px;
+    border-radius: 50%;
+}
+header div {
+    text-align: center;
+}
+nav {
+    background-color: #EAE4DD;
+    color: #000000;
+    text-align: center;
+    padding: 5px 0;
+    margin-left: 20px;
+    display: flex; /* Flexbox 사용 */
+    flex: 1;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    overflow: hidden;
+}
+nav a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 0 40px; /* 변경: 좌우에 여백 추가 */
+}
+nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+section {
+    padding: 20px 0;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.auth-buttons {
+    position: relative;
+}
+
+.profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-button img {
+    right: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
