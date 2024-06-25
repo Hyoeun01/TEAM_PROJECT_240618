@@ -1,111 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>객실 선택</title>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        .room-card {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .room-info {
-            flex: 1;
-        }
-        .room-image {
-            max-width: 200px;
-            margin-right: 15px;
-        }
-        .room-image img {
-            width: 100%;
-        }
-        .room-price {
-            text-align: right;
-        }
-        .room-price p {
-            margin: 5px 0;
-        }
-        #calendar {
-            display: none;
-        }
-    </style>
+    <title>예약목록</title>
 </head>
 <body>
-<div class="container">
-    <h1>객실 선택</h1>
-    <div class="form-group">
-        <label for="dates"> 체크인 날짜 선택</label>
-        <input type="text" id="dates" name="dates" readonly>
-    </div>
+<h1>예약목록</h1>
+<table>
+    <thead>
+    <tr>
 
-    <div id="calendar"></div>
-    <div class="form-group">
-        <label for="guests">인원 선택</label>
-        <input type="text" id="guests" name="guests" value="성인 2, 아동 0" readonly>
-    </div>
-    <div class="room-card">
-        <div class="room-info">
-            <div class="room-image">
-                <img src="room.jpg" alt="디럭스 더블 시티뷰 업그레이드">
-            </div>
-            <div>
-
-                <p>기준 2인 / 최대 2인</p>
-                <p>더블 침대 1개</p>
-                <p>도시 전망</p>
-            </div>
-        </div>
-        <div class="room-price">
-            <p>숙박</p>
-            <p>체크인 15:00 ~ 체크아웃 12:00</p>
-            <p><strong>353,400원/2박</strong></p>
-            <p>쿠폰가</p>
-            <p>(7% 380,000원)</p>
-            <button type="button">예약하기</button>
-        </div>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#dates").click(function() {
-            $("#calendar").toggle();
-        });
-
-        $("#calendar").datepicker({
-            onSelect: function(dateText, inst) {
-                $("#dates").val(dateText);
-                $("#calendar").hide();
-            }
-        });
-    });
-</script>
+        <th>체크인날짜</th>
+        <th>체크아웃날짜</th>
+        <th>인원수</th>
+        <th>방번호</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reservation : ${list}">
+        <td th:text="${reservation.START_DATE}">체크인 날짜</td>
+        <td th:text="${reservation.END_DATE}">체크아웃 날짜</td>
+        <td th:text="${reservation.TOTAL_NUM}">인원수</td>
+        <td th:text="${reservation.RV_ROOM_NUMBER}">방번호</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

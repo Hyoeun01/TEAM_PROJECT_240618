@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ReservationDTO {
 
-    private String RV_ID;
+    private Long RV_ID;
     private LocalDate START_DATE;
     private LocalDate END_DATE;
     private int TOTAL_NUM;

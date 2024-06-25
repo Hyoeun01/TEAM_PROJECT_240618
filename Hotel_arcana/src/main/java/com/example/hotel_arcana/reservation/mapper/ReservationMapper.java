@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface ReservationMapper {
 
-    void insert(ReservationDTO reservationDTO);
+    Long insert(ReservationDTO reservationDTO);
     List<ReservationDTO> selectAll();
     ReservationDTO selectOne(String RV_ID);
     void update(ReservationDTO reservationDTO);

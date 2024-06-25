@@ -17,8 +17,10 @@ public class ReservationServiceImpl implements ReservationService {
     private final ReservationMapper reservationMapper;
 
     @Override
-    public void register(ReservationDTO reservationDTO) {
-        reservationMapper.insert(reservationDTO);
+    public Long register(ReservationDTO reservationDTO) {
+
+        Long RV_ID =  reservationMapper.insert(reservationDTO);
+        return RV_ID;
     }
 
     @Override
