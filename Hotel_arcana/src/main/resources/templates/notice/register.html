@@ -6,28 +6,28 @@
 <body>
 <h1>공지사항 쓰기</h1>
 <form action="/notice/register" method="post">
-<div>
-    <span>제목</span>
-    <input type="text" name="N_TITLE" placeholder="제목">
-</div>
-<div>
-    <span>작성일</span>
-    <input type="date" name="N_DATE">
-</div>
-<div>
-    <span>내용</span>
-    <input type="text" name="N_CONTTNET" placeholder="내용을 입력하세요">
-</div>
-<div>
-    <span>작성자</span>
-    <input type="text" name="N_WRITER" placeholder="이름">
-</div>
-<div>
     <div>
-        <button type="submit" class="btn btn-primary">등록</button>
-        <a href="/notice/list" class="btn btn-outline-secondary" >뒤로가기</a>
+        <span>제목</span>
+        <input name="N_TITLE" placeholder="제목" type="text">
     </div>
-</div>
+<!--    <div>-->
+<!--        <span>작성일</span>-->
+<!--        <input name="N_DATE" type="date">-->
+<!--    </div>-->
+    <div>
+        <span>내용</span>
+        <input name="N_CONTENT" placeholder="내용을 입력하세요" type="text">
+    </div>
+    <div>
+        <span>작성자</span>
+        <input name="N_WRITER" placeholder="이름" type="text">
+    </div>
+    <div>
+        <div>
+            <button class="btn btn-primary" type="submit">등록</button>
+            <a class="btn btn-outline-secondary" href="/notice/list">뒤로가기</a>
+        </div>
+    </div>
 </form>
 </body>
 </html>

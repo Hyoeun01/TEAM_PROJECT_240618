@@ -43,8 +43,12 @@ public class NoticeController {
     }
 
     @PostMapping("/register")
-    public String PostNotice(@Valid NoticeDTO noticeDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String PostNotice(NoticeDTO noticeDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
+
+            // 실패 원인 찾는 코드
+            bindingResult.getAllErrors().forEach(error -> log.error("Validation error: {}", error.getDefaultMessage()));
+
             redirectAttributes.addFlashAttribute("error", bindingResult.getAllErrors());
             log.info("실패");
 
