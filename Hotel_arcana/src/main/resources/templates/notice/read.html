@@ -26,9 +26,8 @@
 
 <div>
     <a class="btn btn-outline-secondary" href="/notice/list">목록</a>
-    <a class="btn btn-outline-secondary" href="/notice/modify">수정</a>
+    <a class="btn btn-outline-secondary" th:href="@{/notice/modify(N_NO=${notice.N_NO})}">수정</a>
     <button type="button" id="remove">삭제</button>
-<!--    <button type="button" id="register">삭제</button>-->
 </div>
 </form>
 </body>

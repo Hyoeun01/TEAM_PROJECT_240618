@@ -23,7 +23,7 @@
     <input name="N_WRITER" th:value="${notice.N_WRITER}" type="text" readonly>
 </div>
 <div>
-    <a class="btn btn-outline-secondary" href="/notice/read">뒤로가기</a>
+    <a class="btn btn-outline-secondary" th:href="@{/notice/read(N_NO=${notice.N_NO})}">뒤로가기</a>
     <button type="submit" class="btn btn-primary modifyBtn">수정</button>
 </div>
 </form>

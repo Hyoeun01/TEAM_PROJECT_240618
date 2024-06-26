@@ -16,5 +16,5 @@ public interface NoticeMapper {
 
     void delete(Long N_NO);
 
-    void update(NoticeDTO noticeDTO);
+    void update(Long N_NO);
 }

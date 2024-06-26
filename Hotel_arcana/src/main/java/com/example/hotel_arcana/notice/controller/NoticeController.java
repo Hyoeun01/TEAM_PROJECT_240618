@@ -62,29 +62,40 @@ public class NoticeController {
         return "redirect:/notice/list";
     }
 
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping({"/read","/modify"})
+    @GetMapping("/read")
     public void read(Long N_NO, Model model) {
         NoticeDTO noticeDTO = noticeService.readOne(N_NO);
         model.addAttribute("notice", noticeDTO);
-
     }
 
     @PostMapping("/delete")
-//    public String delete(Long N_NO, RedirectAttributes redirectAttributes) {
-
-//    void delete(Long N_NO, RedirectAttributes redirectAttributes) {
-//
-//        noticeService.delete(N_NO);
-//    }
     public String delete(NoticeDTO noticeDTO, RedirectAttributes redirectAttributes) {
         Long N_NO = noticeDTO.getN_NO();
         noticeService.delete(N_NO);
         return "redirect:/notice/list";
     }
 
+    @GetMapping("/modify")
+    public String GetModify(Long N_NO, Model model) {
+        NoticeDTO noticeDTO = noticeService.readOne(N_NO);
+        model.addAttribute("notice", noticeDTO);
+    return "/notice/modify";
+    }
+
     @PostMapping("/modify")
-    public String PostModify(NoticeDTO noticeDTO, RedirectAttributes redirectAttributes) {
+    public String PostModify(NoticeDTO noticeDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        if(bindingResult.hasErrors()) {
+
+            // 실패 원인 찾는 코드
+            bindingResult.getAllErrors().forEach(error -> log.error("Validation error: {}", error.getDefaultMessage()));
+
+            redirectAttributes.addFlashAttribute("error", bindingResult.getAllErrors());
+            log.info("실패");
+
+            return "redirect:/notice/modify";
+        }
+        NoticeDTO noticeDTO = noticeService.modify(N_NO); // 작성할것
         redirectAttributes.addAttribute("N_NO", noticeDTO.getN_NO());
         return "redirect:/notice/read";
     }

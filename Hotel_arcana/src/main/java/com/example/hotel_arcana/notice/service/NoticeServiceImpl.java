@@ -44,6 +44,6 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public void modify(NoticeDTO noticeDTO) {
-        noticeMapper.update(noticeDTO);
+        noticeMapper.update(NoticeDTO);
     }
 }
