@@ -11,4 +11,8 @@ public interface NoticeService {
     Long register(NoticeDTO noticeDTO);
 
     NoticeDTO readOne(Long N_NO);
+
+    void delete(Long N_NO);
+
+    void modify(NoticeDTO noticeDTO);
 }

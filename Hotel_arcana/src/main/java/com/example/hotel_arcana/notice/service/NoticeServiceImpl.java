@@ -4,12 +4,10 @@ import com.example.hotel_arcana.notice.dto.NoticeDTO;
 import com.example.hotel_arcana.notice.mapper.NoticeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 @Log4j2
@@ -17,6 +15,7 @@ import java.util.stream.Collectors;
 public class NoticeServiceImpl implements NoticeService {
 
     private final NoticeMapper noticeMapper;
+
     private NoticeDTO noticeDTO;
 
     @Override
@@ -36,5 +35,15 @@ public class NoticeServiceImpl implements NoticeService {
     public NoticeDTO readOne(Long N_NO) {
 
         return noticeMapper.selectOne(N_NO);
+    }
+
+    @Override
+    public void delete(Long N_NO) {
+        noticeMapper.delete(N_NO);
+    }
+
+    @Override
+    public void modify(NoticeDTO noticeDTO) {
+        noticeMapper.update(noticeDTO);
     }
 }

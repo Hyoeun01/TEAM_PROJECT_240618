@@ -13,4 +13,8 @@ public interface NoticeMapper {
     void insert(NoticeDTO noticeDTO);
 
     NoticeDTO selectOne(Long N_NO);
+
+    void delete(Long N_NO);
+
+    void update(NoticeDTO noticeDTO);
 }

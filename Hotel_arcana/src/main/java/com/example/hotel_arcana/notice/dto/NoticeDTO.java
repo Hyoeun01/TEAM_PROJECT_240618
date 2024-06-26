@@ -27,7 +27,8 @@ public class NoticeDTO {
     @NotNull
     private Long N_VIEW = 0L;
 
-//    @NotNull(message = "날짜는 필수 항목입니다.")
+    // 디폴트 표현식 current_timestamp()
+    // dateTime 형식
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime N_DATE;
 

@@ -2,30 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hotel Arcana</title>
 </head>
 <body>
+<h1>🎁게시글 쓰기🎁</h1>
+<form name="f1" action="/notice/read" method="POST">
 <div>
-    <span>번호</span>
-    <input type="text" name="N_NO" th:value="${notice.N_NO}" readonly>
+    <label>번호</label>
+    <input name="N_NO" readonly th:value="${notice.N_NO}" type="text"><br>
+    <div>
+    <label>작성자</label>
+    <input name="N_WRITER" readonly th:value="${notice.N_WRITER}" type="text">
+    </div>
 </div>
 <div>
-    <span>제목</span>
-    <input type="text" name="N_TITLE" th:value="${notice.N_TITLE}" readonly>
+    <label>제목</label>
+    <input name="N_TITLE" readonly th:value="${notice.N_TITLE}" type="text">
 </div>
 <div>
-    <span>내용</span>
-    <textarea rows="5" name="N_CONTENT" readonly>[[${notice.N_CONTENT}]]</textarea>
+    <label>내용</label>
+    <textarea name="N_CONTENT" readonly rows="5">[[${notice.N_CONTENT}]]</textarea>
 </div>
+
 <div>
-    <span>작성자</span>
-    <input type="text" name="N_WRITER" th:value="${notice.N_WRITER}" readonly>
+    <a class="btn btn-outline-secondary" href="/notice/list">목록</a>
+    <a class="btn btn-outline-secondary" href="/notice/modify">수정</a>
+    <button type="button" id="remove">삭제</button>
+<!--    <button type="button" id="register">삭제</button>-->
 </div>
-<div>
-    <span>작성일</span>
-    <input type="text" name="N_DATE" th:value="${notice.N_DATE}" readonly>
-</div>
-<a href="/notice/list" class="btn btn-outline-secondary" >목록</a>
-<a href="/notice/modify" class="btn btn-outline-secondary" >수정</a>
+</form>
 </body>
+<script>
+    document.getElementById("remove").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (confirm("삭제하시겠습니까?")){
+             let f1 = document.f1
+            f1.action = "/notice/delete"
+            f1.submit();
+        }
+    },false)
+</script>
 </html>

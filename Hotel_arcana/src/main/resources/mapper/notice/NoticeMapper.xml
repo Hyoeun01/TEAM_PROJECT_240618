@@ -25,4 +25,16 @@
         SELECT * FROM hotel_notice WHERE N_NO = #{N_NO}
     </select>
 
+<!--    게시글 삭제-->
+    <delete id="delete">
+        DELETE FROM hotel_notice WHERE N_NO = #{N_NO}
+    </delete>
+
+<!--    게시글 수정-->
+    <update id="update">
+        UPDATE hotel_notice SET N_TITLE=#{N_TITLE} , N_CONTENT=#{N_CONTENT}
+        WHERE N_NO = #{N_NO}
+    </update>
+
+
 </mapper>

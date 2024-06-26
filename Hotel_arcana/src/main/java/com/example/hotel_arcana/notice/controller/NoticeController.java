@@ -5,6 +5,7 @@ import com.example.hotel_arcana.notice.service.NoticeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -61,12 +62,31 @@ public class NoticeController {
         return "redirect:/notice/list";
     }
 
-    @GetMapping("/read")
-    public void GetRead(Long N_NO, Model model) {
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping({"/read","/modify"})
+    public void read(Long N_NO, Model model) {
         NoticeDTO noticeDTO = noticeService.readOne(N_NO);
         model.addAttribute("notice", noticeDTO);
 
-        //return "/notice/read";
+    }
+
+    @PostMapping("/delete")
+//    public String delete(Long N_NO, RedirectAttributes redirectAttributes) {
+
+//    void delete(Long N_NO, RedirectAttributes redirectAttributes) {
+//
+//        noticeService.delete(N_NO);
+//    }
+    public String delete(NoticeDTO noticeDTO, RedirectAttributes redirectAttributes) {
+        Long N_NO = noticeDTO.getN_NO();
+        noticeService.delete(N_NO);
+        return "redirect:/notice/list";
+    }
+
+    @PostMapping("/modify")
+    public String PostModify(NoticeDTO noticeDTO, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addAttribute("N_NO", noticeDTO.getN_NO());
+        return "redirect:/notice/read";
     }
 
 }
