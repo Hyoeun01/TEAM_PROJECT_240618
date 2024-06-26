@@ -11,6 +11,10 @@
         <module name="Hotel_arcana.test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel>
+      <module name="Hotel_arcana" target="17" />
+      <module name="Hotel_arcana.main" target="17" />
+      <module name="Hotel_arcana.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
