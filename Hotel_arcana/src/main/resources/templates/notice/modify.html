@@ -5,7 +5,7 @@
     <title>Hotel Arcana</title>
 </head>
 <body>
-<form th:action="@{/notice/modify}" method="post">
+<form name="f2" th:action="@{/notice/modify}" method="post">
 <div>
     <span>번호</span>
     <input name="N_NO" th:value="${notice.N_NO}" type="text" readonly>
@@ -24,8 +24,21 @@
 </div>
 <div>
     <a class="btn btn-outline-secondary" th:href="@{/notice/read(N_NO=${notice.N_NO})}">뒤로가기</a>
-    <button type="submit" class="btn btn-primary modifyBtn">수정</button>
+<!--    <button type="submit" class="btn btn-primary modifyBtn">수정</button>-->
+    <button type="button" id="modifyBtn">수정</button>
 </div>
 </form>
 </body>
+
+<script>
+    document.getElementById("modifyBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (confirm("수정하시겠습니까?")){
+            let f2 = document.f2
+            f2.action = "/notice/modify"
+            f2.submit();
+        }
+    },false)
+</script>
 </html>

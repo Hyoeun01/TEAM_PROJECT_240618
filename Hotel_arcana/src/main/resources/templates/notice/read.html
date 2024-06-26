@@ -27,12 +27,12 @@
 <div>
     <a class="btn btn-outline-secondary" href="/notice/list">목록</a>
     <a class="btn btn-outline-secondary" th:href="@{/notice/modify(N_NO=${notice.N_NO})}">수정</a>
-    <button type="button" id="remove">삭제</button>
+    <button type="button" id="removeBtn">삭제</button>
 </div>
 </form>
 </body>
 <script>
-    document.getElementById("remove").addEventListener("click", function (e) {
+    document.getElementById("removeBtn").addEventListener("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
         if (confirm("삭제하시겠습니까?")){

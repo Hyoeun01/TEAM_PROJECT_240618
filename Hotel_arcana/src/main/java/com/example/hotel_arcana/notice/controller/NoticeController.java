@@ -98,9 +98,9 @@ public class NoticeController {
             return "redirect:/notice/modify";
         }
 
-        noticeService.modify(noticeDTO); // 작성할것
+        noticeService.modify(noticeDTO);
         redirectAttributes.addAttribute("N_NO", noticeDTO.getN_NO());
-        return "redirect:/notice/read";
+        return "redirect:/notice/list";
     }
 
 }
