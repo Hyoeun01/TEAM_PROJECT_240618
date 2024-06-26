@@ -15,4 +15,6 @@ public interface NoticeService {
     void delete(Long N_NO);
 
     void modify(NoticeDTO noticeDTO);
+
+    void increaseViewCount(Long N_NO);
 }

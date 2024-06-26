@@ -46,4 +46,14 @@ public class NoticeServiceImpl implements NoticeService {
     public void modify(NoticeDTO noticeDTO) {
         noticeMapper.update(noticeDTO);
     }
+
+    @Override
+    public void increaseViewCount(Long N_NO) {
+        // 조회수를 가져와서 1 증가시킨 후 업데이트합니다.
+        NoticeDTO noticeDTO = noticeMapper.selectOne(N_NO);
+        if (noticeDTO != null) {
+            long newViewCount = noticeDTO.getN_VIEW() + 1;
+            noticeMapper.ViewCount(N_NO, newViewCount);
+        }
+    }
 }

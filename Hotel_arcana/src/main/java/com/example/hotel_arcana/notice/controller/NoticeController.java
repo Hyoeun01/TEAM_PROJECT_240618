@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -63,7 +64,8 @@ public class NoticeController {
     }
 
     @GetMapping("/read")
-    public void read(Long N_NO, Model model) {
+    public void read(@RequestParam("N_NO") Long N_NO, Model model) {
+        noticeService.increaseViewCount(N_NO); // 조회수 증가 메서드 호출
         NoticeDTO noticeDTO = noticeService.readOne(N_NO);
         model.addAttribute("notice", noticeDTO);
     }

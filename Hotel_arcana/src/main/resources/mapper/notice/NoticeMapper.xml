@@ -36,5 +36,9 @@
         WHERE N_NO = #{N_NO}
     </update>
 
+<!--    게시글 조회수 증가-->
+    <update id="ViewCount">
+        UPDATE hotel_notice SET N_VIEW = #{N_VIEW} WHERE N_NO = #{N_NO}
+    </update>
 
 </mapper>
