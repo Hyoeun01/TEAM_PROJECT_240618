@@ -8,7 +8,7 @@ public interface ReservationService {
 
     Long register(ReservationDTO reservationDTO);
     List<ReservationDTO> getAll();
-    ReservationDTO getOne(String RV_ID);
+    ReservationDTO getOne(Long RV_ID);
     void remove(String RV_ID);
     void modify(ReservationDTO reservationDTO);
 }

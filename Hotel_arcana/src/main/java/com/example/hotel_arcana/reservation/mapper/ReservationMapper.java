@@ -11,7 +11,7 @@ public interface ReservationMapper {
 
     Long insert(ReservationDTO reservationDTO);
     List<ReservationDTO> selectAll();
-    ReservationDTO selectOne(String RV_ID);
+    ReservationDTO selectOne(Long RV_ID);
     void update(ReservationDTO reservationDTO);
     void delete(String RV_ID);
 }

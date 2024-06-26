@@ -30,7 +30,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO getOne(String RV_ID) {
+    public ReservationDTO getOne(Long RV_ID) {
         ReservationDTO reservationDTO = reservationMapper.selectOne(RV_ID);
         return reservationDTO;
     }

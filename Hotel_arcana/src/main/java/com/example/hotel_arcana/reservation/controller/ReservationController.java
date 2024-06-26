@@ -45,6 +45,12 @@ public class ReservationController {
         return "redirect:/reservation/list";
     }
 
+    @GetMapping({"/read","/modify"})
+    public void read(Long RV_ID, Model model) {
+        ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
+        model.addAttribute("dto", reservationDTO);
+    }
+
 
 
 
