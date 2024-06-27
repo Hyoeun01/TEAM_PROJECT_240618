@@ -2,6 +2,7 @@ package com.example.hotel_arcana.reservation.controller;
 
 import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.service.ReservationService;
+import com.example.hotel_arcana.room.controller.RoomController;
 import com.example.hotel_arcana.room.dto.RoomDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,8 +36,8 @@ public class ReservationController {
 
     @GetMapping("/register")
     public void register(Model model) {
-//        return "/reservation/register";
-
+        RoomController roomController = new RoomController();
+        roomController.getRooms(model);
     }
 
     @PostMapping("/register")
