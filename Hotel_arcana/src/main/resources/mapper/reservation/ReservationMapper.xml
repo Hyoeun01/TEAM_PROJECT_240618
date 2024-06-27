@@ -25,4 +25,8 @@
         update reservation set START_DATE=#{START_DATE}, END_DATE=#{END_DATE}, TOTAL_NUM=#{TOTAL_NUM}, RV_ROOM_NUMBER=#{RV_ROOM_NUMBER}
         WHERE RV_ID = #{RV_ID}
     </update>
+
+    <select id="getRooms" resultType="com.example.hotel_arcana.room.dto.RoomDTO">
+        select * from room order by ROOM_ID desc
+    </select>
 </mapper>

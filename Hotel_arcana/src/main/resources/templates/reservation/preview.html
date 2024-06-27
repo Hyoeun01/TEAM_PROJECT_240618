@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .centered-container {
+            height: 100vh; /* Viewport Height */
+        }
+        .card-custom {
+            max-width: 500px; /* Adjust the max width as needed */
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-center align-items-center centered-container">
+    <div class="row w-100 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card mb-4 rounded-3 shadow-sm card-custom">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">예약이 거의 끝났습니다!</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">방이름</h2>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>체크인 날짜 언제</li>
+                        <li>체크아웃 날짜 언제</li>
+                        <li>인원수 몇 명</li>
+                    </ul>
+                    <h1 class="card-title pricing-card-title">금액<small class="text-body-secondary fw-light">/얼마</small></h1>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary"
+                            th:onclick="'location.href=\'/reservation/read/RV_ID\''">예약하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

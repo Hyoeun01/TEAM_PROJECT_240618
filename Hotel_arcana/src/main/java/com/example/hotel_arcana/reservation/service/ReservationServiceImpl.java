@@ -3,6 +3,7 @@ package com.example.hotel_arcana.reservation.service;
 
 import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.mapper.ReservationMapper;
+import com.example.hotel_arcana.room.dto.RoomDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,11 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void modify(ReservationDTO reservationDTO) {
         reservationMapper.update(reservationDTO);
+    }
+
+    @Override
+    public List<RoomDTO> getRooms() {
+
+        return reservationMapper.getRooms();
     }
 }

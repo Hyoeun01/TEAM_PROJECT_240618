@@ -27,17 +27,22 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @GetMapping("/list")
-    public String getReservation(Model model) {
+    public void getReservation(Model model) {
         List<ReservationDTO> reservationList = reservationService.getAll();
         model.addAttribute("list", reservationList);
-
-        return "/reservation/list";
     }
 
-    @GetMapping("/register")
-    public void register(Model model) {
-        RoomController roomController = new RoomController();
-        roomController.getRooms(model);
+    @GetMapping("/roomchoice")
+    public void roomlist(){
+    }
+
+    @GetMapping("/register/{ROOM_NAME}")
+    public String register(@PathVariable("ROOM_NAME") String roomName, Model model) {
+        model.addAttribute("rooms", reservationService.getRooms());
+        model.addAttribute("room_name", roomName);
+        log.info("Requested room: " + roomName);
+
+        return "register";
     }
 
     @PostMapping("/register")
@@ -61,7 +66,7 @@ public class ReservationController {
         log.info(reservationDTO);
         Long RV_ID = reservationService.register(reservationDTO);
         redirectAttributes.addFlashAttribute("result", RV_ID);
-        return "redirect:/reservation/list";
+        return "redirect:/reservation/preview";
     }
 
     @GetMapping({"/read","/modify"})
