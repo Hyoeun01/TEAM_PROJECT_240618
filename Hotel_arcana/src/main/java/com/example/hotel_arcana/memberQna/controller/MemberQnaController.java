@@ -41,7 +41,7 @@ public class MemberQnaController {
         Long Q_NO = memberQnaService.register(memberQnaDTO);
         redirectAttributes.addFlashAttribute("result", Q_NO);
 
-        return "redirect:/notice/list";
+        return "redirect:/managerQna/list";
     }
 
 }

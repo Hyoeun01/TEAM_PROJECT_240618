@@ -10,7 +10,7 @@
     </select>
 
     <!--    QnA 보기-->
-    <select id="selectOne" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+    <select id="selectOne" resultType="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">
         SELECT * FROM hotel_qna WHERE Q_NO = #{Q_NO}
     </select>
 

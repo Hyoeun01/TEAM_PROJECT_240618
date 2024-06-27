@@ -14,7 +14,6 @@ import java.util.List;
 public class ManagerQnaServiceImpl implements ManagerQnaService {
 
     private final ManagerQnaMapper managerQnaMapper;
-
     private  ManagerQnaDTO managerQnaDTO;
 
     @Override
@@ -26,6 +25,7 @@ public class ManagerQnaServiceImpl implements ManagerQnaService {
 
     @Override
     public ManagerQnaDTO readOne(Long Q_NO) {
+
         return managerQnaMapper.selectOne(Q_NO);
     }
 }
