@@ -51,6 +51,26 @@ public class ReservationController {
         model.addAttribute("dto", reservationDTO);
     }
 
+    @PostMapping("/remove")
+    public String remove(Long RV_ID, RedirectAttributes redirectAttributes){
+        reservationService.remove(RV_ID);
+        return "redirect:/reservation/list";
+    }
+
+    @PostMapping("/modify")
+    public String modify(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        log.info("수정 중"+reservationDTO);
+
+        if(bindingResult.hasErrors()) {
+            log.info("에러발생");
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+        }
+
+        reservationService.modify(reservationDTO);
+        redirectAttributes.addFlashAttribute("result", "modify success");
+        redirectAttributes.addAttribute("RV_ID", reservationDTO.getRV_ID());
+        return "redirect:/reservation/list";
+    }
 
 
 

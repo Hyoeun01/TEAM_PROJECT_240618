@@ -36,7 +36,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void remove(String RV_ID) {
+    public void remove(Long RV_ID) {
         reservationMapper.delete(RV_ID);
     }
 
