@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>예약목록</title>
+</head>
+<body>
+<h1>예약목록</h1>
+<table>
+    <thead>
+    <tr>
+        <th>체크인날짜</th>
+        <th>체크아웃날짜</th>
+        <th>인원수</th>
+        <th>방번호</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reservation : ${list}">
+        <td th:text="${reservation.START_DATE}">체크인 날짜</td>
+        <td th:text="${reservation.END_DATE}">체크아웃 날짜</td>
+        <td th:text="${reservation.TOTAL_NUM}">인원수</td>
+        <td th:text="${reservation.RV_ROOM_NUMBER}">방번호</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
