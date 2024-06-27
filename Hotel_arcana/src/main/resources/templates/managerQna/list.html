@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>QnA확인</title>
+</head>
+<body>
+<h1>✨QnA확인✨</h1>
+<form>
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>문의유형</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="manager : ${managerList}">
+            <td th:text="${manager.Q_NO}">번호</td>
+            <td th:text="${manager.Q_BOX}">유형</td>
+            <td><a th:href="@{/managerQna/read(Q_NO=${manager.Q_NO})}" th:text="${manager.Q_TITLE}"></a></td>
+            <td th:text="${manager.Q_USER_ID}">작성자</td>
+            <td th:text="${manager.Q_DATE}">작성일</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="input-group-append">
+        <input type = "search">
+        <button class="btn btn-outline-secondary searchBtn" type="submit">검색</button>
+<!--        <a href="/managerQna/register" class="btn btn-outline-secondary" >글쓰기</a>-->
+
+
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QnA</title>
+</head>
+<body>
+<h1>🎁QnA 읽기🎁</h1>
+<form name="f1" action="/managerQna/read" method="POST">
+    <div>
+        <label>번호</label>
+        <input name="Q_NO" readonly th:value="${manager.Q_NO}" type="text"><br>
+    </div>
+    <div>
+            <label>문의유형</label>
+            <input name="Q_BOX" readonly th:value="${manager.Q_BOX}" type="text">
+    </div>
+    <div>
+        <label>제목</label>
+        <input name="Q_MAIL" readonly th:value="${manager.Q_MAIL}" type="text">
+    </div>
+    <div>
+        <label>내용</label>
+        <textarea name="Q_CONTENT" readonly rows="5">[[${manager.Q_CONTENT}]]</textarea>
+    </div>
+
+    <div>
+        <a class="btn btn-outline-secondary" href="/managerQna/list">목록</a>
+        <a class="btn btn-outline-secondary" th:href="@{/managerQna/modify(Q_NO=${manager.Q_NO})}">수정</a>
+        <button type="button" id="removeBtn">삭제</button>
+    </div>
+</form>
+</body>
+<script>
+    document.getElementById("removeBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (confirm("삭제하시겠습니까?")){
+            let f1 = document.f1
+            f1.action = "/notice/delete"
+            f1.submit();
+        }
+    },false)
+</script>
+</html>

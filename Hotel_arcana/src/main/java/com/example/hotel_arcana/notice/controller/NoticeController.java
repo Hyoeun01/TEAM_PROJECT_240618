@@ -32,13 +32,6 @@ public class NoticeController {
         return "/notice/list";
     }
 
-//    @RequestMapping("/getTime")
-//    public String getTime(Model model) {
-//        String time = NoticeService.getTime();
-//        model.addAttribute("time", time);
-//        return "time";
-//    }
-
     @GetMapping("/register")
     public void registerGET(){
 

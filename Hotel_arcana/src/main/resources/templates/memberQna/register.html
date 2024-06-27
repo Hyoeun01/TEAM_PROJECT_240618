@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Arcana</title>
+</head>
+<body>
+<h1>💌QnA💌</h1>
+<form action="/memberQna/register" method="post">
+
+        <span>질문유형</span>
+    <select name="Q_BOX">
+        <option value="">선택하세요</option>
+        <option value="reservation">예약, 확인</option>
+        <option value="refund">환불, 취소</option>
+        <option value="etc">기타</option>
+    </select>
+
+    <div>
+        <span>이메일</span>
+        <input name="Q_MAIL" placeholder="이메일" type="email">
+    </div>
+    <div>
+        <span>연락처</span>
+        <input name="Q_PHONE" placeholder="연락처" type="text">
+    </div>
+    <div>
+        <span>제목</span>
+        <input name="Q_TITLE" placeholder="제목" type="text">
+    </div>
+    <div>
+        <span>내용</span>
+        <textarea name="Q_CONTENT" placeholder="내용을 입력하세요" type="text"></textarea>
+    </div>
+    <div>
+        <span>사진추가</span>
+        <input name="Q_IMG" placeholder="사진추가" type="file">
+    </div>
+
+        <div>
+            <button class="btn btn-primary submitBtn" type="submit">작성하기</button>
+            <a class="btn btn-outline-secondary" href="/">뒤로가기</a>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    document.querySelector(".submitBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        document.querySelector("form").submit();
+    },false)
+</script>
+</html>

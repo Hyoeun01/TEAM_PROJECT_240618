@@ -30,6 +30,6 @@ public class NoticeDTO {
     // 디폴트 표현식 current_timestamp()
     // dateTime 형식
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime N_DATE;
+    private LocalDate N_DATE;
 
 }
