@@ -18,4 +18,9 @@ public class IndexController {
     public String test1() {
         return "/test1";
     }
+
+    @GetMapping("/header")
+    public String header() {
+        return "/headertest";
+    }
 }
