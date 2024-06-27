@@ -15,11 +15,27 @@
 
 <!--        </resultMap>-->
 
-        <select id="findMemberById">
+        <select id="findMemberById" parameterType="string" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
             SELECT * FROM hotel_member WHERE USER_ID = #{USER_ID}
         </select>
 
         <insert id="insertMember" >
-            INSERT INTO hotel_member (USER_ID, USER_PW, USER_NM,USER_ADR,USER_EML,USER_TEL,USER_NIK) VALUES (#{USER_ID}, #{USER_PW}, #{USER_NM}, #{USER_ADR}, #{USER_EML}, #{USER_TEL}, #{USER_NIK})
+            INSERT INTO hotel_member (USER_ID, USER_PW, USER_NM,USER_ADR,USER_EML,USER_TEL,USER_NIK,USER_AUTH) VALUES (#{USER_ID}, #{USER_PW}, #{USER_NM}, #{USER_ADR}, #{USER_EML}, #{USER_TEL}, #{USER_NIK}, #{USER_AUTH})
         </insert>
+
+    <select id="selectMember" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
+        SELECT * FROM hotel_member WHERE USER_ID = #{USER_ID}
+    </select>
+    <update id="updateMember">
+        UPDATE hotel_member set
+                                USER_NM =#{USER_NM},
+                                USER_PW=#{USER_PW},
+                                USER_ADR=#{USER_ADR},
+                                USER_EML=#{USER_EML},
+                                USER_TEL=#{USER_TEL},
+                                USER_NIK=#{USER_NIK}
+
+        WHERE
+            USER_ID=#{USER_ID}
+    </update>
     </mapper>

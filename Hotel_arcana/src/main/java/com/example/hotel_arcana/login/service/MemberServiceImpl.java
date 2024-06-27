@@ -25,6 +25,21 @@ public class MemberServiceImpl implements MemberService{
     public void insertMember(MemberDTO memberDTO)  {
 
         memberDTO.setUSER_PW(passwordEncoder.encode(memberDTO.getUSER_PW()));
+        if(memberDTO.getUSER_AUTH() == null || memberDTO.getUSER_AUTH().isEmpty()){
+            memberDTO.setUSER_AUTH("USER");
+        }
         memberMapper.insertMember(memberDTO);
+
     }
+
+//    @Override
+//    public MemberDTO selectMember(String USER_ID) {
+//        return memberMapper.selectMember(USER_ID);
+//    }
+//
+//    @Override
+//    public void updateMember(MemberDTO memberDTO) {
+//        return  memberMapper.updateMember(memberDTO);
+//    }
+
 }
