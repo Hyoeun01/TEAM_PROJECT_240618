@@ -13,8 +13,8 @@
     </select>
 
     <insert id="insert">
-        insert into reservation (START_DATE,END_DATE,TOTAL_NUM)
-        VALUES (#{START_DATE},#{END_DATE},#{TOTAL_NUM})
+        insert into reservation (START_DATE,END_DATE,TOTAL_NUM,RV_ROOM_NUMBER)
+        VALUES (#{START_DATE},#{END_DATE},#{TOTAL_NUM},#{RV_ROOM_NUMBER})
     </insert>
 
     <delete id="delete">

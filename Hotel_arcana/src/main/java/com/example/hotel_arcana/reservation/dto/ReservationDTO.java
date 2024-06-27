@@ -17,7 +17,6 @@ public class ReservationDTO {
     private int TOTAL_NUM;
 
     private String RV_USER_ID;
-    @Builder.Default
-    private Long RV_ROOM_NUMBER = 501L;
+    private Long RV_ROOM_NUMBER ;
 
 }
