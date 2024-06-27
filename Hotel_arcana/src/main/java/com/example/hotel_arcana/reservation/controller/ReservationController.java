@@ -2,6 +2,7 @@ package com.example.hotel_arcana.reservation.controller;
 
 import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.service.ReservationService;
+import com.example.hotel_arcana.room.dto.RoomDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -13,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/reservation")
@@ -33,6 +36,7 @@ public class ReservationController {
     @GetMapping("/register")
     public void register(Model model) {
 //        return "/reservation/register";
+
     }
 
     @PostMapping("/register")
