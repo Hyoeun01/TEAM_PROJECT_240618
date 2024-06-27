@@ -41,4 +41,14 @@
         UPDATE hotel_notice SET N_VIEW = #{N_VIEW} WHERE N_NO = #{N_NO}
     </update>
 
+<!--    게시판 목록 페이지-->
+    <select id="NoticePage" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT * FROM hotel_notice ORDER BY N_NO DESC LIMIT #{offset}, #{size}
+    </select>
+
+<!--    게시글 총 갯수-->
+    <select id="NoticeCount" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT COUNT(*) FROM hotel_notice
+    </select>
+
 </mapper>

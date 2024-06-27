@@ -1,6 +1,8 @@
 package com.example.hotel_arcana.notice.controller;
 
 import com.example.hotel_arcana.notice.dto.NoticeDTO;
+import com.example.hotel_arcana.notice.dto.PageRequestDTO;
+import com.example.hotel_arcana.notice.dto.PageResponseDTO;
 import com.example.hotel_arcana.notice.service.NoticeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +28,12 @@ public class NoticeController {
     private final NoticeService noticeService;
 
     @GetMapping("/list")
-    public String getNotices(Model model) {
+    public String getNotices(Model model, PageRequestDTO pageRequestDTO) {
+        PageResponseDTO<NoticeDTO> responseDTO = noticeService.getList(pageRequestDTO);
         List<NoticeDTO> noticeList = noticeService.getAll();
         model.addAttribute("list", noticeList);
+        model.addAttribute("responseDTO", responseDTO);
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
         return "/notice/list";
     }
 

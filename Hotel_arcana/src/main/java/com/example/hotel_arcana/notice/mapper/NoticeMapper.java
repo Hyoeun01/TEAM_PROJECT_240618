@@ -20,4 +20,8 @@ public interface NoticeMapper {
     void update(NoticeDTO noticeDTO);
 
     void ViewCount(@Param("N_NO") Long N_NO, @Param("N_VIEW") Long N_VIEW);
+
+    List<NoticeDTO> NoticePage(@Param("offset") int offset, @Param("size") int size);
+
+    Integer NoticeCount();
 }
