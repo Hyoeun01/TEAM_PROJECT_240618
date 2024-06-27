@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.main-photo {
+    width: 85%;
+    height: 500px;
+    display: flex;
+    /*margin: 0 0 0 0px;*/
+}
+.other-photos {
+    width: 85%;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.photo {
+    /*flex: 1 1 48%;*/
+    /*height: 140px;*/
+    /*margin: 1%;*/
+    width: 250%;
+    height: 700px;
+}
+.sub_photo{
+    width: 376px;
+}
+.sub_photo2{
+    margin-bottom: 15px;
+    width: 375px;
+}
+.property-info {
+    flex: 1 1 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.listed-by {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.host-photo {
+    background-color: #ddd;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.host-info p {
+    margin: 0;
+}
+
+.amenities, .services, .price, .reviews {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h3 {
+    margin-top: 0;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.price p {
+    margin: 10px 0;
+}
+
+.reserve-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.contact-options button {
+    width: 48%;
+    padding: 10px;
+    background-color: #007a87;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-right: 4%;
+}
+
+.contact-options button:last-child {
+    margin-right: 0;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.show-reviews-button {
+    padding: 10px;
+    background-color: #007a87;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
