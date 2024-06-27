@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService{
@@ -41,5 +43,10 @@ public class MemberServiceImpl implements MemberService{
 //    public void updateMember(MemberDTO memberDTO) {
 //        return  memberMapper.updateMember(memberDTO);
 //    }
+
+    @Override
+    public MemberDTO memberRead(String USER_ID){
+        return memberMapper.findMemberById(USER_ID);
+    }
 
 }

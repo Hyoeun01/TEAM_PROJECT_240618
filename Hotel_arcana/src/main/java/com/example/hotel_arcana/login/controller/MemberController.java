@@ -4,12 +4,9 @@ import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Log4j2
@@ -23,7 +20,7 @@ public class MemberController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("member");
-        return "join";
+        return "/join";
     }
 
     @PostMapping("/register")
@@ -35,7 +32,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login";
+        return "/login";
     }
 
 //    @PostMapping("/login")
@@ -62,4 +59,11 @@ public class MemberController {
 //        MemberService.updateMember(memberDTO);
 //        return "redirect:/index";
 //    }
+@GetMapping("/memberRead")
+public void getMemberRead(@RequestParam("USER_ID") String USER_ID, Model model) {
+    MemberDTO memberDTO = memberService.memberRead(USER_ID);
+    model.addAttribute("member", memberDTO);
+
 }
+}
+

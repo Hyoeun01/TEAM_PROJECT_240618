@@ -26,6 +26,21 @@
     <select id="selectMember" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
         SELECT * FROM hotel_member WHERE USER_ID = #{USER_ID}
     </select>
+
+    <select id="getMemberRead" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
+        SELECT
+            m.USER_ID    	  AS USER_ID
+             ,m.USER_PW       AS USER_PW
+             ,m.USER_NM  	  AS USER_NM
+             ,m.USER_ADR	  AS USER_ADR
+             ,m.USER_EML 	  AS USER_EML
+             ,m.USER_TEL     AS USER_TEL
+             ,m.USER_NIK AS USER_NIK
+             ,m.USER_AUTH AS USER_AUTH
+        FROM
+            hotel_member;
+    </select>
+
     <update id="updateMember">
         UPDATE hotel_member set
                                 USER_NM =#{USER_NM},
