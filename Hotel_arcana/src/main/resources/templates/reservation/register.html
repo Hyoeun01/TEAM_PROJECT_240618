@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Page</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="../../css/test.css">
 </head>
+
 <body>
-<h1>등록 페이지</h1>
+    <div class="container">
+        <h1>Hotel Booking</h1>
+        <form action="/reservation/register" method="post">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="../../images/image1.jpg" alt="Hotel Image 1">
+            </div>
+            <div class="slide fade">
+                <img src="../../images/image2.jpg" alt="Hotel Image 2">
+            </div>
+            <div class="slide fade">
+                <img src="../../images/image3.jpg" alt="Hotel Image 3">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <div class="date-picker">
+            <div class="form-group">
+                <input type="text" id="in_Dates" placeholder="check in date" name="inDates"  readonly>
+            </div>
+            <div id="in_Calendar"></div>
+            <div class="form-group">
+                <input type="text" id="out_Dates" placeholder="check out date" name="outDates"  readonly>
+            </div>
+            <div id="out_Calendar"></div>
+        </div>
+        <div class="form-group">
+            <label for="guests">인원 선택</label>
+            <input type="text" id="guests" name="guests">
+        </div>
+        <div class="room-card">
+            <div class="room-info">
+                <div class="room-image">
+                    <img src="../../images/room.jpg" alt="디럭스 더블 시티뷰 업그레이드">
+                </div>
+                <div>ROOM_LIMIT
+
+                    <p>기준 2인 / 최대 2인</p>
+                    <p>더블 침대 1개</p>
+                    <p>도시 전망</p>
+                </div>
+                <div>
+                    <p>집에가고싶다</p>
+                </div>
+            </div>
+            <div class="room-price">
+                <p>숙박</p>
+                <p>체크인 15:00 ~ 체크아웃 12:00</p>
+                <p><strong>353,400원/2박</strong></p>
+                <p>쿠폰가</p>
+                <p>(7% 380,000원)</p>
+                <button type="submit">예약하기</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="../../js/scripts.js"></script>
 </body>
+<script>
+    document.querySelector(".submitBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        document.querySelector("form").submit();
+    },false)
+</script>
 </html>

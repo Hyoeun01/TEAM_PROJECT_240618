@@ -15,7 +15,9 @@ public class ReservationDTO {
     private LocalDate START_DATE;
     private LocalDate END_DATE;
     private int TOTAL_NUM;
+
     private String RV_USER_ID;
-    private int RV_ROOM_NUMBER;
+    @Builder.Default
+    private Long RV_ROOM_NUMBER = 501L;
 
 }

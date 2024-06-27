@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -29,15 +31,27 @@ public class ReservationController {
     }
 
     @GetMapping("/register")
-    public String register(Model model) {
-        return "/reservation/register";
+    public void register(Model model) {
+//        return "/reservation/register";
     }
 
     @PostMapping("/register")
-    public String register(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String register(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
+    , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests ){
+
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+        int TOTAL_NUM = Integer.parseInt(guests);
+
+        reservationDTO.setSTART_DATE(LocalDate.parse(inDates, inputFormatter));  // inDates를 LocalDate로 변환
+        reservationDTO.setEND_DATE(LocalDate.parse(outDates, inputFormatter));// outDates를 LocalDate로 변환
+        reservationDTO.setTOTAL_NUM(TOTAL_NUM);
+
         if (bindingResult.hasErrors()) {
+            log.info("에러발생");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-            return "/reservation/register";
+            return "/register";
         }
         log.info(reservationDTO);
         Long RV_ID = reservationService.register(reservationDTO);
