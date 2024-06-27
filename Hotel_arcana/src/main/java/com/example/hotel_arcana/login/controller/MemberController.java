@@ -59,7 +59,7 @@ public class MemberController {
 //        MemberService.updateMember(memberDTO);
 //        return "redirect:/index";
 //    }
-@GetMapping("/memberRead")
+@GetMapping("/login/memberRead")
 public void getMemberRead(@RequestParam("USER_ID") String USER_ID, Model model) {
     MemberDTO memberDTO = memberService.memberRead(USER_ID);
     model.addAttribute("member", memberDTO);
