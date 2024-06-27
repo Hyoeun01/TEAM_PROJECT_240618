@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Arcana</title>
+</head>
+<body>
+<h1>🎁게시글 쓰기🎁</h1>
+<form name="f1" action="/notice/read" method="POST">
+<div>
+    <label>번호</label>
+    <input name="N_NO" readonly th:value="${notice.N_NO}" type="text"><br>
+    <div>
+    <label>작성자</label>
+    <input name="N_WRITER" readonly th:value="${notice.N_WRITER}" type="text">
+    </div>
+</div>
+<div>
+    <label>제목</label>
+    <input name="N_TITLE" readonly th:value="${notice.N_TITLE}" type="text">
+</div>
+<div>
+    <label>내용</label>
+    <textarea name="N_CONTENT" readonly rows="5">[[${notice.N_CONTENT}]]</textarea>
+</div>
+
+<div>
+    <a class="btn btn-outline-secondary" href="/notice/list">목록</a>
+    <a class="btn btn-outline-secondary" th:href="@{/notice/modify(N_NO=${notice.N_NO})}">수정</a>
+    <button type="button" id="removeBtn">삭제</button>
+</div>
+</form>
+</body>
+<script>
+    document.getElementById("removeBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (confirm("삭제하시겠습니까?")){
+             let f1 = document.f1
+            f1.action = "/notice/delete"
+            f1.submit();
+        }
+    },false)
+</script>
+</html>

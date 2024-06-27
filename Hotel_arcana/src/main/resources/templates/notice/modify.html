@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Arcana</title>
+</head>
+<body>
+<form name="f2" th:action="@{/notice/modify}" method="post">
+<div>
+    <span>번호</span>
+    <input name="N_NO" th:value="${notice.N_NO}" type="text" readonly>
+</div>
+<div>
+    <span>제목</span>
+    <input name="N_TITLE" th:value="${notice.N_TITLE}" type="text">
+</div>
+<div>
+    <span>내용</span>
+    <textarea name="N_CONTENT" rows="5">[[${notice.N_CONTENT}]]</textarea>
+</div>
+<div>
+    <span>작성자</span>
+    <input name="N_WRITER" th:value="${notice.N_WRITER}" type="text" readonly>
+</div>
+<div>
+    <a class="btn btn-outline-secondary" th:href="@{/notice/read(N_NO=${notice.N_NO})}">뒤로가기</a>
+<!--    <button type="submit" class="btn btn-primary modifyBtn">수정</button>-->
+    <button type="button" id="modifyBtn">수정</button>
+</div>
+</form>
+</body>
+
+<script>
+    document.getElementById("modifyBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (confirm("수정하시겠습니까?")){
+            let f2 = document.f2
+            f2.action = "/notice/modify"
+            f2.submit();
+        }
+    },false)
+</script>
+</html>
