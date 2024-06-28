@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/basic.html}">
+
 <head>
     <title>공지사항</title>
 <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
@@ -43,6 +46,28 @@
             </li>
         </ul>
     </div>
+
+
+<!--    <nav aria-label="Page navigation example" class="pagination-container">-->
+<!--        <ul class="pagination justify-content-center">-->
+<!--            <li class="page-item" th:classappend="${pageRequestDTO.page == 1} ? 'disabled'">-->
+<!--                <a class="page-link" th:href="@{/notice(page=${pageRequestDTO.page - 1}, size=${pageRequestDTO.size})}" aria-label="Previous">-->
+<!--                    <span aria-hidden="true">&laquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="page-item" th:each="i : ${#numbers.sequence(1, totalPage)}"-->
+<!--                th:classappend="${pageRequestDTO.page == i} ? 'active'">-->
+<!--                <a class="page-link" th:href="@{/notice(page=${i}, size=${pageRequestDTO.size})}" th:text="${i}"></a>-->
+<!--            </li>-->
+<!--            <li class="page-item" th:classappend="${pageRequestDTO.page == totalPage} ? 'disabled'">-->
+<!--                <a class="page-link" th:href="@{/notice(page=${pageRequestDTO.page + 1}, size=${pageRequestDTO.size})}" aria-label="Next">-->
+
+<!--                    <span aria-hidden="true">&raquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+
 
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="검색" name="keyword" th:value="${pageRequestDTO.keyword}">

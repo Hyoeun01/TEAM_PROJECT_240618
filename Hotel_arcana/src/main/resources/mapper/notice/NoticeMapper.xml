@@ -47,7 +47,7 @@
     </select>
 
 <!--    게시글 총 갯수-->
-    <select id="NoticeCount" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+    <select id="NoticeCount" resultType="int">
         SELECT COUNT(*) FROM hotel_notice
     </select>
 

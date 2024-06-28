@@ -6,6 +6,7 @@ import com.example.hotel_arcana.notice.dto.PageResponseDTO;
 import com.example.hotel_arcana.notice.mapper.NoticeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,6 @@ import java.util.List;
 public class NoticeServiceImpl implements NoticeService {
 
     private final NoticeMapper noticeMapper;
-
     private NoticeDTO noticeDTO;
 
     @Override
@@ -69,4 +69,5 @@ public class NoticeServiceImpl implements NoticeService {
         int total = count != null ? count : 0;
         return new PageResponseDTO<>(pageRequestDTO, dtoList, total);
     }
+
 }

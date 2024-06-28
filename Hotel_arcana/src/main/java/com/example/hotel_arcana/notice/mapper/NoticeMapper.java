@@ -1,6 +1,7 @@
 package com.example.hotel_arcana.notice.mapper;
 
 import com.example.hotel_arcana.notice.dto.NoticeDTO;
+import com.example.hotel_arcana.notice.dto.PageRequestDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,3 +26,4 @@ public interface NoticeMapper {
 
     Integer NoticeCount();
 }
+
