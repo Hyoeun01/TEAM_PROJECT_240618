@@ -21,5 +21,4 @@ public interface NoticeService {
     void increaseViewCount(Long N_NO);
 
     PageResponseDTO<NoticeDTO> getList(PageRequestDTO pageRequestDTO);
-
 }

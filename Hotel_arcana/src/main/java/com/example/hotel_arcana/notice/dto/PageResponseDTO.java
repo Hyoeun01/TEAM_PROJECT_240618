@@ -1,17 +1,14 @@
 package com.example.hotel_arcana.notice.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 
 @Getter
 @ToString
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class PageResponseDTO<E> {
-  private PageRequestDTO pageRequestDTO; // 페이징 요청 정보를 담는 객체
   private int page;
   private int size;
   private int total;
