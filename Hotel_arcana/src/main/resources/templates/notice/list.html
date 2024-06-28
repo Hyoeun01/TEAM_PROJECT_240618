@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>공지사항</title>
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css">
 </head>
 <body>
 <h1>✨공지사항✨</h1>
 <form>
-    <table class="table table-striped">
-        <thead>
+
+    <table class="table">
+        <thead class="table-light">
         <tr>
             <th>번호</th>
             <th>제목</th>
@@ -28,13 +29,35 @@
         </tbody>
     </table>
 
+
+    <!--    <table class="table table-striped">-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--            <th>번호</th>-->
+    <!--            <th>제목</th>-->
+    <!--            <th>작성일</th>-->
+    <!--            <th>작성자</th>-->
+    <!--            <th>조회수</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr th:each="notice : ${list}">-->
+    <!--            <td th:text="${notice.N_NO}">번호</td>-->
+    <!--            <td><a th:href="@{/notice/read(N_NO=${notice.N_NO})}" th:text="${notice.N_TITLE}"></a></td>-->
+    <!--            <td th:text="${notice.N_DATE}">작성일</td>-->
+    <!--            <td th:text="${notice.N_WRITER}">작성자</td>-->
+    <!--            <td th:text="${notice.N_VIEW}">조회수</td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--    </table>-->
+
     <div class="float-end">
         <ul class="pagination flex-wrap">
             <li class="page-item" th:if="${responseDTO.prev}">
                 <a class="page-link" th:href="@{/notice/list(page=${responseDTO.start - 1}, size=${responseDTO.size})}">Previous</a>
             </li>
             <th:block th:each="i : ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
-                <li th:classappend="${responseDTO.page == i} ? 'active' : ''" class="page-item">
+                <li class="page-item" th:classappend="${responseDTO.page == i} ? 'active' : ''">
                     <a class="page-link" th:href="@{/notice/list(page=${i}, size=${responseDTO.size})}">[[${i}]]</a>
                 </li>
             </th:block>
@@ -45,10 +68,10 @@
     </div>
 
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="검색" name="keyword" th:value="${pageRequestDTO.keyword}">
+        <input class="form-control" name="keyword" placeholder="검색" th:value="${pageRequestDTO.keyword}" type="text">
         <div class="input-group-append">
             <button class="btn btn-outline-secondary searchBtn" type="submit">검색</button>
-            <a href="/notice/register" class="btn btn-outline-secondary">글쓰기</a>
+            <a class="btn btn-outline-secondary" href="/notice/register">글쓰기</a>
         </div>
     </div>
 </form>
