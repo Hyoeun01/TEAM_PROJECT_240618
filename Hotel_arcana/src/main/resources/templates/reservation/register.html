@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -11,9 +10,9 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Hotel Booking</h1>
-        <form action="/reservation/register" method="post">
+<div class="container">
+    <h1>Hotel Booking</h1>
+    <form id="bookingForm" method="post" th:action="@{/reservation/register/{room_name}(room_name=${room_name})}">
         <div class="slideshow-container">
             <div class="slide fade">
                 <img src="../../images/image1.jpg" alt="Hotel Image 1">
@@ -30,11 +29,11 @@
 
         <div class="date-picker">
             <div class="form-group">
-                <input type="text" id="in_Dates" placeholder="check in date" name="inDates"  readonly>
+                <input type="text" id="in_Dates" placeholder="check in date" name="inDates" readonly>
             </div>
             <div id="in_Calendar"></div>
             <div class="form-group">
-                <input type="text" id="out_Dates" placeholder="check out date" name="outDates"  readonly>
+                <input type="text" id="out_Dates" placeholder="check out date" name="outDates" readonly>
             </div>
             <div id="out_Calendar"></div>
         </div>
@@ -43,8 +42,8 @@
             <input type="text" id="guests" name="guests">
         </div>
         <div class="room-card">
-            <div class="room-info" >
-                <p>스탠다드</p>
+            <div class="room-info">
+                <p th:text="${room_name}"></p>
                 <div class="room-image">
                     <img src="../../images/room.jpg" alt="스탠다드">
                 </div>
@@ -57,30 +56,32 @@
                     <span>호실 선택하기</span>
                     <select name="RV_ROOM_NUMBER">
                         <option value="">선택하세요</option>
-                        <option th:each="room : ${standardRooms}" th:value="${room.roomId}" th:text="${room.roomId + '호'}"></option>
+                        <th:block th:each="room : ${rooms}">
+                            <option th:if="${room.ROOM_NAME == room_name}" th:value="${room.ROOM_ID}" th:text="${room.ROOM_ID + '호'}"></option>
+                        </th:block>
                     </select>
                 </div>
             </div>
             <div class="room-price">
                 <p>체크인 15:00 ~ 체크아웃 12:00</p>
                 <p><strong>150,000원/1박</strong></p>
-                <button class="btn btn-primary submitBtn" type="submit">예약하기</button>
             </div>
         </div>
-
-        </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="../../js/scripts.js"></script>
+        <button class="submitBtn" type="submit">예약하기</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="../../js/scripts.js"></script>
 </body>
-<script>
-    document.querySelector(".submitBtn").addEventListener("click", function (e){
 
-        e.preventDefault()
-        e.stopPropagation()
+<script>
+    document.querySelector(".submitBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
 
         document.querySelector("form").submit();
-    },false)
+    }, false);
 </script>
+
 </html>

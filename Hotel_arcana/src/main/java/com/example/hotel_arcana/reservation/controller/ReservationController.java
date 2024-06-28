@@ -2,7 +2,6 @@ package com.example.hotel_arcana.reservation.controller;
 
 import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.service.ReservationService;
-import com.example.hotel_arcana.room.dto.RoomDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -14,9 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Controller
 @RequestMapping("/reservation")
@@ -26,22 +24,27 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @GetMapping("/list")
-    public String getReservation(Model model) {
+    public void getReservation(Model model) {
         List<ReservationDTO> reservationList = reservationService.getAll();
         model.addAttribute("list", reservationList);
-
-        return "/reservation/list";
     }
 
-    @GetMapping("/register")
-    public void register(Model model) {
-//        return "/reservation/register";
-
+    @GetMapping("/roomchoice")
+    public void roomlist(){
     }
 
-    @PostMapping("/register")
+    @GetMapping("/register/{ROOM_NAME}")
+    public String register(@PathVariable("ROOM_NAME") String roomName, Model model) {
+        model.addAttribute("rooms", reservationService.getRooms());
+        model.addAttribute("room_name", roomName);
+        log.info("Requested room: " + roomName);
+
+        return "/reservation/register";
+    }
+
+    @PostMapping("/register/{ROOM_NAME}")
     public String register(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
-    , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests ){
+    , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests){
 
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -60,7 +63,12 @@ public class ReservationController {
         log.info(reservationDTO);
         Long RV_ID = reservationService.register(reservationDTO);
         redirectAttributes.addFlashAttribute("result", RV_ID);
-        return "redirect:/reservation/list";
+        return "redirect:/reservation/preview";
+    }
+
+    @GetMapping("/preview")
+    public void preview(){
+
     }
 
     @GetMapping({"/read","/modify"})

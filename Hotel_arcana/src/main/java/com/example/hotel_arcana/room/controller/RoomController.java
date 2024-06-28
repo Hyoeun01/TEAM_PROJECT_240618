@@ -15,7 +15,9 @@ import java.util.stream.Collectors;
 @Log4j2
 @RequiredArgsConstructor
 public class RoomController {
+
     public void getRooms(Model model){
+        log.info("get rooms");
         List<RoomDTO> roomList = new ArrayList<>();
 
         // 방 이름이 "standard"인 호실만 필터링
@@ -31,6 +33,7 @@ public class RoomController {
         List<RoomDTO> loyalDeluxeRooms = roomList.stream()
                 .filter(room -> "loyal deluxe".equals(room.getROOM_NAME()))
                 .collect(Collectors.toList());
+
         List<RoomDTO> vipRooms = roomList.stream()
                 .filter(room -> "vip".equals(room.getROOM_NAME()))
                 .collect(Collectors.toList());
@@ -48,6 +51,18 @@ public class RoomController {
         model.addAttribute("vvipRooms", vvipRooms);
         model.addAttribute("suiteRooms", suiteRooms);
         model.addAttribute("roomList", roomList);
+
+        if(standardRooms == null){
+            log.info("제대로안됨");
+        }else {
+            log.info(standardRooms);
+        }
+
+        if(roomList == null){
+            log.info("제대로안됨222222222");
+        }else {
+            log.info(roomList);
+        }
     }
 
 }
