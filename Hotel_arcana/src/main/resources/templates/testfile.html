@@ -3,8 +3,97 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout.html}">
 <div id="container" layout:fragment="content">
-    <div style="width: 1000px; height: 1000px; background-color: black"></div>
-
+    <link rel="stylesheet" href="/css/photo.css">
+    <div class="container">
+        <div class="photo-gallery">
+            <div class="main-photo">
+                <img src="/img/침실.jpg" alt="Main Photo">
+            </div>
+            <div class="other-photos">
+                <div class="photo">
+                    <img src="/img/sub_hotel1.jpg" alt="Photo 1">
+                </div>
+                <div class="photo">
+                    <img src="/img/sub_hotel1.jpg" alt="Photo 2">
+                </div>
+                <div class="photo">
+                    <img src="/img/sub_hotel1.jpg" alt="Photo 3">
+                </div>
+                <div class="photo">
+                    <img src="/img/sub_hotel1.jpg" alt="Photo 4">
+                </div>
+            </div>
+        </div>
+        <div class="property-info">
+            <div class="info-left">
+                <div class="listed-by section">
+                    <div class="host-photo"></div>
+                    <div class="host-info">
+                        <p>등록자: 양호동</p>
+                        <p>가격: 150,000 원</p>
+                    </div>
+                </div>
+                <div class="amenities section">
+                    <h3>제공되는 편의 시설</h3>
+                    <ul>
+                        <li>주방</li>
+                        <li>에어컨</li>
+                        <li>세탁기</li>
+                        <li>넷플릭스가 있는 TV</li>
+                        <li>무료 무선 인터넷</li>
+                        <li>발코니 또는 파티오</li>
+                    </ul>
+                </div>
+                <div class="services section">
+                    <h3>주요 서비스</h3>
+                    <ul>
+                        <li>매일 청소하는 구간</li>
+                        <li>설거지 도착 예약함</li>
+                        <li>침체 받기 설쳐</li>
+                        <li>화곡구개 대흥리세</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-right">
+                <div class="price section">
+                    <p>150,000 원</p>
+                    <p>보기 서비스: 35,000원</p>
+                    <p>프리미엄 서비스: 50,000원</p>
+                    <button class="reserve-button">예약하기</button>
+                    <div class="contact-options">
+                        <button>숙소 문의</button>
+                        <button>호스트 연락</button>
+                    </div>
+                </div>
+                <div class="reviews section">
+                    <h3>후기 ★ 5.0</h3>
+                    <div class="ratings">
+                        <div class="rating">
+                            <span>편의 시설</span>
+                            <span>5.0</span>
+                        </div>
+                        <div class="rating">
+                            <span>의사소통</span>
+                            <span>5.0</span>
+                        </div>
+                        <div class="rating">
+                            <span>가격 대비 가치</span>
+                            <span>5.0</span>
+                        </div>
+                        <div class="rating">
+                            <span>위생</span>
+                            <span>5.0</span>
+                        </div>
+                        <div class="rating">
+                            <span>숙소 위치</span>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <button class="show-reviews-button">후기 100개 모두 보기</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script layout:fragment="script" th:inline="javascript">
 

@@ -7,43 +7,70 @@ body {
 
 .container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
-.main-photo {
-    width: 85%;
-    height: 500px;
+
+.photo-gallery {
     display: flex;
-    /*margin: 0 0 0 0px;*/
+    width: 100%;
+    margin-bottom: 20px;
 }
+
+.main-photo {
+    background-color: #ddd;
+    width: 60%;
+    height: 400px; /* Adjust height as needed */
+    margin-right: 2%;
+}
+
+.main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .other-photos {
-    width: 85%;
-    height: 500px;
+    width: 38%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .photo {
-    /*flex: 1 1 48%;*/
-    /*height: 140px;*/
-    /*margin: 1%;*/
-    width: 250%;
-    height: 700px;
+    background-color: #bbb;
+    width: 48%;
+    height: 190px; /* Adjust height as needed */
+    margin-bottom: 4%;
 }
-.sub_photo{
-    width: 376px;
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-.sub_photo2{
-    margin-bottom: 15px;
-    width: 375px;
-}
+
 .property-info {
-    flex: 1 1 35%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px; /* Add some space between photos and text */
+}
+
+.info-left, .info-right {
+    width: 48%;
+}
+
+.section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .listed-by {
@@ -62,14 +89,6 @@ body {
 
 .host-info p {
     margin: 0;
-}
-
-.amenities, .services, .price, .reviews {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 h3 {
@@ -101,6 +120,11 @@ ul li {
     margin-bottom: 20px;
 }
 
+.contact-options {
+    display: flex;
+    justify-content: space-between;
+}
+
 .contact-options button {
     width: 48%;
     padding: 10px;
@@ -110,11 +134,6 @@ ul li {
     border-radius: 8px;
     font-size: 0.9em;
     cursor: pointer;
-    margin-right: 4%;
-}
-
-.contact-options button:last-child {
-    margin-right: 0;
 }
 
 .reviews {

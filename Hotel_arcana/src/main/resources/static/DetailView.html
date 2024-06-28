@@ -3,85 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ARCANA HOTEL</title>
-    <link rel="stylesheet" href= "css/header.css">
-    <link rel="stylesheet" href= "css/footer.css">
-    <link rel="stylesheet" href= "css/photo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>숙소 정보</title>
+    <link rel="stylesheet" href="css/photo.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-<header class="headerDiv">
-    <div style="width:400px;">
-        <img src="img/arcana.png" alt="아르카나 로고">
-    </div>
-    <nav class="navbar navbar-w1hite">
-        <h3>
-            <a class="header_text" href="#">공지사항</a>
-            <a class="header_text" href="#">예약하기</a>
-            <a class="header_text" href="#">QnA</a>
-            <a class="header_text" href="#">리뷰</a>
-            <a href="#" class="host_back"><span class="host_text">Become A Host</span></a>
-        </h3>
-    </nav>
-    <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-            Dropdown link
-        </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-    </div>
-</header>
 <div class="container">
-    <div class="main-photo">
-        <img class="main-photo" src="img/침실.jpg" alt="main photo">
-        <div class="photo">
-            <img src="img/sub_hotel1.jpg" class="sub_photo" alt="sub photo">
-            <section class="other-photos">
-                <div>
-                    <img src="img/sub_hotel1.jpg" class="sub_photo" alt="sub photo">
-                </div>
-            </section>
+    <div class="photo-gallery">
+        <div class="main-photo">
+            <img src="img/host.png" alt="Main Photo">
         </div>
-        <div class="photo">
-            <img src="img/sub_hotel1.jpg" class="sub_photo" alt="sub photo">
-            <section class="other-photos">
-                <div>
-                    <img src="img/sub_hotel1.jpg" class="sub_photo2" alt="sub photo">
-                </div>
-            </section>
+        <div class="other-photos">
+            <div class="photo">
+                <img src="images/photo1.jpg" alt="Photo 1">
+            </div>
+            <div class="photo">
+                <img src="images/photo2.jpg" alt="Photo 2">
+            </div>
+            <div class="photo">
+                <img src="images/photo3.jpg" alt="Photo 3">
+            </div>
+            <div class="photo">
+                <img src="images/photo4.jpg" alt="Photo 4">
+            </div>
         </div>
-
     </div>
-
     <div class="property-info">
         <div class="listed-by">
             <div class="host-photo"></div>
             <div class="host-info">
-                <p>Listed By: 양호동</p>
-                <p>For: 150,000 원</p>
+                <p>등록자: 양호동</p>
+                <p>가격: 150,000 원</p>
             </div>
         </div>
         <div class="amenities">
-            <h3>Offered Amenities</h3>
+            <h3>제공되는 편의 시설</h3>
             <ul>
-                <li>Kitchen</li>
-                <li>Air Conditioner</li>
-                <li>Washer</li>
-                <li>Television with Netflix</li>
-                <li>Free Wireless Internet</li>
-                <li>Balcony or Patio</li>
+                <li>주방</li>
+                <li>에어컨</li>
+                <li>세탁기</li>
+                <li>넷플릭스가 있는 TV</li>
+                <li>무료 무선 인터넷</li>
+                <li>발코니 또는 파티오</li>
             </ul>
         </div>
         <div class="services">
             <h3>주요 서비스</h3>
             <ul>
                 <li>매일 청소하는 구간</li>
-                <li>설겆이 도착 예약함</li>
+                <li>설거지 도착 예약함</li>
                 <li>침체 받기 설쳐</li>
                 <li>화곡구개 대흥리세</li>
             </ul>
@@ -90,56 +61,39 @@
             <p>150,000 원</p>
             <p>보기 서비스: 35,000원</p>
             <p>프리미엄 서비스: 50,000원</p>
-            <button class="reserve-button">Reserve Now</button>
+            <button class="reserve-button">예약하기</button>
             <div class="contact-options">
-                <button>Property Inquiry</button>
-                <button>Contact Host</button>
+                <button>숙소 문의</button>
+                <button>호스트 연락</button>
             </div>
         </div>
         <div class="reviews">
-            <h3>Reviews ★ 5.0</h3>
+            <h3>후기 ★ 5.0</h3>
             <div class="ratings">
                 <div class="rating">
-                    <span>Amenities</span>
+                    <span>편의 시설</span>
                     <span>5.0</span>
                 </div>
                 <div class="rating">
-                    <span>Communication</span>
+                    <span>의사소통</span>
                     <span>5.0</span>
                 </div>
                 <div class="rating">
-                    <span>Value for Money</span>
+                    <span>가격 대비 가치</span>
                     <span>5.0</span>
                 </div>
                 <div class="rating">
-                    <span>Hygiene</span>
+                    <span>위생</span>
                     <span>5.0</span>
                 </div>
                 <div class="rating">
-                    <span>Location of Property</span>
+                    <span>숙소 위치</span>
                     <span>5.0</span>
                 </div>
             </div>
-            <button class="show-reviews-button">Show All 100 Reviews</button>
+            <button class="show-reviews-button">후기 100개 모두 보기</button>
         </div>
     </div>
 </div>
 </body>
-    <footer>
-        <div class="footer-box">
-        <img src="img/arcana.png" alt="푸터 아르카나 로고" class="footer-img">
-        </div>
-        <div class="footer-box">
-                <a class="notice_footer" href="#">SubService</a>
-                <a class="footer-text2" href="#">Notice</a>
-                <a class="footer-text2" href="#">Reservation</a>
-                <a class="footer-text2" href="#">Review</a>
-        </div>
-        <div class="footer-box">
-            <a class="notice_footer">제작자 연락처</a>
-                <p class="footer-text2">404 Not Found</p>
-                <p class="footer-text2">북한대표남자</p>
-                <p class="footer-text2">북괴 스상준</p>
-            </div>
-    </footer>
 </html>

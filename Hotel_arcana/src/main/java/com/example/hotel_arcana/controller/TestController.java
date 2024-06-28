@@ -1,4 +1,4 @@
-package com.example.hotel_arcana.gittest.controller;
+package com.example.hotel_arcana.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TestController {
     @GetMapping("/test")
     public String test() {
-        return "testfile";
+        return "testfile.html";
     }
 }
