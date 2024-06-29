@@ -9,7 +9,7 @@ public interface MemberMapper {
     MemberDTO findMemberById(String USER_ID);
     void insertMember(MemberDTO memberDTO);
 //    MemberDTO selectMember(String USER_ID);
-//    void updateMember(MemberDTO memberDTO);
+    void updateMember(MemberDTO memberDTO);
 //회원 전체 조회
 
 }

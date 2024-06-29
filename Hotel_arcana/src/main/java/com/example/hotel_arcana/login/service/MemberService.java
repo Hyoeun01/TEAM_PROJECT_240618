@@ -13,8 +13,7 @@ public interface MemberService {
     MemberDTO findMemberById(String USER_ID);
     void insertMember(MemberDTO memberDTO);
     MemberDTO memberRead(String USER_ID);
+    void updateMember(MemberDTO memberDTO);
 //    MemberDTO selectMember(String USER_ID);
-//    void updateMember(MemberDTO memberDTO);
-
 
 }

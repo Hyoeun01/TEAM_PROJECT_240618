@@ -35,26 +35,6 @@ public class MemberController {
         return "/login";
     }
 
-//
-
-//    @GetMapping("/modify")
-//    public String modify(String USER_ID, Model model) {
-//        MemberDTO memberDTO = MemberService.selectMember(USER_ID);
-//        model.addAttribute("USER_ID", USER_ID);
-//        return "modify";
-//    }
-//
-//    @PostMapping("/modify")
-//    public String modify(MemberDTO memberDTO) {
-//        MemberService.updateMember(memberDTO);
-//        return "redirect:/index";
-//    }
-//@GetMapping("/login/memberRead")
-//public void getMemberRead(@RequestParam("USER_ID") String USER_ID, Model model) {
-//    MemberDTO memberDTO = memberService.memberRead(USER_ID);
-//    model.addAttribute("member", memberDTO);
-//
-//}
 
 //    @PreAuthorize("isAuthenticated()")
     @GetMapping("/login/memberRead/{USER_ID}")
@@ -62,7 +42,23 @@ public class MemberController {
         MemberDTO memberDTO = memberService.memberRead(USER_ID);
         model.addAttribute("memberDTO", memberDTO);
         return "login/memberRead";
-//        return memberService.memberRead(USER_ID);
+    }
+
+
+    //    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/login/memberModify/{USER_ID}")
+    public String modify(@PathVariable String USER_ID, Model model) {
+        MemberDTO memberDTO = memberService.memberRead(USER_ID);
+        model.addAttribute("memberDTO", memberDTO);
+        return "login/memberModify";
+    }
+
+
+    //    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/login/memberModify")
+    public String update(MemberDTO memberDTO) {
+        memberService.updateMember(memberDTO);
+        return "redirect:login/memberRead/" + memberDTO.getUSER_ID(); // 수정 후 상세 조회 페이지로 리다이렉트
     }
 }
 

@@ -39,10 +39,10 @@ public class MemberServiceImpl implements MemberService{
 //        return memberMapper.selectMember(USER_ID);
 //    }
 //
-//    @Override
-//    public void updateMember(MemberDTO memberDTO) {
-//        return  memberMapper.updateMember(memberDTO);
-//    }
+    @Override
+    public void updateMember(MemberDTO memberDTO) {
+        memberMapper.updateMember(memberDTO);
+    }
 
     @Override
     public MemberDTO memberRead(String USER_ID){
