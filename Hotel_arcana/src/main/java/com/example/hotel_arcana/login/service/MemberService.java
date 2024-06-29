@@ -15,5 +15,5 @@ public interface MemberService {
     MemberDTO memberRead(String USER_ID);
     void updateMember(MemberDTO memberDTO);
 //    MemberDTO selectMember(String USER_ID);
-
+    void deleteMember(String USER_ID);
 }

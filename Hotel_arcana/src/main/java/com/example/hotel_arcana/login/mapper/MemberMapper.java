@@ -1,4 +1,5 @@
 package com.example.hotel_arcana.login.mapper;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import com.example.hotel_arcana.login.dto.MemberDTO;
 
@@ -10,6 +11,5 @@ public interface MemberMapper {
     void insertMember(MemberDTO memberDTO);
 //    MemberDTO selectMember(String USER_ID);
     void updateMember(MemberDTO memberDTO);
-//회원 전체 조회
-
+void deleteMemberById(String USER_ID);
 }

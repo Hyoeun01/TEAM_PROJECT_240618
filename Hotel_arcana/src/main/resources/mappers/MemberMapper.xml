@@ -53,4 +53,8 @@
         WHERE
             USER_ID=#{USER_ID}
     </update>
+
+    <delete id="deleteMemberById">
+        DELETE FROM hotel_member WHERE USER_ID = #{USER_ID}
+    </delete>
     </mapper>

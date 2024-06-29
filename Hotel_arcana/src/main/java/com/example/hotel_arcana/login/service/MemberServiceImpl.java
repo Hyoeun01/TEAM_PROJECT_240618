@@ -34,11 +34,6 @@ public class MemberServiceImpl implements MemberService{
 
     }
 
-//    @Override
-//    public MemberDTO selectMember(String USER_ID) {
-//        return memberMapper.selectMember(USER_ID);
-//    }
-//
     @Override
     public void updateMember(MemberDTO memberDTO) {
         memberMapper.updateMember(memberDTO);
@@ -48,4 +43,10 @@ public class MemberServiceImpl implements MemberService{
     public MemberDTO memberRead(String USER_ID){
         return memberMapper.findMemberById(USER_ID);
         }
+
+    @Override
+    public void deleteMember(String USER_ID) {
+        memberMapper.deleteMemberById(USER_ID);
+    }
+
 }
