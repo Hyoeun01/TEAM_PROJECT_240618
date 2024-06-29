@@ -47,6 +47,5 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public MemberDTO memberRead(String USER_ID){
         return memberMapper.findMemberById(USER_ID);
-    }
-
+        }
 }

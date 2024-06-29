@@ -35,17 +35,7 @@ public class MemberController {
         return "/login";
     }
 
-//    @PostMapping("/login")
-//    public String userLogin(String USER_ID, String USER_PW) {
-//        MemberDTO memberDTO = memberService.findMemberById(USER_ID);
-//        if (memberDTO != null && memberDTO.getUSER_PW().equals(USER_PW)) {
-//            log.info(USER_ID);
-//            return "redirect:/index";
-//        }else {
-//            log.info("실패");
-//            return "login";
-//        }
-//    }
+//
 
 //    @GetMapping("/modify")
 //    public String modify(String USER_ID, Model model) {
@@ -59,11 +49,20 @@ public class MemberController {
 //        MemberService.updateMember(memberDTO);
 //        return "redirect:/index";
 //    }
-@GetMapping("/login/memberRead")
-public void getMemberRead(@RequestParam("USER_ID") String USER_ID, Model model) {
-    MemberDTO memberDTO = memberService.memberRead(USER_ID);
-    model.addAttribute("member", memberDTO);
+//@GetMapping("/login/memberRead")
+//public void getMemberRead(@RequestParam("USER_ID") String USER_ID, Model model) {
+//    MemberDTO memberDTO = memberService.memberRead(USER_ID);
+//    model.addAttribute("member", memberDTO);
+//
+//}
 
-}
+//    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/login/memberRead/{USER_ID}")
+    public String read(@PathVariable String USER_ID, Model model) {
+        MemberDTO memberDTO = memberService.memberRead(USER_ID);
+        model.addAttribute("memberDTO", memberDTO);
+        return "login/memberRead";
+//        return memberService.memberRead(USER_ID);
+    }
 }
 
