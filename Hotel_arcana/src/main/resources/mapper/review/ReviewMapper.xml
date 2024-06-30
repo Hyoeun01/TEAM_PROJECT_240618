@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel_arcana.review.mapper.ReviewMapper">
+
+    <resultMap id="ReviewResultMap" type="com.example.hotel_arcana.review.dto.ReviewDTO">
+        <id property="RE_ID" column="RE_ID"/>
+        <result property="RE_WRITER" column="RE_WRITER"/>
+        <result property="RE_CONTENT" column="RE_CONTENT"/>
+        <result property="N_DATE" column="N_DATE"/>
+        <result property="RE_IMG" column="RE_IMG"/>
+        <result property="RE_USER_ID" column="RE_USER_ID"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="ReviewResultMap">
+        SELECT RE_ID, RE_WRITER, RE_CONTENT, RE_DATE, RE_IMG, RE_USER_ID FROM hotel_review
+    </select>
+
+    <insert id="insert" parameterType="com.example.hotel_arcana.review.dto.ReviewDTO">
+        INSERT INTO hotel_review (RE_WRITER, RE_CONTENT, RE_IMG, RE_USER_ID)
+        VALUES (#{RE_WRITER}, #{RE_CONTENT}, #{RE_IMG}, #{RE_USER_ID})
+    </insert>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM hotel_review WHERE RE_ID = #{RE_ID}
+    </delete>
+
+    <update id="update" parameterType="com.example.hotel_arcana.review.dto.ReviewDTO">
+        UPDATE hotel_review SET RE_WRITER  = #{RE_WRITER}, RE_CONTENT = #{RE_CONTENT}, RE_IMG = #{RE_IMG}, RE_USER_ID = #{RE_USER_ID}
+        WHERE RE_ID = #{RE_ID}
+    </update>
+
+</mapper>

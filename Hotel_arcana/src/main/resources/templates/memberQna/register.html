@@ -2,54 +2,128 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hotel Arcana</title>
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css">-->
+    <!--    <link th:href="@{/css/styles.css}" rel="stylesheet" />-->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+
+    <script crossorigin="anonymous"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="/css/memberQna/register.css">
 </head>
 <body>
-<h1>💌QnA💌</h1>
-<form action="/memberQna/register" method="post">
+<div class="form-container">
 
-        <span>질문유형</span>
-    <select name="Q_BOX">
-        <option value="">선택하세요</option>
-        <option value="reservation">예약, 확인</option>
-        <option value="refund">환불, 취소</option>
-        <option value="etc">기타</option>
-    </select>
+    <form action="/memberQna/register" method="post">
+        <h1>💌QnA💌</h1><hr>
 
-    <div>
-        <span>이메일</span>
-        <input name="Q_MAIL" placeholder="이메일" type="email">
-    </div>
-    <div>
-        <span>연락처</span>
-        <input name="Q_PHONE" placeholder="연락처" type="text">
-    </div>
-    <div>
-        <span>제목</span>
-        <input name="Q_TITLE" placeholder="제목" type="text">
-    </div>
-    <div>
-        <span>내용</span>
-        <textarea name="Q_CONTENT" placeholder="내용을 입력하세요" type="text"></textarea>
-    </div>
-    <div>
-        <span>사진추가</span>
-        <input name="Q_IMG" placeholder="사진추가" type="file">
-    </div>
+        <!--        <div class="row g-3 align-items-center">-->
+        <!--            <div class="col-auto">-->
+        <!--                <label class="col-form-label">질문유형</label>-->
+        <!--            </div>-->
+        <!--            <div class="col-auto">-->
+        <!--                <select aria-label="Default select example" class="form-select" name="Q_BOX">-->
+        <!--                    <option value="">선택하세요</option>-->
+        <!--                    <option value="reservation">예약, 확인</option>-->
+        <!--                    <option value="refund">환불, 취소</option>-->
+        <!--                    <option value="etc">기타</option>-->
+        <!--                </select>-->
+        <!--            </div>-->
 
+        <div class="row g-3 align-items-center">
+<!--            <div class="col-auto">-->
+<!--                <label class="col-form-label" for="select">문의 유형</label>-->
+<!--            </div>-->
+            <div class="col-auto">
+                <select aria-label="Default select example" class="form-select" id="select" name="Q_BOX">
+                    <option value="">선택하세요</option>
+                    <option value="reservation">예약, 확인</option>
+                    <option value="refund">환불, 취소</option>
+                    <option value="certification">본인인증</option>
+                    <option value="etc">기타</option>
+                    <option value="nouser">비회원 문의</option>
+                </select>
+            </div>
+        </div>
+        <!--        <div>-->
+        <!--            <span>질문유형</span>-->
+        <!--            <select class="btn btn-outline-dark" name="Q_BOX">-->
+        <!--                <option value="">선택하세요</option>-->
+        <!--                <option value="reservation">예약, 확인</option>-->
+        <!--                <option value="refund">환불, 취소</option>-->
+        <!--                <option value="etc">기타</option>-->
+        <!--            </select>-->
+        <!--        </div>-->
+
+        <div class="mb-3">
+            <label class="form-label" for="exampleFormControlInput1">이메일</label>
+            <input class="form-control" id="exampleFormControlInput1" name="Q_MAIL" placeholder="arcana@arcana.com"
+                   type="email">
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label class="col-form-label" for="phone">연락처</label>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" id="phone" name="Q_PHONE" placeholder="번호를 입력해주세요" type="tel">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label class="col-form-label" for="title">제목</label>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" id="title" name="Q_TITLE" placeholder="제목을 입력해주세요" type="text">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label class="col-form-label" for="content">내용</label>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" id="content" name="Q_CONTENT" placeholder="내용을 작성해주세요"
+                          rows="10"></textarea>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input class="form-control" id="inputGroupFile02" type="file">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        </div>
+        <!--        <div>-->
+        <!--            <span>이메일</span>-->
+        <!--            <input name="Q_MAIL" placeholder="이메일" type="email">-->
+        <!--        </div>-->
+        <!--        <div>-->
+        <!--            <span>연락처</span>-->
+        <!--            <input name="Q_PHONE" placeholder="연락처" type="text">-->
+        <!--        </div>-->
+        <!--        <div>-->
+        <!--            <span>제목</span>-->
+        <!--            <input name="Q_TITLE" placeholder="제목" type="text">-->
+        <!--        </div>-->
+        <!--        <div>-->
+        <!--            <span>내용</span>-->
+        <!--            <textarea name="Q_CONTENT" placeholder="내용을 입력하세요" type="text"></textarea>-->
+        <!--        </div>-->
+        <!--        <div>-->
+        <!--            <span>사진추가</span>-->
+        <!--            <input name="Q_IMG" placeholder="사진추가" type="file">-->
+        <!--        </div>-->
         <div>
-            <button class="btn btn-primary submitBtn" type="submit">작성하기</button>
+            <button class="btn btn-primary submitBtn" type="submit">문의하기</button>
             <a class="btn btn-outline-secondary" href="/">뒤로가기</a>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 </body>
 <script>
-    document.querySelector(".submitBtn").addEventListener("click", function (e){
-
+    document.querySelector(".submitBtn").addEventListener("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
-
         document.querySelector("form").submit();
-    },false)
+    }, false)
 </script>
+
 </html>
