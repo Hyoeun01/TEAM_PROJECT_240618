@@ -22,3 +22,18 @@
     text-align: center;
 }
 
+ .review-card {
+     margin-bottom: 20px;
+ }
+.review-writer {
+    font-size: 0.9em;
+    color: gray;
+}
+.review-date {
+    font-size: 0.8em;
+    color: gray;
+}
+.review-content {
+    margin-top: 10px;
+}
+

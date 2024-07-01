@@ -26,9 +26,14 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<ReviewDTO> getAllReviews() {
-        List<ReviewDTO> reviewList = reviewMapper.selectAll();
-        return reviewList;
+        return reviewMapper.selectAll();
     }
+
+//    @Override
+//    public List<ReviewDTO> getAllReviews() {
+//        List<ReviewDTO> reviewList = reviewMapper.selectAll();
+//        return reviewList;
+//    }
 
     @Override
     public Optional<ReviewDTO> getReviewById(Long id) {
