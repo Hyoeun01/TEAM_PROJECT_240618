@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -24,15 +24,15 @@
                     <h4 class="my-0 fw-normal">예약이 거의 끝났습니다!</h4>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title pricing-card-title">방이름</h2>
+                    <h2 class="card-title pricing-card-title"><th:block th:text="${result.ROOM_NAME}"></th:block> </h2>
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li>체크인 날짜 언제</li>
-                        <li>체크아웃 날짜 언제</li>
-                        <li>인원수 몇 명</li>
+                        <li>체크인 : </li>
+                        <li>체크아웃 : </li>
+                        <li>인원 : </li>
                     </ul>
                     <h1 class="card-title pricing-card-title">금액<small class="text-body-secondary fw-light">/얼마</small></h1>
                     <button type="button" class="w-100 btn btn-lg btn-outline-primary"
-                            th:onclick="'location.href=\'/reservation/read/RV_ID\''">예약하기</button>
+                            th:onclick="'location.href=\'/''">예약하기</button>
                 </div>
             </div>
         </div>
