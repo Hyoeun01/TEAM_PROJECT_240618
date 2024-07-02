@@ -33,7 +33,30 @@
         <div class="col-md-3 sidebar">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <!-- Sidebar items -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                            마이페이지
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-body-emphasis">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                            예약 내역 조회
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-body-emphasis">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                            회원정보 수정
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-body-emphasis">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                            회원 탈퇴
+                        </a>
+                    </li>
                 </ul>
                 <hr>
             </div>
@@ -41,12 +64,16 @@
         <div class="col-md-9 content">
             <div class="container mt-3">
                 <h1>Delete Member</h1>
-                <form action="/member/delete" method="post">
+                <form action="/login/memberRemove" method="post">
                     <div class="mb-3">
                         <label for="USER_ID" class="form-label">ID</label>
                         <input type="text" class="form-control" id="USER_ID" name="USER_ID" th:value="${memberDTO.USER_ID}" readonly>
                     </div>
+                    <div class="alert alert-danger" role="alert">
+                        회원을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.
+                    </div>
                     <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="/login/memberRead" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

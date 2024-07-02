@@ -82,23 +82,18 @@ public class MemberController {
 //        return "redirect:/register"; // 삭제 후 리다이렉트할 페이지 설정
 //    }
 
-    @GetMapping("/login/memberRemove")
-    public String MemberRemove(Model model) {
-        String currentUserId = getCurrentUserId();
-        MemberDTO memberDTO = memberService.memberRead(currentUserId);
+    @GetMapping("/login/memberRemove/{USER_ID}")
+    public String memberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
+        MemberDTO memberDTO = memberService.memberRead(USER_ID);
         model.addAttribute("memberDTO", memberDTO);
         return "login/memberRemove";
     }
 
-    @PostMapping("/member/delete")
+    @PostMapping("/login/memberRemove")
     public String deleteMember(@ModelAttribute("memberDTO") MemberDTO memberDTO) {
         memberService.deleteMember(memberDTO.getUSER_ID());
         return "redirect:/register";
     }
 
-    private String getCurrentUserId() {
-
-        return "dummyUserId";
-    }
 }
 
