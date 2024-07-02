@@ -45,11 +45,10 @@ body {
 }
 
 .room img {
-    width: 100%;
+    width: 580px;
     height: auto;
     border-radius: 5px;
 }
-
 .room p {
     margin: 10px 0 0 0;
 }

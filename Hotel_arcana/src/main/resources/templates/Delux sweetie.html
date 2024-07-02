@@ -6,24 +6,21 @@
     <link rel="stylesheet" href="/css/photo.css">
     <div class="container">
         <div class="photo-gallery">
-            <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/트윈%20시티뷰.jpg " alt="Main Photo" href="/img/트윈%20시티뷰.jpg">
-            </div>
-            <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/트윈%20시티뷰.jpg" alt="큰 이미지" class="largeImg">
+            <div class="main-photo" onclick="showPhoto()">
+                <img src="/img/디럭스 스위티1.jpg " alt="Main Photo">
             </div>
             <div class="other-photos">
                 <div class="photo">
-                    <img src="/img/트윈%20시티뷰1.jpg" alt="Photo 1">
+                    <img src="/img/디럭스%20스위티2.jpg" alt="Photo 1">
                 </div>
                 <div class="photo">
-                    <img src="/img/트윈%20시티뷰2.jpg" alt="Photo 2">
+                    <img src="/img/디럭스%20스위티3.jpg" alt="Photo 2">
                 </div>
                 <div class="photo">
-                    <img src="/img/트윈%20시티뷰3.jpg" alt="Photo 3">
+                    <img src="/img/디럭스%20스위티4.jpg" alt="Photo 3">
                 </div>
                 <div class="photo">
-                    <img src="/img/트윈%20시티뷰.jpg" alt="Photo 4" href="/img/트윈%20시티뷰.jpg">
+                    <img src="/img/디럭스%20스위티5.jpg" alt="Photo 4">
                 </div>
             </div>
         </div>
@@ -39,7 +36,7 @@
                 <div class  ="amenities section">
                     <h3>제공되는 편의 시설</h3>
                     <ul>
-                        <li>주방</li>
+                        <li>★주방</li>
                         <li>에어컨</li>
                         <li>세탁기</li>
                         <li>넷플릭스가 있는 TV</li>
@@ -59,13 +56,13 @@
             </div>
             <div class="info-right">
                 <div class="price section">
+                    <h3>디럭스 스위티룸</h3>
                     <p>150,000 원</p>
                     <p>보기 서비스: 35,000원</p>
                     <p>프리미엄 서비스: 50,000원</p>
                     <button class="reserve-button">예약하기</button>
                     <div class="contact-options">
                         <button>숙소 문의</button>
-                        <button>호스트 연락</button>
                     </div>
                 </div>
                 <div class="reviews section">
@@ -92,51 +89,12 @@
 <!--                            <span>5.0</span>-->
 <!--                        </div>-->
 <!--                    </div>-->
-                    <button class="show-reviews-button">후기 100개 모두 보기</button>
+                    <button class="show-reviews-button">후기 10개 모두 보기</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-<!--    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--        <div class="modal-dialog">-->
-<!--            <div class="modal-content">-->
-<!--                <img src="/img/트윈%20시티뷰.jpg" alt="큰 이미지">-->
-
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
 </div>
 <script layout:fragment="script" th:inline="javascript">
-    let i = 0
-    let imgList = ['트윈%20시티뷰.jpg','트윈%20시티뷰1.jpg','트윈%20시티뷰2.jpg','트윈%20시티뷰3.jpg']
-    function showLargeImage() {
-        document.getElementById('overlay').style.display = 'block';
-    }
-
-    function hideLargeImage() {
-        // document.getElementById('overlay').style.display = 'none';
-    }
-
-    document.querySelector('.largeImg').addEventListener('click',function (e){
-        let imgSrc = e.target
-        imgSrc.src = '/img/'+imgList[i]
-        if(i<imgList.length-1){
-            i++
-        }else{
-            i=0
-        }
-        console.log(imgSrc)
-    },false)
-
-
-    // const myModal = document.getElementById('myModal')
-    // const myInput = document.getElementById('myInput')
-    //
-    // myModal.addEventListener('shown.bs.modal', () => {
-    //     myInput.focus()
-    // })
 </script>
 </html>
