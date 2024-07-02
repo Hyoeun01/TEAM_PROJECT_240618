@@ -11,7 +11,7 @@ public interface ReservationService {
     List<ReservationDTO> getAll();
     ReservationDTO getOne(Long RV_ID);
     void remove(Long RV_ID);
-    void modify(ReservationDTO reservationDTO)
-            ;
+    void modify(ReservationDTO reservationDTO);
     List<RoomDTO> getRooms();
+    RoomDTO getRoom(Long ROOM_ID);
 }

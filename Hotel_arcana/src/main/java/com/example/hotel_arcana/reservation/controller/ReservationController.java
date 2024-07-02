@@ -2,6 +2,7 @@ package com.example.hotel_arcana.reservation.controller;
 
 import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.service.ReservationService;
+import com.example.hotel_arcana.room.dto.RoomDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,7 +30,8 @@ public class ReservationController {
     }
 
     @GetMapping("/roomchoice")
-    public void roomlist(){
+    public void roomlist(Model model){
+        model.addAttribute("rooms", reservationService.getRooms());
     }
 
     @GetMapping("/register/{ROOM_NAME}")
@@ -43,7 +45,7 @@ public class ReservationController {
 
     @PostMapping("/register/{ROOM_NAME}")
     public String register(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
-    , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests){
+    , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests, @PathVariable("ROOM_NAME") String roomName , Model model){
 
         int TOTAL_NUM = Integer.parseInt(guests);
 
@@ -58,15 +60,17 @@ public class ReservationController {
         }
         log.info(reservationDTO);
         Long RV_ID = reservationService.register(reservationDTO);
+        RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
         redirectAttributes.addFlashAttribute("result", RV_ID);
-        return "redirect:/reservation/preview";
+        model.addAttribute("reservationInfo",reservationDTO);
+        roomDTO.setROOM_NAME(roomDTO.getROOM_NAME().toUpperCase());
+        model.addAttribute("roomDTO", roomDTO);
+        return "/reservation/preview";
     }
 
     @GetMapping("/preview")
-    public void preview(@Valid ReservationDTO reservationDTO, Long RV_ID, Model model, RedirectAttributes redirectAttributes){
+    public void preview(){
 
-        redirectAttributes.addFlashAttribute("result", RV_ID);
-        model.addAttribute("dto", reservationDTO);
     }
 
     @GetMapping({"/read","/modify"})
