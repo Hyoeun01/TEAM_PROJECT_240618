@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @Log4j2
@@ -37,7 +38,7 @@ public class MemberController {
     }
 
 
-//    @PreAuthorize("isAuthenticated()")
+    //    @PreAuthorize("isAuthenticated()")
     @GetMapping("/login/memberRead/{USER_ID}")
     public String read(@PathVariable String USER_ID, Model model) {
         MemberDTO memberDTO = memberService.memberRead(USER_ID);
@@ -69,7 +70,7 @@ public class MemberController {
         }
         model.addAttribute("memberDTO", memberDTO);
 
-        return "redirect:/login/memberRead/"+memberDTO.getUSER_ID();
+        return "redirect:/login/memberRead/" + memberDTO.getUSER_ID();
 
 //        memberService.updateMember(memberDTO);
 //        return "redirect:login/memberRead/" + memberDTO.getUSER_ID(); // 수정 후 상세 조회 페이지로 리다이렉트
@@ -90,10 +91,19 @@ public class MemberController {
     }
 
     @PostMapping("/login/memberRemove")
-    public String deleteMember(@ModelAttribute("memberDTO") MemberDTO memberDTO) {
-        memberService.deleteMember(memberDTO.getUSER_ID());
-        return "redirect:/register";
+    public String deleteMember(@ModelAttribute("memberDTO") MemberDTO memberDTO, @RequestParam("USER_PW") String USER_PW) {
+        if (checkPassword(memberDTO, USER_PW)) {
+            memberService.deleteMember(memberDTO.getUSER_ID());
+            return "redirect:/register";
+        } else {
+            // 비밀번호가 틀릴 경우 처리
+            return "error-page";
+        }
     }
 
+    private boolean checkPassword(MemberDTO memberDTO, String USER_PW) {
+        // 비밀번호 확인 로직
+        return memberDTO.getUSER_PW().equals(USER_PW);
+    }
 }
 

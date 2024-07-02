@@ -9,7 +9,6 @@ import java.util.List;
 public interface MemberMapper {
     MemberDTO findMemberById(String USER_ID);
     void insertMember(MemberDTO memberDTO);
-//    MemberDTO selectMember(String USER_ID);
     void updateMember(MemberDTO memberDTO);
 void deleteMemberById(String USER_ID);
 }
