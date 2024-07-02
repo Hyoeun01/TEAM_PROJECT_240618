@@ -46,7 +46,7 @@
                           rows="10">[[${notice.N_CONTENT}]]</textarea>
             </div>
         </div>
-
+        <input type="hidden" name="N_NO" th:value="${notice.N_NO}">
         <a class="btn btn-outline-secondary" th:href="@{/notice/read(N_NO=${notice.N_NO})}">뒤로가기</a>
         <button class="btn btn-outline-success" id="modifyBtn" type="button">수정</button>
     </form>

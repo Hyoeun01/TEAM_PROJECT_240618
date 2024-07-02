@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -33,10 +35,26 @@ public class ReviewController {
         return reviewService.getReviewById(id);
     }
 
+//    @PostMapping
+//    public String addReview(@RequestBody ReviewDTO reviewDTO) {
+//        reviewService.addReview(reviewDTO);
+//        return "redirect:/review/list";
+//    }
+
     @PostMapping
-    public String addReview(@RequestBody ReviewDTO reviewDTO) {
-        reviewService.addReview(reviewDTO);
-        return "redirect:/review/list";
+    @ResponseBody
+    public Map<String, Object> addReview(@RequestBody ReviewDTO reviewDTO) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            Long reviewId = reviewService.addReview(reviewDTO);
+            reviewDTO.setRE_ID(reviewId);
+            response.put("success", true);
+            response.put("review", reviewDTO);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("error", e.getMessage());
+        }
+        return response;
     }
 
     @PutMapping("/{id}")

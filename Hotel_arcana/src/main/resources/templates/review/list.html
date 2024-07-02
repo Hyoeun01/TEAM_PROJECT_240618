@@ -15,43 +15,131 @@
     <form method="post" th:action="@{/review}" th:object="${newReview}">
         <h1 class="mt-4">리뷰 게시판</h1><hr>
 
-        <!-- 새 리뷰 입력 폼 -->
+        <!-- 리뷰 입력-->
         <div class="row mb-4">
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-
-                            <div class="mb-3">
-                                <label class="form-label" for="reWriter">작성자</label>
-                                <input class="form-control" id="reWriter" th:field="*{RE_WRITER}" type="text">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="reContent">내용</label>
-                                <textarea class="form-control" id="reContent" rows="3"
-                                          th:field="*{RE_CONTENT}"></textarea>
-                            </div>
-                            <button class="btn btn-primary" type="submit">리뷰 작성</button>
-
+                        <div class="mb-3">
+<!--                                <p class="form-control" id="title" name="RE_CONTENT" readonly th:text="${review.RE_CONTENT}"></p>-->
+                            <p>방정보 불러오기</p>
+                            <textarea class="form-control" id="reContent" rows="3" th:field="*{RE_CONTENT}" placeholder="리뷰를 작성해주세요"></textarea>
+                        </div>
+                            <label class="btn btn-outline-pink" for="camera" role="button">업로드</label>
+                            <input type="file" id="camera" name="camera" accept="image/*" capture="camera"
+                                   onchange="takePicture(this)" style="display: none;">
+                        <button class="btn btn-outline-success review-button" type="submit">리뷰 작성</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 기존 리뷰 목록 -->
+<!--         리뷰 목록-->
         <div class="row" id="reviewList">
-            <div class="col-md-4 mb-4" th:each="review : ${reviews}">
+            <div class="col-md-12" th:each="review : ${reviews}">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" th:text="${review.RE_WRITER}">작성자</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" th:text="${review.RE_DATE}">작성일</h6>
-                        <p class="card-text" th:text="${review.RE_CONTENT}">내용</p>
-                        <img alt="리뷰 이미지" class="img-fluid" th:if="${review.RE_IMG}" th:src="${review.RE_IMG}">
-                        <a class="card-link" th:href="@{/review/{reId}(reId=${review.RE_ID})}">상세보기</a>
+                        <div class="review-content">
+                            <img class="review-img" alt="리뷰 이미지" th:if="${review.RE_IMG}" th:src="${review.RE_IMG}">
+                            <div class="review-text">
+                                <h5 class="card-title" th:text="${review.RE_WRITER}">작성자</h5>
+                                <p class="card-text" th:text="${review.RE_CONTENT}">내용</p>
+                                <div class="review-meta">
+                                    <span th:text="${review.RE_DATE}">작성일</span>
+                                    <a class="card-link" th:href="@{/review/{reId}(reId=${review.RE_ID})}">상세보기</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
 </div>
+<script>
+    function takePicture(input) {
+        console.log(input.files);
+    }
+
+    function submitReview() {
+        var content = document.getElementById('reContent').value;
+        var formData = new FormData();
+        formData.append('RE_CONTENT', content);
+
+        var fileInput = document.getElementById('camera');
+        if (fileInput.files.length > 0) {
+            formData.append('RE_IMG', fileInput.files[0]);
+        }
+
+        fetch('/review', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    addReviewToList(data.review);
+                } else {
+                    alert('리뷰 작성에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('리뷰 작성 중 오류가 발생했습니다.');
+            });
+    }
+
+    function addReviewToList(review) {
+        var reviewList = document.getElementById('reviewList').querySelector('.col-md-12');
+
+        var card = document.createElement('div');
+        card.className = 'card';
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        var reviewContent = document.createElement('div');
+        reviewContent.className = 'review-content';
+
+        if (review.RE_IMG) {
+            var img = document.createElement('img');
+            img.className = 'review-img';
+            img.src = review.RE_IMG;
+            reviewContent.appendChild(img);
+        }
+
+        var reviewText = document.createElement('div');
+        reviewText.className = 'review-text';
+
+        var title = document.createElement('h5');
+        title.className = 'card-title';
+        title.textContent = review.RE_WRITER;
+        reviewText.appendChild(title);
+
+        var content = document.createElement('p');
+        content.className = 'card-text';
+        content.textContent = review.RE_CONTENT;
+        reviewText.appendChild(content);
+
+        var meta = document.createElement('div');
+        meta.className = 'review-meta';
+
+        var date = document.createElement('span');
+        date.textContent = review.RE_DATE;
+        meta.appendChild(date);
+
+        var link = document.createElement('a');
+        link.className = 'card-link';
+        link.href = `/review/${review.RE_ID}`;
+        link.textContent = '상세보기';
+        meta.appendChild(link);
+
+        reviewText.appendChild(meta);
+        reviewContent.appendChild(reviewText);
+        cardBody.appendChild(reviewContent);
+        card.appendChild(cardBody);
+        reviewList.appendChild(card);
+    }
+</script>
 </body>
 </html>

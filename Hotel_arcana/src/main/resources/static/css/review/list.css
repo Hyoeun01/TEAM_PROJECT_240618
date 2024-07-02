@@ -1,39 +1,40 @@
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    max-width: 1200px;
+    margin: auto;
 }
-
-.form-container form {
-    width: 60%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-.form-container form .form-title {
-    text-align: center;
+.card {
     margin-bottom: 20px;
 }
-
-.table th, .table td {
-    text-align: center;
-}
-
- .review-card {
-     margin-bottom: 20px;
- }
-.review-writer {
-    font-size: 0.9em;
-    color: gray;
-}
-.review-date {
-    font-size: 0.8em;
-    color: gray;
+.review-img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
 }
 .review-content {
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.review-text {
+    flex-grow: 1;
+}
+.review-meta {
+    font-size: 0.8em;
+    color: #888;
+}
+.review-button {
+    float: right;
 }
 
+/*업로드 버튼*/
+.btn-outline-pink {
+    color: #ff69b4;
+    border-color: #ff69b4;
+}
+.btn-outline-pink:hover {
+    color: #fff;
+    background-color: #ff69b4;
+    border-color: #ff69b4;
+}
+.btn-outline-pink:focus, .btn-outline-pink:active {
+    box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.5);
+}
