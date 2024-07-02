@@ -33,9 +33,9 @@
         <div class="col-md-3 sidebar">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
-                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                    <li>
+                        <a href="login/memberRead/" class="nav-link link-body-emphasis">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                             마이페이지
                         </a>
                     </li>
@@ -45,10 +45,10 @@
                             예약 내역 조회
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                            회원정보 수정
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                            회원 정보 수정
                         </a>
                     </li>
                     <li>
@@ -63,15 +63,15 @@
         </div>
         <div class="col-md-9 content">
             <div class="container mt-3">
-                <h1>Edit Member Details</h1>
-                <form action="/login/memberModify" method="post">
+                <h1>회원 정보 수정</h1>
+                <form action="/login/memberModify" method="post" th:object="${memberDTO}">
                     <div class="mb-3">
                         <label for="USER_ID" class="form-label">ID</label>
                         <input type="text" class="form-control" id="USER_ID" name="USER_ID" th:value="${memberDTO.USER_ID}" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="USER_PW" class="form-label">USER_PW</label>
-                        <input type="text" class="form-control" id="USER_PW" name="USER_NM" th:value="${memberDTO.USER_PW}" maxlength="50">
+                        <input type="password" class="form-control" id="USER_PW" name="USER_PW"  maxlength="50">
                     </div>
                     <div class="mb-3">
                         <label for="USER_NM" class="form-label">Name</label>

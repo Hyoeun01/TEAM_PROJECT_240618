@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -56,16 +57,48 @@ public class MemberController {
 
     //    @PreAuthorize("isAuthenticated()")
     @PostMapping("/login/memberModify")
-    public String update(MemberDTO memberDTO) {
-        memberService.updateMember(memberDTO);
-        return "redirect:login/memberRead/" + memberDTO.getUSER_ID(); // 수정 후 상세 조회 페이지로 리다이렉트
+    public String update(@ModelAttribute MemberDTO memberDTO, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "/login/memberModify";
+        }
+        try {
+            memberService.updateMember(memberDTO);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "/login/memberModify";
+        }
+        model.addAttribute("memberDTO", memberDTO);
+
+        return "redirect:/login/memberRead/"+memberDTO.getUSER_ID();
+
+//        memberService.updateMember(memberDTO);
+//        return "redirect:login/memberRead/" + memberDTO.getUSER_ID(); // 수정 후 상세 조회 페이지로 리다이렉트
     }
 
 
-    @GetMapping("/login/memberRemove/{USER_ID}")
-    public String deleteMember(@PathVariable("USER_ID") String USER_ID, Model model) {
-        memberService.deleteMember(USER_ID);
-        return "redirect:/join"; // 삭제 후 리다이렉트할 페이지 설정
+//    @GetMapping("/login/memberRemove/{USER_ID}")
+//    public String MemberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
+//        memberService.deleteMember(USER_ID);
+//        return "redirect:/register"; // 삭제 후 리다이렉트할 페이지 설정
+//    }
+
+    @GetMapping("/login/memberRemove")
+    public String MemberRemove(Model model) {
+        String currentUserId = getCurrentUserId();
+        MemberDTO memberDTO = memberService.memberRead(currentUserId);
+        model.addAttribute("memberDTO", memberDTO);
+        return "login/memberRemove";
+    }
+
+    @PostMapping("/member/delete")
+    public String deleteMember(@ModelAttribute("memberDTO") MemberDTO memberDTO) {
+        memberService.deleteMember(memberDTO.getUSER_ID());
+        return "redirect:/register";
+    }
+
+    private String getCurrentUserId() {
+
+        return "dummyUserId";
     }
 }
 

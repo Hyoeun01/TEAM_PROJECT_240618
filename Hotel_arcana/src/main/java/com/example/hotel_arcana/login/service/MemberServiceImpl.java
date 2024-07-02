@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -36,8 +35,14 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void updateMember(MemberDTO memberDTO) {
+
+        if (memberDTO.getUSER_PW() == null || (memberDTO.getUSER_PW().isEmpty())){
+            throw new IllegalArgumentException("Password cannot be null or empty");
+        }
+        memberDTO.setUSER_PW(passwordEncoder.encode(memberDTO.getUSER_PW()));
         memberMapper.updateMember(memberDTO);
     }
+
 
     @Override
     public MemberDTO memberRead(String USER_ID){
