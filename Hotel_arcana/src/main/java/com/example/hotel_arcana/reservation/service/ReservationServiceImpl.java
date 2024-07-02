@@ -47,8 +47,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<RoomDTO> getRooms() {
-        return reservationMapper.getRooms();
+    public List<RoomDTO> getRooms(String roomName) {
+        return reservationMapper.getRooms(roomName);
     }
 
     @Override

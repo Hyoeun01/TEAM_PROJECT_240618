@@ -38,7 +38,7 @@ public class ReservationController {
 
     @GetMapping("/register/{ROOM_NAME}")
     public String register(@PathVariable("ROOM_NAME") String roomName, Model model) {
-        model.addAttribute("rooms", reservationService.getRooms());
+        model.addAttribute("rooms", reservationService.getRooms(roomName));
         model.addAttribute("room_name", roomName);
         log.info("Requested room: " + roomName);
 
@@ -74,10 +74,12 @@ public class ReservationController {
 
     }
 
-    @GetMapping({"/read/{RV_ID}","/modify/{RV_ID}"})
-    public void read(Long RV_ID, Model model) {
+    @GetMapping({"/read","/modify"})
+    public String read(Long RV_ID, Model model) {
         ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
         model.addAttribute("dto", reservationDTO);
+
+        return "/reservation/read";
     }
 
     @PostMapping("/remove")

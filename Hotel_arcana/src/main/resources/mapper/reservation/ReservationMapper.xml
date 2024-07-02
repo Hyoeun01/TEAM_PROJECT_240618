@@ -27,7 +27,7 @@
     </update>
 
     <select id="getRooms" resultType="com.example.hotel_arcana.room.dto.RoomDTO">
-        select * from room order by ROOM_ID desc
+        select * from room where ROOM_NAME = #{roomName} order by ROOM_ID desc
     </select>
 
 

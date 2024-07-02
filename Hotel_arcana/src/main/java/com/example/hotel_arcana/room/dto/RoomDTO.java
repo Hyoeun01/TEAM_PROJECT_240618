@@ -12,6 +12,6 @@ public class RoomDTO {
     private Long ROOM_ID;
     private String ROOM_NAME;
 
-    private String ROOM_PRICE;
+    private int ROOM_PRICE;
     private String ROOM_LIMIT;
 }

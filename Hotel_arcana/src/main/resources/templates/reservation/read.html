@@ -25,13 +25,13 @@
                     <h4 class="my-0 fw-normal">예약내역 확인하기</h4>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title pricing-card-title">[[${roomDTO.ROOM_NAME}]]</h2>
+                    <h2 class="card-title pricing-card-title">[[${dto.ROOM_NAME}]]</h2>
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li>체크인 : [[${reservationInfo.START_DATE}]]</li>
-                        <li>체크아웃 : [[${reservationInfo.START_DATE}]]</li>
-                        <li>인원 : [[${reservationInfo.TOTAL_NUM}]]</li>
+                        <li>체크인 : [[${dto.START_DATE}]]</li>
+                        <li>체크아웃 : [[${dto.START_DATE}]]</li>
+                        <li>인원 : [[${dto.TOTAL_NUM}]]</li>
                     </ul>
-                    <h1 class="card-title pricing-card-title">[[${roomDTO.ROOM_PRICE}]]<small class="text-body-secondary fw-light">/n박</small></h1>
+                    <h1 class="card-title pricing-card-title">[[${dto.ROOM_PRICE}]]<small class="text-body-secondary fw-light">/n박</small></h1>
                     <div>
                     <span><button type="button" class="w-100 btn btn-lg btn-outline-secondary"
                     >변경하기</button></span>

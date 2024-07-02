@@ -12,7 +12,7 @@ public interface ReservationService {
     ReservationDTO getOne(Long RV_ID);
     void remove(Long RV_ID);
     void modify(ReservationDTO reservationDTO);
-    List<RoomDTO> getRooms();
+    List<RoomDTO> getRooms(String roomName);
     RoomDTO getRoom(Long ROOM_ID);
     List<RoomDTO> getRoomInfo();
 }
