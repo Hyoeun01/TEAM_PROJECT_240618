@@ -6,10 +6,12 @@ import com.example.hotel_arcana.notice.dto.PageResponseDTO;
 import com.example.hotel_arcana.notice.mapper.NoticeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -63,10 +65,12 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public PageResponseDTO<NoticeDTO> getList(PageRequestDTO pageRequestDTO) {
-        int offset = (pageRequestDTO.getPage() - 1) * pageRequestDTO.getSize();
-        List<NoticeDTO> dtoList = noticeMapper.NoticePage(offset, pageRequestDTO.getSize());
-        Integer count = noticeMapper.NoticeCount();
-        int total = count != null ? count : 0;
-        return new PageResponseDTO<>(pageRequestDTO, dtoList, total);
+
+        int offset = (pageRequestDTO.getPage() - 1) * pageRequestDTO.getSize(); // offset 계산
+        List<NoticeDTO> dtoList = noticeMapper.NoticePage(offset, pageRequestDTO.getSize()); // 해당 페이지의 게시글 목록 가져오기
+        Integer count = noticeMapper.NoticeCount(); // 전체 게시글 수 가져오기
+        int total = count != null ? count : 0; // 전체 게시글 수가 null이 아니면 total에 할당, 그렇지 않으면 0 할당
+        return new PageResponseDTO<>(pageRequestDTO, dtoList, total); // PageResponseDTO 객체 반환
     }
+
 }

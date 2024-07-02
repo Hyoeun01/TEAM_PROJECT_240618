@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
 }
 
 .form-container form {
@@ -10,7 +11,9 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color: white;
+    max-width: 1200px; /* 최대 너비 설정 */
+    min-height: 80vh; /* 최소 높이 설정 */
 }
 
 .form-container form .form-title {
@@ -19,6 +22,10 @@
 }
 
 .table th, .table td {
+    text-align: center;
+}
+.pageText-center{
+    display: flex;
     text-align: center;
 }
 

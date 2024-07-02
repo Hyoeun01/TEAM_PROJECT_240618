@@ -30,16 +30,15 @@ public class NoticeController {
     @GetMapping("/list")
     public String getNotices(Model model, PageRequestDTO pageRequestDTO) {
         PageResponseDTO<NoticeDTO> responseDTO = noticeService.getList(pageRequestDTO);
-        List<NoticeDTO> noticeList = noticeService.getAll();
-        model.addAttribute("list", noticeList);
+        model.addAttribute("list", responseDTO.getDtoList());
         model.addAttribute("responseDTO", responseDTO);
         model.addAttribute("pageRequestDTO", pageRequestDTO);
         return "/notice/list";
     }
 
     @GetMapping("/register")
-    public void registerGET(){
-
+    public void registerGET(Model model){
+        model.addAttribute("noticeDTO", new NoticeDTO());
     }
 
     @PostMapping("/register")
@@ -91,7 +90,7 @@ public class NoticeController {
             bindingResult.getAllErrors().forEach(error -> log.error("Validation error: {}", error.getDefaultMessage()));
 
             redirectAttributes.addFlashAttribute("error", bindingResult.getAllErrors());
-            log.info("실패");
+            log.info("수정 실패");
 
             return "redirect:/notice/modify";
         }
