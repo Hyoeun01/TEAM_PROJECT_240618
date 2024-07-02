@@ -63,14 +63,22 @@ public class NoticeServiceImpl implements NoticeService {
         }
     }
 
+//    @Override
+//    public PageResponseDTO<NoticeDTO> getList(PageRequestDTO pageRequestDTO) {
+//        int offset = (pageRequestDTO.getPage() - 1) * pageRequestDTO.getSize(); // offset 계산
+//        List<NoticeDTO> dtoList = noticeMapper.NoticePage(offset, pageRequestDTO.getSize()); // 해당 페이지의 게시글 목록 가져오기
+//        Integer count = noticeMapper.NoticeCount(); // 전체 게시글 수 가져오기
+//        int total = count != null ? count : 0; // 전체 게시글 수가 null이 아니면 total에 할당, 그렇지 않으면 0 할당
+//        return new PageResponseDTO<>(pageRequestDTO, dtoList, total); // PageResponseDTO 객체 반환
+//    }
+
     @Override
     public PageResponseDTO<NoticeDTO> getList(PageRequestDTO pageRequestDTO) {
-
-        int offset = (pageRequestDTO.getPage() - 1) * pageRequestDTO.getSize(); // offset 계산
-        List<NoticeDTO> dtoList = noticeMapper.NoticePage(offset, pageRequestDTO.getSize()); // 해당 페이지의 게시글 목록 가져오기
-        Integer count = noticeMapper.NoticeCount(); // 전체 게시글 수 가져오기
-        int total = count != null ? count : 0; // 전체 게시글 수가 null이 아니면 total에 할당, 그렇지 않으면 0 할당
-        return new PageResponseDTO<>(pageRequestDTO, dtoList, total); // PageResponseDTO 객체 반환
+        int offset = (pageRequestDTO.getPage() - 1) * pageRequestDTO.getSize();
+        List<NoticeDTO> dtoList = noticeMapper.NoticePage(offset, pageRequestDTO.getSize(), pageRequestDTO.getType(), pageRequestDTO.getKeyword());
+        Integer count = noticeMapper.NoticeCount(pageRequestDTO.getType(), pageRequestDTO.getKeyword());
+        int total = count != null ? count : 0;
+        return new PageResponseDTO<>(pageRequestDTO, dtoList, total);
     }
 
 }

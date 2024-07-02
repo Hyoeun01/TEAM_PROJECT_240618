@@ -44,46 +44,48 @@
 <!--    게시판 목록 페이지-->
     <select id="NoticePage" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
         SELECT * FROM hotel_notice
-<!--        <where>-->
-<!--            <if test="pageRequestDTO.type != null and pageRequestDTO.type.length > 0">-->
-<!--                <foreach item="type" collection="pageRequestDTO.types" separator=" OR ">-->
-<!--                    <choose>-->
-<!--                        <when test="type == 't'">-->
-<!--                            N_TITLE LIKE CONCAT('%', #{pageRequestDTO.keyword}, '%')-->
-<!--                        </when>-->
-<!--                        <when test="type == 'c'">-->
-<!--                            N_CONTENT LIKE CONCAT('%', #{pageRequestDTO.keyword}, '%')-->
-<!--                        </when>-->
-<!--                        <when test="type == 'w'">-->
-<!--                            N_WRITER LIKE CONCAT('%', #{pageRequestDTO.keyword}, '%')-->
-<!--                        </when>-->
-<!--                    </choose>-->
-<!--                </foreach>-->
-<!--            </if>-->
-<!--        </where>-->
+        <where>
+            <if test="type == 't'">
+                <!-- 검색조건이 title이라면 -->
+                N_TITLE LIKE '%' || #{keyword} || '%'
+            </if>
+            <if test="type == 'c'">
+                <!-- 검색조건이 content이라면 -->
+                N_CONTENT LIKE '%' || #{keyword} || '%'
+            </if>
+            <if test="type == 'w'">
+                <!-- 검색조건이 writer이라면 -->
+                N_WRITER LIKE '%' || #{keyword} || '%'
+            </if>
+            <if test="type == 'tc'">
+                <!-- 검색조건이 title+content라면 -->
+                (N_TITLE LIKE '%' || #{keyword} || '%' OR N_CONTENT LIKE '%' || #{keyword} || '%')
+            </if>
+        </where>
         ORDER BY N_NO DESC LIMIT #{offset}, #{size}
     </select>
 
 <!--    게시글 총 갯수-->
     <select id="NoticeCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM hotel_notice
-<!--        <where>-->
-<!--            <if test="pageRequestDTO.type != null and pageRequestDTO.type.length > 0">-->
-<!--                <foreach item="type" collection="pageRequestDTO.types" separator=" OR ">-->
-<!--                    <choose>-->
-<!--                        <when test="type == 't'">-->
-<!--                            N_TITLE LIKE CONCAT('%', #{pageRequestDTO.keyword}, '%')-->
-<!--                        </when>-->
-<!--                        <when test="type == 'c'">-->
-<!--                            N_CONTENT LIKE CONCAT('%', #{pageRequestDTO.keyword}, '%')-->
-<!--                        </when>-->
-<!--                        <when test="type == 'w'">-->
-<!--                            N_WRITER LIKE CONCAT('%', #{pageRequestDTO.keyword}, '%')-->
-<!--                        </when>-->
-<!--                    </choose>-->
-<!--                </foreach>-->
-<!--            </if>-->
-<!--        </where>-->
+        <where>
+            <if test="type == 't'">
+                <!-- 검색조건이 title이라면 -->
+                N_TITLE LIKE '%' || #{keyword} || '%'
+            </if>
+            <if test="type == 'c'">
+                <!-- 검색조건이 content이라면 -->
+                N_CONTENT LIKE '%' || #{keyword} || '%'
+            </if>
+            <if test="type == 'w'">
+                <!-- 검색조건이 writer이라면 -->
+                N_WRITER LIKE '%' || #{keyword} || '%'
+            </if>
+            <if test="type == 'tc'">
+                <!-- 검색조건이 title+content라면 -->
+                (N_TITLE LIKE '%' || #{keyword} || '%' OR N_CONTENT LIKE '%' || #{keyword} || '%')
+            </if>
+        </where>
     </select>
 
 </mapper>

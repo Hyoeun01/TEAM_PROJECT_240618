@@ -1,11 +1,11 @@
 package com.example.hotel_arcana.notice.mapper;
 
 import com.example.hotel_arcana.notice.dto.NoticeDTO;
-import com.example.hotel_arcana.review.dto.PageRequestDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface NoticeMapper {
@@ -22,8 +22,11 @@ public interface NoticeMapper {
 
     void ViewCount(@Param("N_NO") Long N_NO, @Param("N_VIEW") Long N_VIEW);
 
-    List<NoticeDTO> NoticePage(@Param("offset") int offset, @Param("size") int size);
+//    List<NoticeDTO> NoticePage(@Param("offset") int offset, @Param("size") int size);
+//
+//    Integer NoticeCount();
 
-    Integer NoticeCount();
+    List<NoticeDTO> NoticePage(@Param("offset") int offset, @Param("size") int size, @Param("type") String type, @Param("keyword") String keyword);
+    Integer NoticeCount(@Param("type") String type, @Param("keyword") String keyword);
 
 }
