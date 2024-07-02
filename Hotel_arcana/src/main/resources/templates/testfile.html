@@ -12,6 +12,8 @@
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
                 <img src="/img/트윈%20시티뷰.jpg" alt="큰 이미지" class="largeImg">
             </div>
+            <div class="overlay" id="overlay1" onclick="">
+            </div>
             <div class="other-photos">
                 <div class="photo">
                     <img src="/img/트윈%20시티뷰1.jpg" alt="Photo 1">
@@ -130,6 +132,11 @@
         }
         console.log(imgSrc)
     },false)
+    overlay.addEventListener('click',function (e){
+        if(e.target === this){
+            overlay.style.display ='none';
+        }
+    });
 
 
     // const myModal = document.getElementById('myModal')

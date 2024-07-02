@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="/css/photo.css">
     <div class="container">
         <div class="photo-gallery">
-            <div class="main-photo" onclick="showPhoto()">
+            <div class="main-photo" onclick="showLargeImage()">
                 <img src="/img/로얄%20스위트1.jpg " alt="Main Photo">
+            </div>
+            <div class="overlay" id="overlay" onclick="hideLargeImage()">
+                <img src="/img/로얄%20스위트1.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
@@ -96,5 +99,38 @@
     </div>
 </div>
 <script layout:fragment="script" th:inline="javascript">
+    let i = 0
+    let imgList = ['로얄%20스위트1.jpg','로얄%20스위트2.jpg','로얄%20스위트3.jpg','로얄%20스위트4.jpg','로얄%20스위트5.jpg']
+    function showLargeImage() {
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function hideLargeImage() {
+        // document.getElementById('overlay').style.display = 'none';
+    }
+
+    document.querySelector('.largeImg').addEventListener('click',function (e){
+        let imgSrc = e.target
+        imgSrc.src = '/img/'+imgList[i]
+        if(i<imgList.length){
+            i++
+        }else{
+            i=0
+        }
+        console.log(imgSrc)
+    },false)
+    overlay.addEventListener('click',function (e){
+        if(e.target === this){
+            overlay.style.display ='none';
+        }
+    });
+
+
+    // const myModal = document.getElementById('myModal')
+    // const myInput = document.getElementById('myInput')
+    //
+    // myModal.addEventListener('shown.bs.modal', () => {
+    //     myInput.focus()
+    // })
 </script>
 </html>
