@@ -34,4 +34,9 @@
     <select id="getRoom" resultType="com.example.hotel_arcana.room.dto.RoomDTO">
         select * from room where ROOM_ID = #{ROOM_ID} order by ROOM_ID desc
     </select>
+
+    <select id="getRoomInfo" resultType="com.example.hotel_arcana.room.dto.RoomDTO">
+        select * from room where ROOM_ID in (select MIN(ROOM_ID) from room group by ROOM_NAME)
+    </select>
+
 </mapper>

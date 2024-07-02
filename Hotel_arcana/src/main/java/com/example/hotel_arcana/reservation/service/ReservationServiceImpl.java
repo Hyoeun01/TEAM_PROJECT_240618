@@ -55,4 +55,9 @@ public class ReservationServiceImpl implements ReservationService {
     public RoomDTO getRoom(Long ROOM_ID) {
         return reservationMapper.getRoom(ROOM_ID);
     }
+
+    @Override
+    public List<RoomDTO> getRoomInfo() {
+        return reservationMapper.getRoomInfo();
+    }
 }

@@ -17,5 +17,6 @@ public interface ReservationMapper {
     void delete(Long RV_ID);
     List<RoomDTO> getRooms();
     RoomDTO getRoom(Long ROOM_ID);
+    List<RoomDTO> getRoomInfo();
 
 }

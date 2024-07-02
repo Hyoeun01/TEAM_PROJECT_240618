@@ -14,4 +14,5 @@ public interface ReservationService {
     void modify(ReservationDTO reservationDTO);
     List<RoomDTO> getRooms();
     RoomDTO getRoom(Long ROOM_ID);
+    List<RoomDTO> getRoomInfo();
 }

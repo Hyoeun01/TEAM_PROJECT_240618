@@ -31,7 +31,9 @@ public class ReservationController {
 
     @GetMapping("/roomchoice")
     public void roomlist(Model model){
-        model.addAttribute("rooms", reservationService.getRooms());
+        List<RoomDTO> roomDTO =  reservationService.getRoomInfo();
+
+        model.addAttribute("rooms",roomDTO);
     }
 
     @GetMapping("/register/{ROOM_NAME}")
@@ -63,7 +65,6 @@ public class ReservationController {
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
         redirectAttributes.addFlashAttribute("result", RV_ID);
         model.addAttribute("reservationInfo",reservationDTO);
-        roomDTO.setROOM_NAME(roomDTO.getROOM_NAME().toUpperCase());
         model.addAttribute("roomDTO", roomDTO);
         return "/reservation/preview";
     }
@@ -73,7 +74,7 @@ public class ReservationController {
 
     }
 
-    @GetMapping({"/read","/modify"})
+    @GetMapping({"/read/{RV_ID}","/modify/{RV_ID}"})
     public void read(Long RV_ID, Model model) {
         ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
         model.addAttribute("dto", reservationDTO);

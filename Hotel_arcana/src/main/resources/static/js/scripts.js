@@ -57,7 +57,9 @@ $(function () {
         altField: "#in_Calendar",
         minDate: today,
         onSelect: function (selectedDate) {
-            $("#out_Dates").datepicker("option", "minDate", selectedDate);
+            var selectedDateObj = new Date(selectedDate);
+            var nextDay = new Date(selectedDateObj.getTime() + 24 * 60 * 60 * 1000);
+            $("#out_Dates").datepicker("option", "minDate", nextDay);
         }
     });
 
