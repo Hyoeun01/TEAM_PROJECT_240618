@@ -86,17 +86,16 @@ public class ReservationController {
     }
 
     @GetMapping("/modify")
-    public String modify(Long RV_ID, Model model) {
+    public String modify( Long RV_ID, Model model) {
 
         ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
-        List<RoomDTO> room =  reservationService.getRoomInfo();
 
         model.addAttribute("reservationDTO", reservationDTO);
         model.addAttribute("roomDTO", roomDTO);
-        model.addAttribute("rooms", room);
 
-        return "/reservation/modify";
+
+        return "/reservation/modifytest";
     }
 
     @PostMapping("/remove")
@@ -106,8 +105,15 @@ public class ReservationController {
     }
 
     @PostMapping("/modify")
-    public String modify(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String modify(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests) {
         log.info("수정 중"+reservationDTO);
+
+        int TOTAL_NUM = Integer.parseInt(guests);
+
+        reservationDTO.setSTART_DATE(LocalDate.parse(inDates));  // inDates를 LocalDate로 변환
+        reservationDTO.setEND_DATE(LocalDate.parse(outDates));// outDates를 LocalDate로 변환
+        reservationDTO.setTOTAL_NUM(TOTAL_NUM);
+
 
         if(bindingResult.hasErrors()) {
             log.info("에러발생");

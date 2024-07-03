@@ -15,4 +15,6 @@ public interface ReservationService {
     List<RoomDTO> getRooms(String roomName);
     RoomDTO getRoom(Long ROOM_ID);
     List<RoomDTO> getRoomInfo();
+
+
 }
