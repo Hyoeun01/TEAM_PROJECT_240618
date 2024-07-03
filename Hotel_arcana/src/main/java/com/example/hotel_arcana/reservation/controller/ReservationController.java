@@ -101,15 +101,13 @@ public class ReservationController {
     }
 
     @GetMapping("/remove/{RV_ID}")
-    public String remove(Long RV_ID){
+    public String remove(@PathVariable("RV_ID") Long RV_ID){
         reservationService.remove(RV_ID);
         return "redirect:/reservation/list";
     }
 
     @PostMapping("/modify")
-    public String modify(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests) {
-        log.info("수정 중"+reservationDTO);
-
+    public String modify(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests,Model model) {
         int TOTAL_NUM = Integer.parseInt(guests);
 
         reservationDTO.setSTART_DATE(LocalDate.parse(inDates));  // inDates를 LocalDate로 변환
@@ -123,9 +121,15 @@ public class ReservationController {
         }
 
         reservationService.modify(reservationDTO);
+        reservationService.getOne(reservationDTO.getRV_ID());
+
+        RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
         redirectAttributes.addFlashAttribute("result", "modify success");
-        redirectAttributes.addAttribute("RV_ID", reservationDTO.getRV_ID());
-        return "redirect:/reservation/list";
+
+        model.addAttribute("reservationInfo",reservationDTO);
+        model.addAttribute("roomDTO", roomDTO);
+
+        return "redirect:/reservation/preview";
     }
 
 
