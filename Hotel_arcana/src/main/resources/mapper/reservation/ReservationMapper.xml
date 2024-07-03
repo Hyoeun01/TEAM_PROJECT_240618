@@ -39,4 +39,5 @@
         select * from room where ROOM_ID in (select MIN(ROOM_ID) from room group by ROOM_NAME)
     </select>
 
+
 </mapper>

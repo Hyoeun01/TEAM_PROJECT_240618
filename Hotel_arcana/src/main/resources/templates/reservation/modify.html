@@ -57,25 +57,25 @@
                 <div class="col">
                     <div class="row">
                         <div class="col">
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary standardBtn">STANDARD</button>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary vipBtn">VIP</button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary roomBtn" value="STANDARD">STANDARD</button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary roomBtn" value="VIP">VIP</button>
                         </div>
                         <div class="col">
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary deluxeBtn">DELUXE</button>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary vvipBtn">VVIP</button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary roomBtn" value="DELUXE">DELUXE</button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary roomBtn" value="VVIP">VVIP</button>
                         </div>
                         <div class="col">
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary superiorBtn">SUPERIOR</button>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary suiteBtn">SUITE</button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary roomBtn" value="SUPERIOR">SUPERIOR</button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary roomBtn" value="SUITE">SUITE</button>
                         </div>
                     </div>
                     <span class="ROOM_PRICE">
                     <p>체크인 15:00 ~ 체크아웃 12:00</p>
-                    <p><strong>여기다가 가격나오게 해주세요 : 원/1박</strong></p>
+                    <p><strong class="cost">여기다가 가격나오게 해주세요 : 원/1박</strong></p>
                 </span>
                     <span>
                     <span>호실 선택하기</span>
-                    <select name="RV_ROOM_NUMBER">
+                    <select name="RV_ROOM_NUMBER" id="roomnumber">
                         <option value="">선택하세요</option>
                         <th:block th:each="room : ${rooms}">
                             <option th:value="${room.ROOM_ID}" th:text="${room.ROOM_ID + '호'}"></option>
@@ -96,16 +96,49 @@
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="../../js/scripts.js"></script>
+<script src="../../js/connect.js"></script>
 </body>
 
 <script>
+
     document.querySelector(".submitBtn").addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
 
         document.querySelector("form").submit();
     }, false);
+
+    let roombtn = document.getElementsByClassName("roomBtn")
+    for(let i = 0; i<roombtn.length ; i++){
+        roombtn[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            let room = e.target.value
+
+            console.log(room)
+
+            roomchoice(room).then(data=> {
+                console.log(data)
+                let roomnumber = document.getElementById("roomnumber")
+                let line =`<option value="">선택하세요</option>`
+
+                for(let j=0 ; j<data.length ; j++){
+
+                    line += `<option value="${data[j].room_ID}">${data[j].room_ID + '호'}</option>`
+                }
+                console.log(line)
+                roomnumber.innerHTML = line
+
+                let cost = document.querySelector(".cost")
+                cost.text=`${data[0].room_PRICE}원/1박`
+                // let line = <option th:value="${room.ROOM_ID}" th:text="${room.ROOM_ID + '호'}"></option>
+            })
+            // document.querySelector("form").submit();
+        }, false);
+    }
 
 
 </script>

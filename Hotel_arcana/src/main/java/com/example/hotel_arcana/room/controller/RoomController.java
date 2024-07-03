@@ -1,8 +1,10 @@
 package com.example.hotel_arcana.room.controller;
 
 import com.example.hotel_arcana.room.dto.RoomDTO;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
+
 public class RoomController {
 
     public void getRooms(Model model){

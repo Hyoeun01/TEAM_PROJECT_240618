@@ -23,6 +23,8 @@ import java.util.List;
 public class ReservationController {
     private final ReservationService reservationService;
 
+
+
     @GetMapping("/list")
     public void getReservation(Model model) {
         List<ReservationDTO> reservationList = reservationService.getAll();
@@ -95,7 +97,7 @@ public class ReservationController {
         model.addAttribute("roomDTO", roomDTO);
 
 
-        return "/reservation/modifytest";
+        return "/reservation/modify";
     }
 
     @PostMapping("/remove")

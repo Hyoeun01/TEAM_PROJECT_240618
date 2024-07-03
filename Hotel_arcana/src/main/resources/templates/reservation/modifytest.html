@@ -91,31 +91,31 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="../../js/scripts.js"></script>
-<script>
-    $(document).ready(function() {
-        $(".room-btn").click(function() {
-            var roomType = $(this).data("room-type");
-            $.ajax({
-                url: "/getRoomsByType", // 서버의 엔드포인트 URL로 변경해야 합니다.
-                type: "GET",
-                data: { roomType: roomType },
-                success: function(data) {
-                    var select = $("#room-select");
-                    select.empty();
-                    select.append('<option value="">선택하세요</option>');
-                    data.forEach(function(room) {
-                        select.append('<option value="' + room.ROOM_ID + '">' + room.ROOM_ID + '호</option>');
-                    });
-                }
-            });
-        });
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        $(".room-btn").click(function() {-->
+<!--            var roomType = $(this).data("room-type");-->
+<!--            $.ajax({-->
+<!--                url: "/getRoomsByType", // 서버의 엔드포인트 URL로 변경해야 합니다.-->
+<!--                type: "GET",-->
+<!--                data: { roomType: roomType },-->
+<!--                success: function(data) {-->
+<!--                    var select = $("#room-select");-->
+<!--                    select.empty();-->
+<!--                    select.append('<option value="">선택하세요</option>');-->
+<!--                    data.forEach(function(room) {-->
+<!--                        select.append('<option value="' + room.ROOM_ID + '">' + room.ROOM_ID + '호</option>');-->
+<!--                    });-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
 
-        $(".submitBtn").click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $("#modifyForm").submit();
-        });
-    });
-</script>
+<!--        $(".submitBtn").click(function(e) {-->
+<!--            e.preventDefault();-->
+<!--            e.stopPropagation();-->
+<!--            $("#modifyForm").submit();-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>

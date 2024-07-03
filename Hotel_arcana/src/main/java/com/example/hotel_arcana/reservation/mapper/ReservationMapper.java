@@ -19,4 +19,6 @@ public interface ReservationMapper {
     RoomDTO getRoom(Long ROOM_ID);
     List<RoomDTO> getRoomInfo();
 
+
+
 }

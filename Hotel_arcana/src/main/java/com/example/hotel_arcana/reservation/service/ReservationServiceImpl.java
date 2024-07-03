@@ -60,4 +60,6 @@ public class ReservationServiceImpl implements ReservationService {
     public List<RoomDTO> getRoomInfo() {
         return reservationMapper.getRoomInfo();
     }
+
+
 }
