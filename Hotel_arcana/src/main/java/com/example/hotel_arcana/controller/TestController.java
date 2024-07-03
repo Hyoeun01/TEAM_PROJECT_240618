@@ -7,29 +7,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TestController {
     @GetMapping("/test")
     public String test() {
-        return "testfile.html";
+        return "testfile";
     }
-    @GetMapping("/twin city")
+    @GetMapping("/STANDARD")
     public String room1() {
-         return "/Room/twin city view.html";
+         return "/Room/STANDARD";
     }
-    @GetMapping("/Presidential")
+    @GetMapping("/DELUXE")
     public String room2() {
-        return "/Room/Presidential.html";
+        return "/ROOM/DELUXE";
     }
-    @GetMapping("/Delux1")
+    @GetMapping("/VVIP")
     public String room3() {
-        return "/Room/Delux double.html";
+        return "/ROOM/VVIP";
     }
-    @GetMapping("/Delux2")
+    @GetMapping("/VIP")
     public String room4() {
-        return "/Room/Delux sweetie.html";
+        return "/ROOM/VIP";
     }
-    @GetMapping("/Royal")
+    @GetMapping("/SUPERIOR")
     public String room5() {
-        return "/Room/Royal sweet.html";
-    } @GetMapping("/Junior")
+        return "/ROOM/SUPERIOR";
+    } @GetMapping("/SUITE")
     public String room6() {
-        return "/Room/Junior.html";
+        return "/ROOM/SUITE";
     }
 }

@@ -7,35 +7,28 @@
     <div class="container">
         <div class="photo-gallery">
             <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/주니어%20스위트룸.jpg " alt="Main Photo">
+                <img src="/img/STANDARD1.jpg " alt="Main Photo">
             </div>
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/주니어%20스위트룸.jpg" alt="큰 이미지" class="largeImg">
+                <img src="/img/STANDARD1.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
-                    <img src="/img/주니어%20스위트룸1.jpg" alt="Photo 1">
+                    <img src="/img/STANDARD2.jpg" alt="Photo 1">
                 </div>
                 <div class="photo">
-                    <img src="/img/주니어%20스위트룸2.jpg" alt="Photo 2">
+                    <img src="/img/STANDARD3.jpg" alt="Photo 2">
                 </div>
                 <div class="photo">
-                    <img src="/img/주니어%20스위트룸3.jpg" alt="Photo 3">
+                    <img src="/img/STANDARD4.jpg" alt="Photo 3">
                 </div>
                 <div class="photo">
-                    <img src="/img/주니어%20스위트룸4.jpg" alt="Photo 4">
+                    <img src="/img/STANDARD1.jpg" alt="Photo 4">
                 </div>
             </div>
         </div>
         <div class="property-info">
             <div class="info-left">
-<!--                <div class="listed-by section">-->
-<!--                    <div class="host-photo"></div>-->
-<!--                    <div class="host-info">-->
-<!--                        <p>등록자: 양호동</p>-->
-<!--                        <p>가격: 150,000 원</p>-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class  ="amenities section">
                     <h3>제공되는 편의 시설</h3>
                     <ul>
@@ -59,7 +52,7 @@
             </div>
             <div class="info-right">
                 <div class="price section">
-                    <h3>주니어 스위트룸</h3>
+                    <h3>STANDARD</h3>
                     <p>150,000 원</p>
                     <p>보기 서비스: 35,000원</p>
                     <p>프리미엄 서비스: 50,000원</p>
@@ -70,28 +63,7 @@
                 </div>
                 <div class="reviews section">
                     <h3>후기</h3>
-<!--                    <div class="ratings">-->
-<!--                        <div class="rating">-->
-<!--                            <span>편의 시설</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>의사소통</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>가격 대비 가치</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>위생</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>숙소 위치</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
+
                     <button class="show-reviews-button">후기 10개 모두 보기</button>
                 </div>
             </div>
@@ -100,15 +72,12 @@
 </div>
 <script layout:fragment="script" th:inline="javascript">
     let i = 0
-    let imgList = ['주니어%20스위트룸.jpg','주니어%20스위트룸1.jpg','주니어%20스위트룸2.jpg','주니어%20스위트룸3.jpg','주니어%20스위트룸4.jpg']
+    let imgList = ['STANDARD1.jpg','STANDARD2.jpg','STANDARD3.jpg','STANDARD4.jpg']
     function showLargeImage() {
         document.getElementById('overlay').style.display = 'block';
     }
-
     function hideLargeImage() {
-        // document.getElementById('overlay').style.display = 'none';
     }
-
     document.querySelector('.largeImg').addEventListener('click',function (e){
         let imgSrc = e.target
         imgSrc.src = '/img/'+imgList[i]
@@ -124,13 +93,5 @@
             overlay.style.display ='none';
         }
     });
-
-
-    // const myModal = document.getElementById('myModal')
-    // const myInput = document.getElementById('myInput')
-    //
-    // myModal.addEventListener('shown.bs.modal', () => {
-    //     myInput.focus()
-    // })
 </script>
 </html>
