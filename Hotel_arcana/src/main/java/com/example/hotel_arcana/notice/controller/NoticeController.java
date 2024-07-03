@@ -67,6 +67,7 @@ public class NoticeController {
         model.addAttribute("notice", noticeDTO);
     }
 
+//    @PreAuthorize("principal.username == #noticeDTO.N_WRITER")
     @PostMapping("/delete")
     public String delete(NoticeDTO noticeDTO, RedirectAttributes redirectAttributes) {
         Long N_NO = noticeDTO.getN_NO();
@@ -81,6 +82,7 @@ public class NoticeController {
     return "/notice/modify";
     }
 
+    @PreAuthorize("principal.username == #noticeDTO.N_WRITER")
     @PostMapping("/modify")
     public String PostModify(NoticeDTO noticeDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 

@@ -12,8 +12,9 @@
 </head>
 <body>
 <div class="form-container">
-    <form method="post" th:action="@{/review}" th:object="${newReview}">
-        <h1 class="mt-4">리뷰 게시판</h1><hr>
+    <form enctype="multipart/form-data" method="post" th:action="@{/review}" th:object="${newReview}">
+        <h1 class="mt-4">리뷰 게시판</h1>
+        <hr>
 
         <!-- 리뷰 입력-->
         <div class="row mb-4">
@@ -21,26 +22,35 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
-<!--                                <p class="form-control" id="title" name="RE_CONTENT" readonly th:text="${review.RE_CONTENT}"></p>-->
+                            <!--                                <p class="form-control" id="title" name="RE_CONTENT" readonly th:text="${review.RE_CONTENT}"></p>-->
                             <p>방정보 불러오기</p>
-                            <textarea class="form-control" id="reContent" rows="3" th:field="*{RE_CONTENT}" placeholder="리뷰를 작성해주세요"></textarea>
+                            <textarea class="form-control" id="reContent" placeholder="리뷰를 작성해주세요" rows="3"
+                                      th:field="*{RE_CONTENT}"></textarea>
                         </div>
-                            <label class="btn btn-outline-pink" for="camera" role="button">업로드</label>
-                            <input type="file" id="camera" name="camera" accept="image/*" capture="camera"
-                                   onchange="takePicture(this)" style="display: none;">
-                        <button class="btn btn-outline-success review-button" type="submit">리뷰 작성</button>
+                        <div class="row">
+                            <div class="col">
+                            <label class="btn btn-outline-pink" for="upload" role="button">업로드</label>
+                            </div>
+                            <div class="col">
+                            <input class="form-control hidden" id="upload" name="file" type="file">
+                            </div>
+                            <div class="col">
+                            <button class="btn btn-outline-success review-button" type="submit">리뷰 작성</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-<!--         리뷰 목록-->
+        <!--         리뷰 목록-->
         <div class="row" id="reviewList">
             <div class="col-md-12" th:each="review : ${reviews}">
                 <div class="card">
                     <div class="card-body">
                         <div class="review-content">
-                            <img class="review-img" alt="리뷰 이미지" th:if="${review.RE_IMG}" th:src="${review.RE_IMG}">
+                            <img alt="리뷰 이미지" class="review-img" th:if="${review.RE_IMG}"
+                                 th:src="'/image/'+${review.RE_IMG}">
                             <div class="review-text">
                                 <h5 class="card-title" th:text="${review.RE_WRITER}">작성자</h5>
                                 <p class="card-text" th:text="${review.RE_CONTENT}">내용</p>
@@ -92,6 +102,9 @@
     function addReviewToList(review) {
         var reviewList = document.getElementById('reviewList').querySelector('.col-md-12');
 
+        // var col = document.createElement('div');
+        // col.className = 'col-md-12';
+
         var card = document.createElement('div');
         card.className = 'card';
 
@@ -139,6 +152,7 @@
         cardBody.appendChild(reviewContent);
         card.appendChild(cardBody);
         reviewList.appendChild(card);
+
     }
 </script>
 </body>
