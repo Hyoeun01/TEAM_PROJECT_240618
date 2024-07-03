@@ -15,7 +15,7 @@
 
 <!--    리뷰 목록-->
     <select id="selectAll" resultMap="ReviewResultMap">
-        SELECT RE_ID, RE_WRITER, RE_CONTENT, RE_DATE, RE_IMG, RE_USER_ID FROM hotel_review
+        SELECT RE_ID, RE_WRITER, RE_CONTENT, RE_DATE, RE_IMG, RE_USER_ID FROM hotel_review ORDER BY RE_DATE DESC
     </select>
 
 <!--    리뷰 작성-->

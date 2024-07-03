@@ -15,27 +15,10 @@
 </head>
 <body>
 <div class="form-container">
-
-    <form action="/memberQna/register" method="post">
+    <form action="/memberQna/register" method="post" enctype="multipart/form-data">
         <h1>💌QnA💌</h1><hr>
 
-        <!--        <div class="row g-3 align-items-center">-->
-        <!--            <div class="col-auto">-->
-        <!--                <label class="col-form-label">질문유형</label>-->
-        <!--            </div>-->
-        <!--            <div class="col-auto">-->
-        <!--                <select aria-label="Default select example" class="form-select" name="Q_BOX">-->
-        <!--                    <option value="">선택하세요</option>-->
-        <!--                    <option value="reservation">예약, 확인</option>-->
-        <!--                    <option value="refund">환불, 취소</option>-->
-        <!--                    <option value="etc">기타</option>-->
-        <!--                </select>-->
-        <!--            </div>-->
-
         <div class="row g-3 align-items-center">
-<!--            <div class="col-auto">-->
-<!--                <label class="col-form-label" for="select">문의 유형</label>-->
-<!--            </div>-->
             <div class="col-auto">
                 <select aria-label="Default select example" class="form-select" id="select" name="Q_BOX">
                     <option value="">선택하세요</option>
@@ -77,30 +60,14 @@
                           rows="10"></textarea>
             </div>
         </div>
-        <div class="input-group mb-3">
-            <input class="form-control" id="inputGroupFile02" type="file">
-            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+<!--        <div class="input-group mb-3">-->
+<!--            <input class="form-control" id="inputGroupFile02" type="file">-->
+<!--            <label class="input-group-text" for="inputGroupFile02">Upload</label>-->
+<!--        </div>-->
+        <div>
+<!--            <label class="btn btn-outline-pink" for="upload" role="button">업로드</label>-->
+            <input class="form-control" id="upload" name="file" type="file">
         </div>
-        <!--        <div>-->
-        <!--            <span>이메일</span>-->
-        <!--            <input name="Q_MAIL" placeholder="이메일" type="email">-->
-        <!--        </div>-->
-        <!--        <div>-->
-        <!--            <span>연락처</span>-->
-        <!--            <input name="Q_PHONE" placeholder="연락처" type="text">-->
-        <!--        </div>-->
-        <!--        <div>-->
-        <!--            <span>제목</span>-->
-        <!--            <input name="Q_TITLE" placeholder="제목" type="text">-->
-        <!--        </div>-->
-        <!--        <div>-->
-        <!--            <span>내용</span>-->
-        <!--            <textarea name="Q_CONTENT" placeholder="내용을 입력하세요" type="text"></textarea>-->
-        <!--        </div>-->
-        <!--        <div>-->
-        <!--            <span>사진추가</span>-->
-        <!--            <input name="Q_IMG" placeholder="사진추가" type="file">-->
-        <!--        </div>-->
         <div>
             <button class="btn btn-primary submitBtn" type="submit">문의하기</button>
             <a class="btn btn-outline-secondary" href="/">뒤로가기</a>

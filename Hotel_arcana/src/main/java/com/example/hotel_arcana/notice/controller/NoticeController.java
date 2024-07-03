@@ -82,7 +82,7 @@ public class NoticeController {
     return "/notice/modify";
     }
 
-    @PreAuthorize("principal.username == #noticeDTO.N_WRITER")
+//    @PreAuthorize("principal.username == #noticeDTO.N_WRITER")
     @PostMapping("/modify")
     public String PostModify(NoticeDTO noticeDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
