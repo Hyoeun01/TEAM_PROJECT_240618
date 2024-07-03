@@ -24,3 +24,29 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+$(function () {
+    var today = new Date();
+
+    $("#in_Dates").datepicker({
+        dateFormat: "yy-mm-dd",
+        altField: "#in_Calendar",
+        minDate: today,
+        onSelect: function (selectedDate) {
+            var selectedDateObj = new Date(selectedDate);
+            var nextDay = new Date(selectedDateObj.getTime() + 24 * 60 * 60 * 1000);
+            $("#out_Dates").datepicker("option", "minDate", nextDay);
+        }
+    });
+
+    $("#out_Dates").datepicker({
+        dateFormat: "yy-mm-dd",
+        altField: "#out_Calendar",
+        minDate: null,
+        beforeShow: function(input, inst) {
+            if (!$("#in_Dates").datepicker("getDate")) {
+                return false;
+            }
+        }
+    });
+});

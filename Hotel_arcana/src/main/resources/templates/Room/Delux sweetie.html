@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout.html}">
+      layout:decorate="~{/layout/layout.html}">
 <div id="container" layout:fragment="content">
     <link rel="stylesheet" href="/css/photo.css">
     <div class="container">
         <div class="photo-gallery">
             <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/로얄%20스위트1.jpg " alt="Main Photo">
+                <img src="/img/디럭스 스위티1.jpg " alt="Main Photo">
             </div>
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/로얄%20스위트1.jpg" alt="큰 이미지" class="largeImg">
+                <img src="/img/디럭스 스위티1.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
-                    <img src="/img/로얄%20스위트2.jpg" alt="Photo 1">
+                    <img src="/img/디럭스%20스위티2.jpg" alt="Photo 1">
                 </div>
                 <div class="photo">
-                    <img src="/img/로얄%20스위트3.jpg" alt="Photo 2">
+                    <img src="/img/디럭스%20스위티3.jpg" alt="Photo 2">
                 </div>
                 <div class="photo">
-                    <img src="/img/로얄%20스위트4.jpg" alt="Photo 3">
+                    <img src="/img/디럭스%20스위티4.jpg" alt="Photo 3">
                 </div>
                 <div class="photo">
-                    <img src="/img/로얄%20스위트5.jpg" alt="Photo 4" href="/img/트윈%20시티뷰.jpg">
+                    <img src="/img/디럭스%20스위티5.jpg" alt="Photo 4">
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="info-right">
                 <div class="price section">
-                    <h3>로얄 스위트룸</h3>
+                    <h3>디럭스 스위티룸</h3>
                     <p>150,000 원</p>
                     <p>보기 서비스: 35,000원</p>
                     <p>프리미엄 서비스: 50,000원</p>
@@ -100,7 +100,7 @@
 </div>
 <script layout:fragment="script" th:inline="javascript">
     let i = 0
-    let imgList = ['로얄%20스위트1.jpg','로얄%20스위트2.jpg','로얄%20스위트3.jpg','로얄%20스위트4.jpg','로얄%20스위트5.jpg']
+    let imgList = ['디럭스 스위티1.jpg','디럭스 스위티2.jpg','디럭스 스위티3.jpg','디럭스 스위티4.jpg','디럭스 스위티5.jpg']
     function showLargeImage() {
         document.getElementById('overlay').style.display = 'block';
     }
@@ -112,7 +112,7 @@
     document.querySelector('.largeImg').addEventListener('click',function (e){
         let imgSrc = e.target
         imgSrc.src = '/img/'+imgList[i]
-        if(i<imgList.length){
+        if(i<imgList.length-1){
             i++
         }else{
             i=0

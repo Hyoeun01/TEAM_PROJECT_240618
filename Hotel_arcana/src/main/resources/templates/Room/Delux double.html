@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout.html}">
+      layout:decorate="~{/layout/layout.html}">
 <div id="container" layout:fragment="content">
     <link rel="stylesheet" href="/css/photo.css">
     <div class="container">
         <div class="photo-gallery">
             <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/프레지덴셜%20스위트룸.jpg " alt="Main Photo">
+                <img src="/img/디럭스 더블 시티뷰.jpg " alt="Main Photo">
             </div>
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/프레지덴셜%20스위트룸.jpg" alt="큰 이미지" class="largeImg">
+                <img src="/img/디럭스 더블 시티뷰.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
-                    <img src="/img/프레지덴셜%20스위트룸1.jpg" alt="Photo 1">
+                    <img src="/img/디럭스 더블 시티뷰2.jpg" alt="Photo 1">
                 </div>
                 <div class="photo">
-                    <img src="/img/프레지덴셜%20스위트룸2.jpg" alt="Photo 2">
+                    <img src="/img/디럭스 더블 시티뷰3.jpg" alt="Photo 2">
                 </div>
                 <div class="photo">
-                    <img src="/img/프레지덴셜%20스위트룸3.jpg" alt="Photo 3">
+                    <img src="/img/디럭스 더블 시티뷰4.jpg" alt="Photo 3">
                 </div>
                 <div class="photo">
-                    <img src="/img/프레지덴셜%20스위트룸4.jpg" alt="Photo 4">
+                    <img src="/img/디럭스 더블 시티뷰.jpg" alt="Photo 4" href="/img/트윈%20시티뷰.jpg">
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="info-right">
                 <div class="price section">
-                    <h3>프레지덴셜 스위트룸</h3>
+                    <h3>디럭스 더블 시티뷰</h3>
                     <p>150,000 원</p>
                     <p>보기 서비스: 35,000원</p>
                     <p>프리미엄 서비스: 50,000원</p>
@@ -100,7 +100,7 @@
 </div>
 <script layout:fragment="script" th:inline="javascript">
     let i = 0
-    let imgList = ['프레지덴셜%20스위트룸.jpg','프레지덴셜%20스위트룸1.jpg','프레지덴셜%20스위트룸2.jpg','프레지덴셜%20스위트룸3.jpg','프레지덴셜%20스위트룸4.jpg']
+    let imgList = ['디럭스 더블 시티뷰.jpg','디럭스 더블 시티뷰2.jpg','디럭스 더블 시티뷰3.jpg','디럭스 더블 시티뷰4.jpg']
     function showLargeImage() {
         document.getElementById('overlay').style.display = 'block';
     }
