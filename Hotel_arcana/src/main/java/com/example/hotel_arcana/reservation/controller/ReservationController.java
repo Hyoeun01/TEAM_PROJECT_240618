@@ -33,6 +33,12 @@ public class ReservationController {
     public void roomlist(){
     }
 
+    @GetMapping("/register")
+    public String goRegister() {
+        // 로직 처리
+        return "register"; // view 이름 반환
+    }
+
     @GetMapping("/register/{ROOM_NAME}")
     public String register(@PathVariable("ROOM_NAME") String roomName, Model model) {
         model.addAttribute("rooms", reservationService.getRooms());
