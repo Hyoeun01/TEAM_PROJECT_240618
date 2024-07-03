@@ -60,8 +60,8 @@
 
         if (confirm("예약을 취소하시겠습니까?")) {
             var RV_ID = [[${reservationDTO.RV_ID}]]
-            // 확인 버튼을 누르면 특정 링크로 이동합니다.
             window.location.href = "/reservation/remove/"+RV_ID;
+            alert("예약이 취소되었습니다.")
         }
     })
 </script>

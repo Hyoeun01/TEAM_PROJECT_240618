@@ -88,7 +88,7 @@ public class ReservationController {
     }
 
     @GetMapping("/modify")
-    public String modify( Long RV_ID, Model model) {
+    public String modify(Long RV_ID, Model model) {
 
         ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
@@ -107,7 +107,7 @@ public class ReservationController {
     }
 
     @PostMapping("/modify")
-    public String modify(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests,Model model) {
+    public String modify(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests,Model model, Long RV_ID) {
         int TOTAL_NUM = Integer.parseInt(guests);
 
         reservationDTO.setSTART_DATE(LocalDate.parse(inDates));  // inDates를 LocalDate로 변환
@@ -122,12 +122,11 @@ public class ReservationController {
 
         reservationService.modify(reservationDTO);
         reservationService.getOne(reservationDTO.getRV_ID());
-
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
-        redirectAttributes.addFlashAttribute("result", "modify success");
-
-        model.addAttribute("reservationInfo",reservationDTO);
+        model.addAttribute("reservationDTO", reservationDTO);
         model.addAttribute("roomDTO", roomDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modify success");
 
         return "redirect:/reservation/preview";
     }
