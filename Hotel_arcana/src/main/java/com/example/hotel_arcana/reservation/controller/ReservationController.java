@@ -74,12 +74,29 @@ public class ReservationController {
 
     }
 
-    @GetMapping({"/read","/modify"})
+    @GetMapping("/read")
     public String read(Long RV_ID, Model model) {
         ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
-        model.addAttribute("dto", reservationDTO);
+        RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
+        model.addAttribute("reservationDTO", reservationDTO);
+        model.addAttribute("roomDTO", roomDTO);
+        model.addAttribute("RV_ID",RV_ID);
 
         return "/reservation/read";
+    }
+
+    @GetMapping("/modify")
+    public String modify(Long RV_ID, Model model) {
+
+        ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
+        RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
+        List<RoomDTO> room =  reservationService.getRoomInfo();
+
+        model.addAttribute("reservationDTO", reservationDTO);
+        model.addAttribute("roomDTO", roomDTO);
+        model.addAttribute("rooms", room);
+
+        return "/reservation/modify";
     }
 
     @PostMapping("/remove")
