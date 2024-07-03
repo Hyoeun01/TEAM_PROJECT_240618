@@ -29,32 +29,16 @@ public class ReviewController {
         return "review/list";
     }
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public Optional<ReviewDTO> getReviewById(@PathVariable Long id) {
-        return reviewService.getReviewById(id);
-    }
-
-//    @PostMapping
-//    public String addReview(@RequestBody ReviewDTO reviewDTO) {
-//        reviewService.addReview(reviewDTO);
-//        return "redirect:/review/list";
+//    @GetMapping("/{id}")
+//    @ResponseBody
+//    public Optional<ReviewDTO> getReviewById(@PathVariable Long id) {
+//        return reviewService.getReviewById(id);
 //    }
 
     @PostMapping
     @ResponseBody
-    public Map<String, Object> addReview(@RequestBody ReviewDTO reviewDTO) {
-        Map<String, Object> response = new HashMap<>();
-        try {
-            Long reviewId = reviewService.addReview(reviewDTO);
-            reviewDTO.setRE_ID(reviewId);
-            response.put("success", true);
-            response.put("review", reviewDTO);
-        } catch (Exception e) {
-            response.put("success", false);
-            response.put("error", e.getMessage());
-        }
-        return response;
+    public String addReview(ReviewDTO reviewDTO) {
+        Long RE_ID = reviewDTO.
     }
 
     @PutMapping("/{id}")

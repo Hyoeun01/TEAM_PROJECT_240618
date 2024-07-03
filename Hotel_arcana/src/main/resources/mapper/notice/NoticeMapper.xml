@@ -45,21 +45,21 @@
     <select id="NoticePage" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
         SELECT * FROM hotel_notice
         <where>
-            <if test="type == 't'">
+            <if test='type!=null and "t".equals(type)'>
                 <!-- 검색조건이 title이라면 -->
-                N_TITLE LIKE '%' || #{keyword} || '%'
+                N_TITLE LIKE CONCAT('%' , #{keyword} , '%')
             </if>
-            <if test="type == 'c'">
+            <if test='type!=null and "c".equals(type)'>
                 <!-- 검색조건이 content이라면 -->
-                N_CONTENT LIKE '%' || #{keyword} || '%'
+                N_CONTENT LIKE CONCAT('%' , #{keyword} , '%')
             </if>
-            <if test="type == 'w'">
+            <if test='type!=null and "w".equals(type)'>
                 <!-- 검색조건이 writer이라면 -->
-                N_WRITER LIKE '%' || #{keyword} || '%'
+                N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
             </if>
-            <if test="type == 'tc'">
+            <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->
-                (N_TITLE LIKE '%' || #{keyword} || '%' OR N_CONTENT LIKE '%' || #{keyword} || '%')
+                (N_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR N_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
             </if>
         </where>
         ORDER BY N_NO DESC LIMIT #{offset}, #{size}
@@ -69,21 +69,21 @@
     <select id="NoticeCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM hotel_notice
         <where>
-            <if test="type == 't'">
+            <if test='type!=null and "t".equals(type)'>
                 <!-- 검색조건이 title이라면 -->
-                N_TITLE LIKE '%' || #{keyword} || '%'
+                N_TITLE LIKE CONCAT('%' , #{keyword} , '%')
             </if>
-            <if test="type == 'c'">
+            <if test='type!=null and "c".equals(type)'>
                 <!-- 검색조건이 content이라면 -->
-                N_CONTENT LIKE '%' || #{keyword} || '%'
+                N_CONTENT LIKE CONCAT('%' , #{keyword} , '%')
             </if>
-            <if test="type == 'w'">
+            <if test='type!=null and "w".equals(type)'>
                 <!-- 검색조건이 writer이라면 -->
-                N_WRITER LIKE '%' || #{keyword} || '%'
+                N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
             </if>
-            <if test="type == 'tc'">
+            <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->
-                (N_TITLE LIKE '%' || #{keyword} || '%' OR N_CONTENT LIKE '%' || #{keyword} || '%')
+                (N_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR N_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
             </if>
         </where>
     </select>
