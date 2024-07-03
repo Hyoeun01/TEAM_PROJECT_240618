@@ -100,8 +100,8 @@ public class ReservationController {
         return "/reservation/modify";
     }
 
-    @PostMapping("/remove")
-    public String remove(Long RV_ID, RedirectAttributes redirectAttributes){
+    @GetMapping("/remove/{RV_ID}")
+    public String remove(Long RV_ID){
         reservationService.remove(RV_ID);
         return "redirect:/reservation/list";
     }

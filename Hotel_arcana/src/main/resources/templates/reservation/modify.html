@@ -71,7 +71,7 @@
                     </div>
                     <span class="ROOM_PRICE">
                     <p>체크인 15:00 ~ 체크아웃 12:00</p>
-                    <p><strong class="cost">여기다가 가격나오게 해주세요 : 원/1박</strong></p>
+                    <p><strong class="cost"> 가격이 왜 안나올까요? </strong></p>
                 </span>
                     <span>
                     <span>호실 선택하기</span>
@@ -126,17 +126,17 @@
                 let line =`<option value="">선택하세요</option>`
 
                 for(let j=0 ; j<data.length ; j++){
-
                     line += `<option value="${data[j].room_ID}">${data[j].room_ID + '호'}</option>`
                 }
-                console.log(line)
+
                 roomnumber.innerHTML = line
 
                 let cost = document.querySelector(".cost")
+                console.log(cost)
                 cost.text=`${data[0].room_PRICE}원/1박`
-                // let line = <option th:value="${room.ROOM_ID}" th:text="${room.ROOM_ID + '호'}"></option>
+
             })
-            // document.querySelector("form").submit();
+
         }, false);
     }
 

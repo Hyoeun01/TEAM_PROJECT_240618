@@ -21,7 +21,7 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card mb-4 rounded-3 shadow-sm card-custom">
                 <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">예약이 거의 끝났습니다!</h4>
+                    <h4 class="my-0 fw-normal">내용을 확인해 주세요!</h4>
                 </div>
                 <div class="card-body">
                     <h2 class="card-title pricing-card-title">[[${roomDTO.ROOM_NAME}]]</h2>
@@ -32,11 +32,15 @@
                         <li>인원 : [[${reservationInfo.TOTAL_NUM}]]</li>
                     </ul>
                     <h1 class="card-title pricing-card-title">[[${roomDTO.ROOM_PRICE}]]<small class="text-body-secondary fw-light">/얼마</small></h1>
-                    <div>
-                    <span><button type="button" class="w-100 btn btn-lg btn-outline-secondary"
-                    >뒤로가기</button></span>
-                    <span><button type="button" class="w-100 btn btn-lg btn-outline-primary"
-                            >예약하기</button></span>
+                    <div class="row">
+
+                        <div class="col">
+                            <a type="button" class="w-100 btn btn-lg btn-outline-secondary backBtn" th:href="@{/reservation/roomchoice}"
+                            >뒤로</a>
+                        </div>
+                        <div class="col">
+                            <a type="button" class="w-100 btn btn-lg btn-outline-primary certainBtn">확정</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,5 +48,17 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    document.querySelector(".certainBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        if (confirm("예약이 완료되었습니다. 메인화면으로 이동합니다.")) {
+            // 확인 버튼을 누르면 특정 링크로 이동합니다.
+            window.location.href = "/reservation/list";
+        }
+    })
+
+</script>
 </body>
 </html>

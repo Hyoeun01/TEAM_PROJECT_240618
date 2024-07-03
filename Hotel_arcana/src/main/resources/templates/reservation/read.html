@@ -7,9 +7,10 @@
     <style>
         .centered-container {
             height: 100vh; /* Viewport Height */
+            width: 1200px;
         }
         .card-custom {
-            max-width: 500px; /* Adjust the max width as needed */
+            max-width: 1200px; /* Adjust the max width as needed */
             width: 100%;
             text-align: center;
         }
@@ -31,11 +32,20 @@
                         <li>인원 : [[${reservationDTO.TOTAL_NUM}]]</li>
                     </ul>
                     <h1 class="card-title pricing-card-title">[[${roomDTO.ROOM_PRICE}]]<small class="text-body-secondary fw-light">/n박</small></h1>
-                    <div>
-                    <span><a type="button" class="w-100 btn btn-lg btn-outline-primary modBtn" th:href="@{/reservation/modify(RV_ID=${RV_ID})}"
-                    >변경하기</a></span>
-                        <span><button type="button" class="w-100 btn btn-lg btn-outline-danger clearBtn"
-                        >취소하기</button></span>
+                    <div class="row">
+
+                        <div class="col">
+                            <a type="button" class="w-100 btn btn-lg btn-outline-secondary modBtn" th:href="@{/reservation/list}"
+                            >목록</a>
+                        </div>
+                        <div class="col">
+                            <a type="button" class="w-100 btn btn-lg btn-outline-primary modBtn" th:href="@{/reservation/modify(RV_ID=${RV_ID})}"
+                            >변경</a>
+                        </div>
+                    <div class="col">
+                        <a type="button" class="w-100 btn btn-lg btn-outline-danger clearBtn">취소</a>
+                    </div>
+
                     </div>
                 </div>
             </div>
@@ -43,6 +53,18 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script th:inline="javascript">
+    document.querySelector(".clearBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        if (confirm("예약을 취소하시겠습니까?")) {
+            var RV_ID = [[${reservationDTO.RV_ID}]]
+            // 확인 버튼을 누르면 특정 링크로 이동합니다.
+            window.location.href = "/reservation/remove/"+RV_ID;
+        }
+    })
+</script>
 
 </body>
 </html>
