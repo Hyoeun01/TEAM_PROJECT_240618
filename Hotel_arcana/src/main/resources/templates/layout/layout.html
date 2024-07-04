@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -36,9 +37,12 @@
             Dropdown button
         </button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Login</a></li>
-            <li><a class="dropdown-item" href="#">#</a></li>
-            <li><a class="dropdown-item" href="#">#</a></li>
+            <li id="login-menu" class="menu-item">
+                <a sec:authorize="isAnonymous()" href="/login">로그인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="isAuthenticated()" href="/logout">로그아웃</a>
+            </li>
         </ul>
     </div>
 </header>
