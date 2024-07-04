@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content img {
+    height: 50px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.host-button {
+    padding: 10px 20px;
+    background-color: #f60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.help-center button {
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.hero-section {
+    position: relative;
+}
+
+.hero-section img {
+    width: 100%;
+    height: auto;
+}
+
+.search-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input, .search-bar button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.you-die {
+    padding: 20px;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.room {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.room img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.room p {
+    margin: 10px 0 0 0;
+}

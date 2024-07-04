@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/css/manage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="sidebar">
+    <div class="logo">
+        <img src="/img/arcana.png" alt="Hotel Logo">
+    </div>
+        <ul>
+            <li><a th:href="@{/manager/manage}">홈페이지관리</a></li>
+            <li><a th:href="@{/manager/manageUser}">회원관리</a></li>
+            <li><a th:href="@{/manager/manageResv}">예약관리</a></li>
+            <li><a href="#">방관리</a></li>
+            <li><a href="#">문의사항</a></li>
+            <li><a href="#">Q&A관리</a></li>
+            <li><a href="#">리뷰관리</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <nav class="navbar">
+            <a href="#" class="logout">Logout</a>
+        </nav>
+        <div class="header">
+            <h1>USER1 예약관리 페이지</h1>
+        </div>
+        <div class="content">
+            <h2>USER1 예약관리</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">RV_ID: RV1</h5>
+                            <p class="card-text">시작일: 2024/06/02</p>
+                            <p class="card-text">종료일: 2024/06/07</p>
+                            <a href="#" class="btn btn-primary">상세보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">RV_ID: RV2</h5>
+                            <p class="card-text">시작일: 2024/06/02</p>
+                            <p class="card-text">종료일: 2024/06/07</p>
+                            <a href="#" class="btn btn-primary">상세보기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 회원 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">RV_ID: RV3</h5>
+                            <p class="card-text">시작일: 2024/06/02</p>
+                            <p class="card-text">종료일: 2024/06/07</p>
+                            <a href="#" class="btn btn-primary">상세보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

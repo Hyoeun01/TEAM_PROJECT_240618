@@ -1,0 +1,42 @@
+.aws{
+    background-color: #EAE4DD;
+    height: 100%;
+}
+
+.nav-pills {
+    --bs-nav-pills-border-radius: var(--bs-border-radius);
+    --bs-nav-pills-link-active-color: #fff;
+    --bs-nav-pills-link-active-bg: #746760;
+}
+
+.container-fluid.asd {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: -25px;
+}
+
+.sidebar {
+    flex: 0 0 280px;
+    /* Sidebar 고정 너비 */
+
+}
+
+.content {
+    flex: 1;
+    /* 남은 공간을 모두 차지 */
+    padding-left: 20px; /* Adjust the padding as needed */
+}
+
+.custom-card {
+    margin: 15px; /* Space from the sidebar */
+    width: 1160px;
+}
+
+.card-body {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.container.mt-3 {
+    margin-top: 20px;
+}

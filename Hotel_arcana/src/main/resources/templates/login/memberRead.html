@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
+      layout:decorate="~{/layout.html}">
+<div id="container" layout:fragment="content">
+    <link rel="stylesheet" href="/css/member.css">
+    <form action="/login/memberRead/{USER_ID}" method="post" class="container-fluid asd">
+        <div class="row">
+            <div class="col-md-3 sidebar">
+                <div class="d-flex flex-column flex-shrink-0 p-3 aws" style="width: 280px;">
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a th:href="@{/login/memberRead/{USER_ID}(USER_ID=${memberDTO.USER_ID})}" class="nav-link active" aria-current="page">
+                                <svg class="bi pe-none me-2 hi" width="16" height="16"><use xlink:href="/login/memberRead/"/></svg>
+                                마이페이지
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#"/></svg>
+                                예약 내역 조회
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/login/memberModify/{USER_ID}(USER_ID=${memberDTO.USER_ID})}" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="/login/memberModify/"/></svg>
+                                회원정보 수정
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/login/memberRemove/{USER_ID}(USER_ID=${memberDTO.USER_ID})}" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="/login/memberRemove/"/></svg>
+                                회원 탈퇴
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 content">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h3 class="card-title">마이페이지</h3>
+                        <div class="container mt-3">
+                            <div th:if="${memberDTO != null}">
+                                <h6>아이디: <span th:text="${memberDTO.USER_ID}"></span></h6>
+                                <hr>
+                                <h6>이름: <span th:text="${memberDTO.USER_NM}"></span></h6>
+                                <hr>
+                                <h6>주소: <span th:text="${memberDTO.USER_ADR}"></span></h6>
+                                <hr>
+                                <h6>이메일: <span th:text="${memberDTO.USER_EML}"></span></h6>
+                                <hr>
+                                <h6>전화번호: <span th:text="${memberDTO.USER_TEL}"></span></h6>
+                                <hr>
+                                <h6>닉네임: <span th:text="${memberDTO.USER_NIK}"></span></h6>
+                            </div>
+                            <div th:if="${memberDTO == null}">
+                                <h5>Member not found.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script layout:fragment="script" th:inline="javascript">
+
+</script>
+</html>
