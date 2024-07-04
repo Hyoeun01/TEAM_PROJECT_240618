@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>예약목록</title>
 </head>
 <body>
 <h1>예약목록</h1>
 
-<table>
+<table class="table">
     <thead>
     <tr>
-        <th></th>
-        <th>체크인날짜</th>
-        <th>체크아웃날짜</th>
-        <th>인원수</th>
-        <th>방번호</th>
-        <th>예약변경</th>
-        <th>리뷰쓰기</th>
+        <th scope="col"></th>
+        <th scope="col">체크인날짜</th>
+        <th scope="col">체크아웃날짜</th>
+        <th scope="col">인원수</th>
+        <th scope="col">방번호</th>
+        <th scope="col">예약변경</th>
+        <th scope="col">리뷰쓰기</th>
     </tr>
     </thead>
     <tbody>
@@ -25,10 +27,14 @@
         <td th:text="${reservation.END_DATE}">체크아웃 날짜</td>
         <td th:text="${reservation.TOTAL_NUM}">인원수</td>
         <td th:text="${reservation.RV_ROOM_NUMBER}">방번호</td>
-        <td><a type="button" class="w-100 btn btn-lg btn-outline-primary" th:href="@{/reservation/read(RV_ID=${reservation.RV_ID})}">예약변경</a></td>
+        <td><a type="button" class="w-30 btn btn-lg btn-outline-primary" th:href="@{/reservation/read(RV_ID=${reservation.RV_ID})}">예약변경</a></td>
         <td><button type="button">리뷰쓰기</button></td>
     </tr>
     </tbody>
 </table>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </html>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 
@@ -68,8 +70,14 @@ public class ReservationController {
 
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
 
+        Long diff = ChronoUnit.DAYS.between(reservationDTO.getSTART_DATE(), reservationDTO.getEND_DATE());
+        Long cost = roomDTO.getROOM_PRICE() * diff;
+        model.addAttribute("diff", diff);
+        model.addAttribute("cost", cost);
+
         model.addAttribute("reservationInfo",reservationDTO);
         model.addAttribute("roomDTO", roomDTO);
+
         return "/reservation/preview";
     }
 
@@ -83,6 +91,7 @@ public class ReservationController {
         reservationDTO.setEND_DATE(LocalDate.parse(outDates));// outDates를 LocalDate로 변환
         reservationDTO.setTOTAL_NUM(TOTAL_NUM);
 
+
         if (bindingResult.hasErrors()) {
             log.info("에러발생");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
@@ -94,6 +103,8 @@ public class ReservationController {
 //        redirectAttributes.addFlashAttribute("result", RV_ID);
         model.addAttribute("reservationInfo",reservationDTO);
         model.addAttribute("roomDTO", roomDTO);
+
+
         return "/reservation/preview";
     }
 

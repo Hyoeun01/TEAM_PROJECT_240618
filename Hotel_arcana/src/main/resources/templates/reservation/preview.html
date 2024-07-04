@@ -31,7 +31,8 @@
 <!--                        <li>체크아웃날짜-체크인날짜(1박)으로 표시</li>-->
                         <li>인원 : [[${reservationInfo.TOTAL_NUM}]]</li>
                     </ul>
-                    <h1 class="card-title pricing-card-title">[[${roomDTO.ROOM_PRICE}]]<small class="text-body-secondary fw-light">/2박</small></h1>
+                    <h1 class="card-title pricing-card-title">[[${#numbers.formatInteger(cost,3,'COMMA')+'원'}]]
+                        <small class="text-body-secondary fw-light">/ [[${diff}]]박</small></h1>
                     <div class="row">
 
                         <div class="col">
@@ -57,7 +58,11 @@
 
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 <script>
+
     document.querySelector(".certainBtn").addEventListener("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
@@ -69,7 +74,6 @@
             alert("메인화면으로 이동합니다.")
         }
     })
-
 
 </script>
 </body>
