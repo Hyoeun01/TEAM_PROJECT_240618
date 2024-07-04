@@ -133,6 +133,10 @@ public class ReservationController {
     public String read(Long RV_ID, Model model) {
         ReservationDTO reservationDTO = reservationService.getOne(RV_ID);
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
+        Long diff = ChronoUnit.DAYS.between(reservationDTO.getSTART_DATE(), reservationDTO.getEND_DATE());
+        Long cost = roomDTO.getROOM_PRICE() * diff;
+        model.addAttribute("diff", diff);
+        model.addAttribute("cost", cost);
         model.addAttribute("reservationDTO", reservationDTO);
         model.addAttribute("roomDTO", roomDTO);
         model.addAttribute("RV_ID",RV_ID);

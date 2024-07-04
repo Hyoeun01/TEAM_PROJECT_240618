@@ -31,7 +31,7 @@
                         <li>체크아웃 : [[${reservationDTO.END_DATE}]]</li>
                         <li>인원 : [[${reservationDTO.TOTAL_NUM}]]</li>
                     </ul>
-                    <h1 class="card-title pricing-card-title">[[${roomDTO.ROOM_PRICE}]]<small class="text-body-secondary fw-light">/n박</small></h1>
+                    <h1 class="card-title pricing-card-title">[[${#numbers.formatInteger(cost,3,'COMMA')+'원'}]]<small class="text-body-secondary fw-light">/ [[${diff}]]박</small></h1>
                     <div class="row">
 
                         <div class="col">
