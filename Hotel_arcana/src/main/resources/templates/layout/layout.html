@@ -22,10 +22,10 @@
     </div>
         <div class="container text-center">
             <div class="row">
-                <a class="col header_text" href="#">공지사항</a>
-                <a class="col header_text" href="#">예약하기</a>
-                <a class="col header_text" href="#">QnA</a>
-                <a class="col header_text" href="#">리뷰</a>
+                <a class="col header_text" href="/notice/list">공지사항</a>
+                <a class="col header_text" href="/reservation/roomchoice">예약하기</a>
+                <a class="col header_text" href="/QNA/register">QnA</a>
+                <a class="col header_text" href="/review/list">리뷰</a>
             </div>
         </div>
     <div class="dropdown" style="margin-left: 90px">
@@ -39,7 +39,7 @@
             <li class="nav-item">
                 <a class="nav-link" sec:authorize="isAuthenticated()" href="/logout">로그아웃</a>
             </li>
-            <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/login/memberRead/">마이페이지</a></li>
+            <li><a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/login/memberRead/{USER_ID}(USER_ID=${memberDTO.USER_ID})}">마이페이지</a></li>
         </ul>
     </div>
 </header>
@@ -51,9 +51,9 @@
     </div>
     <div class="footer-box">
         <a class="notice_footer" href="#">SubService</a>
-        <a class="footer-text2" href="#">Notice</a>
-        <a class="footer-text2" href="#">Reservation</a>
-        <a class="footer-text2" href="#">Review</a>
+        <a class="footer-text2" href="/notice/list">Notice</a>
+        <a class="footer-text2" href="/reservation/roomchoice">Reservation</a>
+        <a class="footer-text2" href="/review/list">Review</a>
     </div>
     <div class="footer-box">
         <a class="notice_footer">제작자 연락처</a>
