@@ -133,5 +133,11 @@ public class MemberController {
         model.addAttribute("members", members);
     }
 
+    @GetMapping("/manager/manageUser")
+    public String manageUserPage(Model model) {
+        List<MemberDTO> members = memberService.getAllMembers();
+        model.addAttribute("members", members);
+        return "manager/manageUser";
+    }
 }
 
