@@ -2,10 +2,7 @@ package com.example.hotel_arcana.login.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.apache.ibatis.mapping.FetchType;
 
-import java.util.HashSet;
-import java.util.Set;
 
 @Builder
 @Data
@@ -29,12 +26,9 @@ public class MemberDTO {
     private String USER_NIK;
     private String USER_AUTH;
 
-       public boolean isEmpty() {
-       if (this.USER_ID.isEmpty()){
-           return true;
-       }else {
-           return false;
-       }
+    public boolean isEmpty() {
+        return this.USER_ID.isEmpty();
+
     }
 
 }

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/css/manage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="sidebar">
+    <div class="logo">
+        <img src="/img/arcana.png" alt="Hotel Logo">
+    </div>
+        <ul>
+            <li><a href="manageUser.html">회원관리</a></li>
+            <li><a href="manage.html">홈페이지관리</a></li>
+            <li><a href="manageResv.html" class="active">예약관리</a></li>
+            <li><a href="#">방관리</a></li>
+            <li><a href="#">문의사항</a></li>
+            <li><a href="#">Q&A관리</a></li>
+            <li><a href="#">리뷰관리</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <nav class="navbar">
+            <a href="#" class="logout">Logout</a>
+        </nav>
+        <div class="content">
+            <h2>예약관리</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">RV_ID: RV1</h5>
+                            <p class="card-text">시작일: 2024/06/02</p>
+                            <p class="card-text">종료일: 2024/06/07</p>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#resvModal1">
+                                상세보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">RV_ID: RV2</h5>
+                            <p class="card-text">시작일: 2024/06/02</p>
+                            <p class="card-text">종료일: 2024/06/07</p>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#resvModal2">
+                                상세보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">RV_ID: RV3</h5>
+                            <p class="card-text">시작일: 2024/06/02</p>
+                            <p class="card-text">종료일: 2024/06/07</p>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#resvModal3">
+                                상세보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 -->
+    <div class="modal fade" id="resvModal1" tabindex="-1" role="dialog" aria-labelledby="resvModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resvModalLabel1">예약 상세 정보</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>예약 ID:</strong> RV1</p>
+                    <p><strong>시작일:</strong> 2024/06/02</p>
+                    <p><strong>종료일:</strong> 2024/06/07</p>
+                    <p><strong>예약자 ID:</strong> user1</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">수정</button>
+                    <button type="button" class="btn btn-danger">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resvModal2" tabindex="-1" role="dialog" aria-labelledby="resvModalLabel2"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resvModalLabel2">예약 상세 정보</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>예약 ID:</strong> RV2</p>
+                    <p><strong>시작일:</strong> 2024/06/02</p>
+                    <p><strong>종료일:</strong> 2024/06/07</p>
+                    <p><strong>예약자 ID:</strong> user2</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">수정</button>
+                    <button type="button" class="btn btn-danger">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resvModal3" tabindex="-1" role="dialog" aria-labelledby="resvModalLabel3"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resvModalLabel3">예약 상세 정보</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>예약 ID:</strong> RV3</p>
+                    <p><strong>시작일:</strong> 2024/06/02</p>
+                    <p><strong>종료일:</strong> 2024/06/07</p>
+                    <p><strong>예약자 ID:</strong> user3</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">수정</button>
+                    <button type="button" class="btn btn-danger">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
