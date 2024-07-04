@@ -7,35 +7,28 @@
     <div class="container">
         <div class="photo-gallery">
             <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/SUPERIOR1.jpg " alt="Main Photo">
+                <img src="/img/VIP2.jpg " alt="Main Photo">
             </div>
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/SUPERIOR1.jpg" alt="큰 이미지" class="largeImg">
+                <img src="/img/VIP2.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
-                    <img src="/img/SUPERIOR2.jpg" alt="Photo 1">
+                    <img src="/img/VIP3.jpg" alt="Photo 1">
                 </div>
                 <div class="photo">
-                    <img src="/img/SUPERIOR3.jpg" alt="Photo 2">
+                    <img src="/img/VIP4.jpg" alt="Photo 2">
                 </div>
                 <div class="photo">
-                    <img src="/img/SUPERIOR4.jpg" alt="Photo 3">
+                    <img src="/img/VIP5.jpg" alt="Photo 3">
                 </div>
                 <div class="photo">
-                    <img src="/img/SUPERIOR5.jpg" alt="Photo 4" href="/img/트윈%20시티뷰.jpg">
+                    <img src="/img/VIP6.jpg" alt="Photo 4">
                 </div>
             </div>
         </div>
         <div class="property-info">
             <div class="info-left">
-<!--                <div class="listed-by section">-->
-<!--                    <div class="host-photo"></div>-->
-<!--                    <div class="host-info">-->
-<!--                        <p>등록자: 양호동</p>-->
-<!--                        <p>가격: 150,000 원</p>-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class  ="amenities section">
                     <h3>제공되는 편의 시설</h3>
                     <ul>
@@ -59,9 +52,9 @@
             </div>
             <div class="info-right">
                 <div class="price section">
-                    <h3>SUPERIOR</h3>
-                    <p>2인 기준/최대 4인</p>
-                    <p>250,000원/1박</p>
+                    <h3>VIP</h3>
+                    <p>2인 기준/최대 8인</p>
+                    <p>300,000원/1박</p>
                     <button class="reserve-button">예약하기</button>
                     <div class="contact-options">
                         <button>숙소 문의</button>
@@ -69,29 +62,7 @@
                 </div>
                 <div class="reviews section">
                     <h3>후기</h3>
-<!--                    <div class="ratings">-->
-<!--                        <div class="rating">-->
-<!--                            <span>편의 시설</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>의사소통</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>가격 대비 가치</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>위생</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                        <div class="rating">-->
-<!--                            <span>숙소 위치</span>-->
-<!--                            <span>5.0</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <button class="show-reviews-button">후기 10개 모두 보기</button>
+                    <button class="show-reviews-button" href="/review/list">후기 모두 보기</button>
                 </div>
             </div>
         </div>
@@ -99,7 +70,7 @@
 </div>
 <script layout:fragment="script" th:inline="javascript">
     let i = 0
-    let imgList = ['SUPERIOR1.jpg','SUPERIOR2.jpg','SUPERIOR3.jpg','SUPERIOR4.jpg','SUPERIOR5.jpg']
+    let imgList = ['VIP2.jpg','VIP3.jpg','VIP4.jpg','VIP5.jpg','VIP6.jpg']
     function showLargeImage() {
         document.getElementById('overlay').style.display = 'block';
     }
@@ -123,5 +94,13 @@
             overlay.style.display ='none';
         }
     });
+
+
+    // const myModal = document.getElementById('myModal')
+    // const myInput = document.getElementById('myInput')
+    //
+    // myModal.addEventListener('shown.bs.modal', () => {
+    //     myInput.focus()
+    // })
 </script>
 </html>

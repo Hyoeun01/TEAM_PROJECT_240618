@@ -15,6 +15,7 @@ public class TestController {
     }
     @GetMapping("/room/DELUXE")
     public String room2() {
+
         return "/ROOM/DELUXE";
     }
     @GetMapping("/room/VVIP")
