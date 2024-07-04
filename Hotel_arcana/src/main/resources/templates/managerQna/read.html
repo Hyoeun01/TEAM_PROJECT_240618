@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>QnA</title>
@@ -44,55 +44,21 @@
                     <textarea class="form-control" id="content" name="Q_CONTENT" readonly rows="10">[[${managerQna.Q_CONTENT}]]</textarea>
                 </div>
             </div>
-            <picture>
-                <source srcset="..." type="image/svg+xml">
-                <img alt="..." class="img-fluid img-thumbnail" src="...">
-            </picture>
+            <div class="review-content">
+            <img alt="리뷰 이미지" class="review-img" th:if="${managerQna.Q_IMG}"
+                 th:src="'/image/'+${managerQna.Q_IMG}">
+            </div>
+
+<!--            <picture>-->
+<!--                <source srcset="..." type="image/svg+xml">-->
+<!--                <img alt="리뷰 이미지" class="img-fluid img-thumbnail" src="...">-->
+<!--            </picture>-->
         </div>
-
-        <!--        <div class="row g-3 align-items-center">-->
-        <!--            <div class="col-auto">-->
-        <!--                <label class="col-form-label" for="email">이메일</label>-->
-        <!--            </div>-->
-        <!--            <div class="col-auto">-->
-        <!--                <input class="form-control" id="email" name="Q_MAIL" readonly th:value="${managerQna.Q_MAIL}"-->
-        <!--                       type="text">-->
-        <!--            </div>-->
-        <!--        </div>-->
-
-        <!--        <div class="row g-3 align-items-center">-->
-        <!--            <div class="col-auto">-->
-        <!--                <label class="col-form-label" for="content">내용</label>-->
-        <!--            </div>-->
-        <!--            <div class="col-auto">-->
-        <!--                <textarea class="form-control" id="content" name="Q_CONTENT" readonly rows="5">[[${managerQna.Q_CONTENT}]]</textarea>-->
-        <!--            </div>-->
-        <!--        </div>-->
-
-
-
-
-        <!--    <div>-->
-        <!--        <label>번호</label>-->
-        <!--        <input name="Q_NO" readonly th:value="${managerQna.Q_NO}" type="text"><br>-->
-        <!--    </div>-->
-        <!--    <div>-->
-        <!--            <label>문의유형</label>-->
-        <!--            <input name="Q_BOX" readonly th:value="${managerQna.Q_BOX}" type="text">-->
-        <!--    </div>-->
-        <!--    <div>-->
-        <!--        <label>제목</label>-->
-        <!--        <input name="Q_MAIL" readonly th:value="${managerQna.Q_MAIL}" type="text">-->
-        <!--    </div>-->
-        <!--    <div>-->
-        <!--        <label>내용</label>-->
-        <!--        <textarea name="Q_CONTENT" readonly rows="5">[[${managerQna.Q_CONTENT}]]</textarea>-->
-        <!--    </div>-->
 
         <div>
             <a class="btn btn-outline-secondary" href="/managerQna/list">목록</a>
-            <a class="btn btn-outline-secondary" th:href="@{/managerQna/modify(Q_NO=${managerQna.Q_NO})}">수정</a>
-            <button id="removeBtn" type="button">삭제</button>
+<!--            <a class="btn btn-outline-success" th:href="@{/managerQna/modify(Q_NO=${managerQna.Q_NO})}">수정</a>-->
+            <button id="removeBtn" type="button" class="btn btn-outline-danger">삭제</button>
         </div>
     </form>
 </div>

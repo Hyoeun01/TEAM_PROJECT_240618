@@ -13,12 +13,11 @@ public class MemberQnaServiceImpl implements MemberQnaService {
 
     private final MemberQnaMapper memberQnaMapper;
 
-
     @Override
     public Long register(MemberQnaDTO memberQnaDTO) {
         log.info("Register memberQnaDTO: " + memberQnaDTO);
-//        Long Q_NO = memberQnaMapper.insert(memberQnaDTO);
         memberQnaMapper.insert(memberQnaDTO);
-        return 1L;
+//        return 1L;
+        return memberQnaDTO.getQ_NO();
     }
 }

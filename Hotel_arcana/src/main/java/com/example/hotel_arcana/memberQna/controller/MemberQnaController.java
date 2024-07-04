@@ -17,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/memberQna")
@@ -47,17 +49,50 @@ public class MemberQnaController {
             return "redirect:/memberQna/register";
         }
 
-//        if (bindingResult.hasErrors()) {
-//            bindingResult.getAllErrors().forEach(error -> log.error("Validation error: {}", error.getDefaultMessage()));
-//            log.info("에러발생");
-//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-//            return "/register";
-//        }
+        // 이미지 DB에 저장
+        memberQnaDTO.setQ_IMG(file.getOriginalFilename());
 
         Long Q_NO = memberQnaService.register(memberQnaDTO);
         redirectAttributes.addFlashAttribute("result", Q_NO);
 
         return "redirect:/managerQna/list";
     }
+
+//    @PreAuthorize("principal.username == #MemberQnaDTO.Q_USER_ID")
+//@PostMapping("/register")
+//public String postQna(@Valid MemberQnaDTO memberQnaDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, List<MultipartFile> files) throws IOException {
+//
+//    final List<MemberQnaDTO> list = new ArrayList<>();
+//
+//    if (bindingResult.hasErrors()) {
+//        redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+//        return "redirect:/memberQna/register";
+//    }
+//
+//    List<String> fileNames = new ArrayList<>();
+//    for (MultipartFile file : files) {
+//        if (!file.isEmpty()) {
+//            // 파일 정보 로그 출력
+//            log.info(file.getOriginalFilename());
+//            log.info(file.getSize());
+//            log.info(file.getContentType());
+//
+//            // 파일 저장
+//            String savePath = "c://files//" + file.getOriginalFilename();
+//            file.transferTo(new File(savePath));
+//
+//            // 파일 이름 저장
+//            fileNames.add(file.getOriginalFilename());
+//        }
+//    }
+//
+//    // 여러 이미지 파일 이름을 DTO에 저장 (예: 파일 이름들을 콤마로 구분된 문자열로 저장)
+//    memberQnaDTO.setQ_IMG(String.join(",", fileNames));
+//
+//    Long Q_NO = memberQnaService.register(memberQnaDTO);
+//    redirectAttributes.addFlashAttribute("result", Q_NO);
+//
+//    return "redirect:/managerQna/list";
+//}
 
 }
