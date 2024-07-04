@@ -63,7 +63,7 @@
 
                     <span class="ROOM_PRICE">
                     <p>체크인 15:00 ~ 체크아웃 12:00</p>
-                    <p><strong>원/1박</strong></p>
+                    <p><strong th:text="${#numbers.formatInteger(rooms[0].ROOM_PRICE,3,'COMMA')+'원/1박'}"></strong></p>
                 </span>
                     <span>
                     <span>호실 선택하기</span>

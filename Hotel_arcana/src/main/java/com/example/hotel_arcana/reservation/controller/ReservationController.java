@@ -47,6 +47,8 @@ public class ReservationController {
         return "/reservation/register";
     }
 
+
+
     @PostMapping("/register/{ROOM_NAME}")
     public String register(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
     , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests, @PathVariable("ROOM_NAME") String roomName , Model model){
@@ -60,20 +62,60 @@ public class ReservationController {
         if (bindingResult.hasErrors()) {
             log.info("에러발생");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-            return "/register";
+            return "/reservation/roomchoice";
         }
         log.info(reservationDTO);
-        Long RV_ID = reservationService.register(reservationDTO);
+
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
-        redirectAttributes.addFlashAttribute("result", RV_ID);
+
         model.addAttribute("reservationInfo",reservationDTO);
         model.addAttribute("roomDTO", roomDTO);
         return "/reservation/preview";
     }
 
     @GetMapping("/preview")
-    public void preview(){
+    public String preview(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
+            , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests, @PathVariable("ROOM_NAME") String roomName , Model model){
 
+        int TOTAL_NUM = Integer.parseInt(guests);
+
+        reservationDTO.setSTART_DATE(LocalDate.parse(inDates));  // inDates를 LocalDate로 변환
+        reservationDTO.setEND_DATE(LocalDate.parse(outDates));// outDates를 LocalDate로 변환
+        reservationDTO.setTOTAL_NUM(TOTAL_NUM);
+
+        if (bindingResult.hasErrors()) {
+            log.info("에러발생");
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+            return "/reservation/roomchoice";
+        }
+        log.info(reservationDTO);
+//        Long RV_ID = reservationService.register(reservationDTO);
+        RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
+//        redirectAttributes.addFlashAttribute("result", RV_ID);
+        model.addAttribute("reservationInfo",reservationDTO);
+        model.addAttribute("roomDTO", roomDTO);
+        return "/reservation/preview";
+    }
+
+    @PostMapping("/preview")
+    public String previewPost(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
+            , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests, Model model){
+        int TOTAL_NUM = Integer.parseInt(guests);
+
+        reservationDTO.setSTART_DATE(LocalDate.parse(inDates));  // inDates를 LocalDate로 변환
+        reservationDTO.setEND_DATE(LocalDate.parse(outDates));// outDates를 LocalDate로 변환
+        reservationDTO.setTOTAL_NUM(TOTAL_NUM);
+
+        if (bindingResult.hasErrors()) {
+            log.info("에러발생");
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+            return "/reservation/roomchoice";
+        }
+        log.info(reservationDTO);
+        Long RV_ID = reservationService.register(reservationDTO);
+        RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
+        redirectAttributes.addFlashAttribute("result", RV_ID);
+        return "redirect:/reservation/list";
     }
 
     @GetMapping("/read")
@@ -113,6 +155,7 @@ public class ReservationController {
         reservationDTO.setSTART_DATE(LocalDate.parse(inDates));  // inDates를 LocalDate로 변환
         reservationDTO.setEND_DATE(LocalDate.parse(outDates));// outDates를 LocalDate로 변환
         reservationDTO.setTOTAL_NUM(TOTAL_NUM);
+        reservationDTO.setRV_ID(RV_ID);
 
 
         if(bindingResult.hasErrors()) {
@@ -121,14 +164,14 @@ public class ReservationController {
         }
 
         reservationService.modify(reservationDTO);
-        reservationService.getOne(reservationDTO.getRV_ID());
+//        reservationService.getOne(reservationDTO.getRV_ID());
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
         model.addAttribute("reservationDTO", reservationDTO);
         model.addAttribute("roomDTO", roomDTO);
 
         redirectAttributes.addFlashAttribute("result", "modify success");
 
-        return "redirect:/reservation/preview";
+        return "redirect:/reservation/list";
     }
 
 

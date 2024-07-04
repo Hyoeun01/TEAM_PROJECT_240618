@@ -15,7 +15,6 @@
         <th>인원수</th>
         <th>방번호</th>
         <th>예약변경</th>
-        <th>삭제하기</th>
         <th>리뷰쓰기</th>
     </tr>
     </thead>
@@ -27,7 +26,6 @@
         <td th:text="${reservation.TOTAL_NUM}">인원수</td>
         <td th:text="${reservation.RV_ROOM_NUMBER}">방번호</td>
         <td><a type="button" class="w-100 btn btn-lg btn-outline-primary" th:href="@{/reservation/read(RV_ID=${reservation.RV_ID})}">예약변경</a></td>
-        <td><button type="button">내역삭제</button></td>
         <td><button type="button">리뷰쓰기</button></td>
     </tr>
     </tbody>

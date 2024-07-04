@@ -19,8 +19,9 @@
 <body>
 <div class="container">
     <h1>예약 변경하기</h1>
-    <form id="modifyForm" method="post"
-    th:action="@{/reservation/modify{RV_ID}(RV_ID=${RV_ID})}">
+    <form id="modifyForm" method="post" name="modifyForm"
+    th:action="@{/reservation/modify}">
+        <input type="hidden" name="RV_ID" th:value="${reservationDTO.RV_ID}">
         <div class="slideshow-container">
             <div class="slide fade">
                 <img src="../../images/image1.jpg" alt="Hotel Image 1">
@@ -72,7 +73,7 @@
                     </div>
                     <span class="ROOM_PRICE">
                     <p>체크인 15:00 ~ 체크아웃 12:00</p>
-                    <p><strong class="cost"> 가격이 왜 안나올까요? </strong></p>
+                    <p><strong class="cost"> 방을 선택하시면 1박 가격이 나옵니다. </strong></p>
                 </span>
                     <span>
                     <span>호실 선택하기</span>
@@ -126,16 +127,14 @@
                 roomnumber.innerHTML = line
 
                 let cost = document.querySelector(".cost")
-                console.log(cost)
-                cost.text=`${data[0].room_PRICE}원/1박`
+                let num = data[0].room_PRICE.toLocaleString("ko-kr")
+                console.log(num)
+                cost.innerText=num+"원/1박"
             })
 
         }, false);
     }
 
-    // 가격 안뜨는 문제 고쳐야함(register도 같이)
-    // 여기서 선택한 방의 이름이 roomDTO.ROOM_NAME에 들어가도록 하는방법 ?
-    // 금액 포맷팅하는법 알아보기
     // css 손보기
     // 가능하다면 총 금액 계산가능하게 만들기
 
@@ -143,7 +142,14 @@
         e.preventDefault();
         e.stopPropagation();
 
-        document.querySelector("form").submit();
+        if (confirm("예약을 변경하시겠습니까?")) {
+            document.querySelector("#modifyForm").submit();
+            alert("예약이 변경되었습니다.")
+        }
+
+
+
+
     }, false);
 </script>
 

@@ -101,3 +101,33 @@ function plusSlides(n) {
 }
 
 
+function calculateDaysBetweenDates(checkInDate, checkOutDate) {
+    // Parse the dates from the input strings
+    const checkIn = new Date(checkInDate);
+    const checkOut = new Date(checkOutDate);
+
+    // Calculate the difference in time (in milliseconds)
+    const timeDifference = checkOut.getTime() - checkIn.getTime();
+
+    // Calculate the difference in days
+    const daysDifference = timeDifference / (1000 * 3600 * 24);
+
+    // Return the number of days as an integer
+    return Math.round(daysDifference);
+}
+
+// Function to update the number of days in the DOM
+function updateDaysDifference() {
+    const checkInDate = document.getElementById('in_Dates').value;
+    const checkOutDate = document.getElementById('out_Dates').value;
+
+    if (checkInDate && checkOutDate) {
+        const daysDifference = calculateDaysBetweenDates(checkInDate, checkOutDate);
+        document.querySelector('.ROOM_PRICE strong').innerText = `${daysDifference}일/1박`;
+    }
+}
+
+// Add event listeners to update the days difference when dates are selected
+document.getElementById('in_Dates').addEventListener('change', updateDaysDifference);
+document.getElementById('out_Dates').addEventListener('change', updateDaysDifference);
+

@@ -14,7 +14,7 @@
                 <h4 class="my-0 fw-normal">[[${room.ROOM_NAME}]]</h4>
             </div>
             <div class="card-body">
-                <h1 class="card-title pricing-card-title">[[${room.ROOM_PRICE}]]원<small
+                <h1 class="card-title pricing-card-title" >[[${#numbers.formatInteger(room.ROOM_PRICE,3,'COMMA')+'원'}]]<small
                         class="text-body-secondary fw-light">/1박</small></h1>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li>2인기준/최대[[${room.ROOM_LIMIT}]]인</li>
