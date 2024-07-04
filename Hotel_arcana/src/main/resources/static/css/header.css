@@ -12,7 +12,7 @@ header {
 header img {
     max-width: 250px;
     height: auto;
-    margin-right: 40px;
+    margin-right: 20px;
 }
 header div {
     text-align: center;
@@ -65,10 +65,13 @@ nav button {
     color: rgba(255, 255, 255, 1);
     font-size: 14px;
     letter-spacing: 0;
+
 }
 .header_text{
-    /*position: fixed;*/
     min-width: 150px;
+    font-size: 30px;
+    margin-left: 100px;
+    font-weight: 600;
 }
 .imgDiv{
     z-index: 2;
