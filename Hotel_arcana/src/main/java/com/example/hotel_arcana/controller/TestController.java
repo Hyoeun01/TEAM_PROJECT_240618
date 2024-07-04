@@ -25,10 +25,11 @@ public class TestController {
     public String room4() {
         return "/ROOM/VIP";
     }
-    @GetMapping("/SUPERIOR")
+    @GetMapping("/room/SUPERIOR")
     public String room5() {
         return "/ROOM/SUPERIOR";
-    } @GetMapping("/SUITE")
+    }
+    @GetMapping("/room/SUITE")
     public String room6() {
         return "/ROOM/SUITE";
     }
