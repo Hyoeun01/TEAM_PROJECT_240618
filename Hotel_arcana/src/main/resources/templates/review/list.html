@@ -23,8 +23,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
-                            <!--                                <p class="form-control" id="title" name="RE_CONTENT" readonly th:text="${review.RE_CONTENT}"></p>-->
-                            <p>체크인 :[[${reservationDTO.start_date}]]</p>(2024/07/12)~2024/07/14
+<!--                                                            <p class="form-control" id="title" name="RE_CONTENT" readonly th:text="${review.RE_CONTENT}"></p>-->
+                            <p>방정보 불러오기</p>
                             <textarea class="form-control" id="reContent" placeholder="리뷰를 작성해주세요" rows="3"
                                       th:field="*{RE_CONTENT}"></textarea>
                         </div>
@@ -71,7 +71,7 @@
         </div>
     </form>
 </div>
-<script>
+<script  layout:fragment="script">
     function takePicture(input) {
         console.log(input.files);
     }

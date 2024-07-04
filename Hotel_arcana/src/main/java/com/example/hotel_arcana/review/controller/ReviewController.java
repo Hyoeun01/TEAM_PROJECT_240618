@@ -27,6 +27,8 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
+
+
     @GetMapping("/list")
     public String getAllReviews(Model model) {
         List<ReviewDTO> reviewList = reviewService.getAllReviews();
@@ -73,6 +75,10 @@ public class ReviewController {
         reviewService.deleteReview(id);
         return "redirect:/review/list";
     }
-//    @GetMapping("/list")
-//    public void getReviews(Model model) {}
+
+//    @GetMapping
+//    @ResponseBody
+//    public List<ReviewDTO> getReviews(@RequestParam int start, @RequestParam int limit) {
+//        return reviewService.getReviews(start, limit);
+//    }
 }
