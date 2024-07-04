@@ -1,9 +1,10 @@
 package com.example.hotel_arcana.login.controller;
+
 import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,11 +12,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import java.security.Principal;
+
 @Controller
 @Log4j2
 @RequiredArgsConstructor
 public class MemberController {
+
     private final MemberService memberService;
+
+    @GetMapping("/")
+    public String index(Principal principal, Model model) {
+        log.info(principal.getName());
+        MemberDTO memberDTO = memberService.findMemberById(principal.getName());
+        model.addAttribute("memberDTO", memberDTO);
+        log.info(memberDTO);
+        return "MyPage";
+    }
 
     //회원만 쓸 수 있어서 로그인이 필요한 페이지에 넣기
     //@PreAuthorize("isAuthenticated()")
@@ -34,7 +47,6 @@ public class MemberController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-
         return "/login";
     }
 
@@ -120,5 +132,6 @@ public class MemberController {
         List<MemberDTO> members = memberService.getAllMembers();
         model.addAttribute("members", members);
     }
+
 }
 
