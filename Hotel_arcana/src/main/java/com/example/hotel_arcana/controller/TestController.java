@@ -9,19 +9,19 @@ public class TestController {
     public String test() {
         return "testfile";
     }
-    @GetMapping("/STANDARD")
+    @GetMapping("/room/STANDARD")
     public String room1() {
          return "/Room/STANDARD";
     }
-    @GetMapping("/DELUXE")
+    @GetMapping("/room/DELUXE")
     public String room2() {
         return "/ROOM/DELUXE";
     }
-    @GetMapping("/VVIP")
+    @GetMapping("/room/VVIP")
     public String room3() {
         return "/ROOM/VVIP";
     }
-    @GetMapping("/VIP")
+    @GetMapping("/room/VIP")
     public String room4() {
         return "/ROOM/VIP";
     }
