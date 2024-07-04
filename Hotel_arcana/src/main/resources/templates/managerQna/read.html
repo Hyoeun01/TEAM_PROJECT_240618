@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
     <title>QnA</title>
@@ -12,8 +14,7 @@
 
     <link href="/css/managerQna/read.css" rel="stylesheet">
 </head>
-<body>
-<div class="form-container">
+<div class="form-container" layout:fragment="content">
     <form action="/managerQna/read" method="POST" name="f1">
         <!--        <div class="row g-3 align-items-center">-->
         <!--            <div class="col-auto">-->
@@ -44,16 +45,12 @@
                     <textarea class="form-control" id="content" name="Q_CONTENT" readonly rows="10">[[${managerQna.Q_CONTENT}]]</textarea>
                 </div>
             </div>
-            <div class="review-content">
-            <img alt="리뷰 이미지" class="review-img" th:if="${managerQna.Q_IMG}"
+            <div class="QnA-content">
+            <img alt="QnA 이미지" class="qna-img" th:if="${managerQna.Q_IMG}"
                  th:src="'/image/'+${managerQna.Q_IMG}">
             </div>
-
-<!--            <picture>-->
-<!--                <source srcset="..." type="image/svg+xml">-->
-<!--                <img alt="리뷰 이미지" class="img-fluid img-thumbnail" src="...">-->
-<!--            </picture>-->
         </div>
+
 
         <div>
             <a class="btn btn-outline-secondary" href="/managerQna/list">목록</a>

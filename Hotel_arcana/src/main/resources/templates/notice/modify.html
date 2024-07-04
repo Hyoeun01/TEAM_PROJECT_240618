@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
     <title>Hotel Arcana</title>
@@ -12,8 +14,7 @@
 
     <link rel="stylesheet" href="/css/notice/read.css">
 </head>
-<body>
-<div class="form-container">
+<div class="form-container" layout:fragment="content">
     <form name="f2" th:action="@{/notice/modify}" method="post">
         <h1>📌공지사항 수정📌</h1>
         <hr>

@@ -32,4 +32,8 @@ public class NoticeDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDate N_DATE;
 
+    private String MANAGER_ID;
+
+    private String USER_NIK;
+
 }

@@ -94,5 +94,4 @@ public class MemberQnaController {
 //
 //    return "redirect:/managerQna/list";
 //}
-
 }

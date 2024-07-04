@@ -1,0 +1,78 @@
+header {
+    background-color: #EAE4DD;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    min-width: 150px;
+    /*overflow: hidden;*/
+    z-index: 1;
+}
+header img {
+    max-width: 250px;
+    height: auto;
+    margin-right: 20px;
+}
+header div {
+    text-align: center;
+}
+nav {
+    background-color: #EAE4DD;
+    color: #000000;
+    text-align: center;
+    margin-left: 100px;
+    flex: 1;
+}
+nav h3 {
+    display: flex;
+    gap: 30px;
+}
+nav a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 0 40px;
+}
+nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.auth-buttons {
+    position: relative;
+}
+.profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.profile-button img {
+    right: 30px;
+    width: 30px;
+}
+.host_back {
+    background-color: #EEA550;
+    width: 200px;
+    /*height: 70%;*/
+    border-radius: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.host_text {
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    letter-spacing: 0;
+
+}
+.header_text{
+    min-width: 150px;
+    font-size: 30px;
+    margin-left: 100px;
+    font-weight: 600;
+}
+.imgDiv{
+    z-index: 2;
+}
