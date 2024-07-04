@@ -14,7 +14,6 @@ public interface MemberMapper {
     void updateMember(MemberDTO memberDTO);
     void deleteMemberById(String USER_ID);
 
-
     int getTotalMembersCount();
 
     List<MemberDTO> findAllMembers();
