@@ -21,11 +21,26 @@
     margin-bottom: 20px;
 }
 
-.table th, .table td {
-    text-align: center;
-}
+
 .pageText-center{
     display: flex;
     text-align: center;
+}
+
+.table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    text-align: center; /* 제목을 중앙에 정렬 */
+}
+
+.table td {
+    text-align: center; /* 테이블 데이터도 중앙에 정렬 */
 }
 
