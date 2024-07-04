@@ -5,11 +5,14 @@
 <mapper namespace="com.example.hotel_arcana.reservation.mapper.ReservationMapper">
 
     <select id="selectAll" resultType="com.example.hotel_arcana.reservation.dto.ReservationDTO">
-        SELECT * FROM reservation order by RV_ID desc
+
+        select res.RV_ID, res.START_DATE, res.END_DATE, res.TOTAL_NUM, res.RV_USER_ID, res.RV_ROOM_NUMBER, r.ROOM_NAME
+        from reservation res
+                 JOIN room r ON res.RV_ROOM_NUMBER = r.ROOM_ID  order by RV_ID desc
     </select>
 
     <select id="selectOne" resultType="com.example.hotel_arcana.reservation.dto.ReservationDTO">
-        select * from reservation WHERE RV_ID = #{RV_ID}
+        select * from reservation res JOIN room r ON res.RV_ROOM_NUMBER = r.ROOM_ID WHERE RV_ID = #{RV_ID}
     </select>
 
     <insert id="insert">

@@ -18,5 +18,6 @@ public class ReservationDTO {
 
     private String RV_USER_ID;
     private Long RV_ROOM_NUMBER ;
+    private String ROOM_NAME;
 
 }
