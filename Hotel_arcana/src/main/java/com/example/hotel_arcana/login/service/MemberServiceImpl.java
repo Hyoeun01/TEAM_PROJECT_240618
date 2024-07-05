@@ -26,7 +26,6 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void insertMember(MemberDTO memberDTO)  {
-        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
         memberDTO.setUSER_PW(passwordEncoder.encode(memberDTO.getUSER_PW()));
         if(memberDTO.getUSER_AUTH() == null || memberDTO.getUSER_AUTH().isEmpty()){
             memberDTO.setUSER_AUTH("USER");
