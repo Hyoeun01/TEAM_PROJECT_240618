@@ -7,10 +7,7 @@ header {
     flex-wrap: nowrap;
     min-width: 150px;
     /*overflow: hidden;*/
-<<<<<<< HEAD
     z-index: 1;
-=======
->>>>>>> origin/management
 }
 header img {
     max-width: 250px;
@@ -42,16 +39,10 @@ nav button {
     background: none;
     border: none;
     cursor: pointer;
-<<<<<<< HEAD
-}
-=======
-
 }
 section {
     padding: 20px 0;
 }
-
->>>>>>> origin/management
 .auth-buttons {
     position: relative;
 }
@@ -78,7 +69,6 @@ section {
     font-size: 14px;
     letter-spacing: 0;
 }
-<<<<<<< HEAD
 .header_text{
     min-width: 150px;
     font-size: 30px;
@@ -90,5 +80,3 @@ section {
 .imgDiv{
     z-index: 2;
 }
-=======
->>>>>>> origin/management

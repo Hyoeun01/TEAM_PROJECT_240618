@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e4fa856-d021-4b99-99be-88434221cf63" name="변경" comment="" />
+    <list default="true" id="4e4fa856-d021-4b99-99be-88434221cf63" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/mappers/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/mappers/MemberMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/header.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,12 +89,18 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql",
+      "mariadb"
+    ]
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="HotelArcanaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="com.example.Hotel_arcana.main" />
+      <module name="Hotel_arcana.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.hotel_arcana.HotelArcanaApplication" />
       <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <method v="2">
@@ -109,7 +126,7 @@
       <updated>1719116113483</updated>
       <workItem from="1719116114390" duration="11173000" />
       <workItem from="1719554524441" duration="12291000" />
-      <workItem from="1720157138058" duration="676000" />
+      <workItem from="1720157138058" duration="3422000" />
     </task>
     <servers />
   </component>
