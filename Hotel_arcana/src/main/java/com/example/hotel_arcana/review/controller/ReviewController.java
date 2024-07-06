@@ -112,6 +112,4 @@ public class ReviewController {
         // 리뷰 생성 로직을 여기에 구현
         return "redirect:/review/list"; // 리뷰 생성 후 리다이렉트할 URL
     }
-
-
 }
