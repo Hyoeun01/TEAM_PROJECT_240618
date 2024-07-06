@@ -37,48 +37,81 @@ public class ReviewController {
         return "review/list";
     }
 
-    @PostMapping
+    @GetMapping("/register")
+    public void registerReview(Model model) {model.addAttribute("newReview", new ReviewDTO());}
+
+
+    @PostMapping( "/register")
     public String addReview(ReviewDTO reviewDTO, RedirectAttributes redirectAttributes, MultipartFile file,
                             BindingResult bindingResult) throws IOException {
 
-        //실제 파일 이름 출력
-        log.info(file.getOriginalFilename());
-        //파일의 크기
-        log.info(file.getSize());
-        //파일의 확장자
-        log.info(file.getContentType());
-        //파일을 저장하는 메서드 : new File("파일을 저장할 경로//파일이름.확장자")
-        file.transferTo(new File("c://files//" + file.getOriginalFilename()));
+        //사진이없어도 게시글 업로드
+        if (!file.isEmpty()) {
+            //실제 파일 이름 출력
+            log.info(file.getOriginalFilename());
+            //파일의 크기
+            log.info(file.getSize());
+            //파일의 확장자
+            log.info(file.getContentType());
+            //파일을 저장하는 메서드 : new File("파일을 저장할 경로//파일이름.확장자")
+            file.transferTo(new File("c://files//" + file.getOriginalFilename()));
+            reviewDTO.setRE_IMG(file.getOriginalFilename());
+        } else {
+            log.info("No file uploaded");
+        }
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
             return "redirect:/review/list";
         }
 
-        reviewDTO.setRE_IMG(file.getOriginalFilename());
-
         Long RE_ID = reviewService.addReview(reviewDTO);
         redirectAttributes.addAttribute("id", RE_ID);
 
+
         return "redirect:/review/list";
+
+//      실제 파일 이름 출력
+//        log.info(file.getOriginalFilename());
+//        //파일의 크기
+//        log.info(file.getSize());
+//        //파일의 확장자
+//        log.info(file.getContentType());
+//        //파일을 저장하는 메서드 : new File("파일을 저장할 경로//파일이름.확장자")
+//        file.transferTo(new File("c://files//" + file.getOriginalFilename()));
+//
+//        if (bindingResult.hasErrors()) {
+//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+//            return "redirect:/review/list";
+//        }
+//
+//        reviewDTO.setRE_IMG(file.getOriginalFilename());
+//
+//        Long RE_ID = reviewService.addReview(reviewDTO);
+//        redirectAttributes.addAttribute("id", RE_ID);
+
+//        return "redirect:/review/list";
+
     }
 
-    @PutMapping("/{id}")
-    public String updateReview(@PathVariable Long id, @RequestBody ReviewDTO reviewDTO) {
-        reviewDTO.setRE_ID(id);
-        reviewService.updateReview(reviewDTO);
-        return "redirect:/review/list";
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteReview(@PathVariable Long id) {
-        reviewService.deleteReview(id);
-        return "redirect:/review/list";
-    }
-
-//    @GetMapping
-//    @ResponseBody
-//    public List<ReviewDTO> getReviews(@RequestParam int start, @RequestParam int limit) {
-//        return reviewService.getReviews(start, limit);
+//    @PutMapping("/{id}")
+//    public String updateReview(@PathVariable Long id, @RequestBody ReviewDTO reviewDTO) {
+//        reviewDTO.setRE_ID(id);
+//        reviewService.updateReview(reviewDTO);
+//        return "redirect:/review/list";
 //    }
+//
+//    @DeleteMapping("/{id}")
+//    public String deleteReview(@PathVariable Long id) {
+//        reviewService.deleteReview(id);
+//        return "redirect:/review/list";
+//    }
+
+    @PostMapping
+    public String createReview() {
+        // 리뷰 생성 로직을 여기에 구현
+        return "redirect:/review/list"; // 리뷰 생성 후 리다이렉트할 URL
+    }
+
+
 }
