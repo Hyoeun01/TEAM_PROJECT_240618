@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel_arcana.managerQna.mapper.ManagerQnaMapper">
+
+    <!--    QnA 관리자 게시판 목록-->
+    <select id="selectAll" resultType="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">
+        SELECT * FROM hotel_qna ORDER BY Q_NO DESC
+    </select>
+
+    <!--    QnA 보기-->
+    <select id="selectOne" resultType="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">
+        SELECT * FROM hotel_qna WHERE Q_NO = #{Q_NO}
+    </select>
+
+</mapper>

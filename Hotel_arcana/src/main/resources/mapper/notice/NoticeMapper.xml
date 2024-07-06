@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel_arcana.notice.mapper.NoticeMapper">
+
+<!--    현재시간-->
+    <select id="getTime" resultType="string">
+        SELECT now()
+    </select>
+
+<!--    게시판 목록-->
+
+    <select id="selectAll" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT
+            n.N_NO,
+            n.N_TITLE,
+            n.N_DATE,
+            n.N_CONTENT,
+            n.N_WRITER,
+            n.N_VIEW,
+            n.MANAGER_ID,
+            m.USER_NIK
+        FROM
+            hotel_notice n
+                JOIN
+            hotel_member m
+            ON
+                n.MANAGER_ID = m.USER_ID
+        ORDER BY
+            n.N_NO DESC
+    </select>
+
+<!--    <select id="selectAll" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">-->
+<!--        SELECT * FROM hotel_notice ORDER BY N_NO DESC-->
+<!--    </select>-->
+
+<!--    게시글 작성-->
+    <insert id="insert">
+        INSERT INTO hotel_notice (N_TITLE, N_CONTENT, N_WRITER, N_VIEW)
+        VALUES (#{N_TITLE}, #{N_CONTENT}, #{N_WRITER}, #{N_VIEW})
+    </insert>
+
+<!--    게시글 보기-->
+    <select id="selectOne" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT * FROM hotel_notice WHERE N_NO = #{N_NO}
+    </select>
+
+<!--    게시글 삭제-->
+    <delete id="delete">
+        DELETE FROM hotel_notice WHERE N_NO = #{N_NO}
+    </delete>
+
+<!--    게시글 수정-->
+    <update id="update">
+        UPDATE hotel_notice SET N_TITLE=#{N_TITLE} , N_CONTENT=#{N_CONTENT}
+        WHERE N_NO = #{N_NO}
+    </update>
+
+<!--    게시글 조회수 증가-->
+    <update id="ViewCount">
+        UPDATE hotel_notice SET N_VIEW = #{N_VIEW} WHERE N_NO = #{N_NO}
+    </update>
+
+<!--    게시판 목록 페이지-->
+    <select id="NoticePage" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
+        SELECT
+            n.N_NO,
+            n.N_TITLE,
+            n.N_DATE,
+            n.N_CONTENT,
+            n.N_WRITER,
+            n.N_VIEW,
+            n.MANAGER_ID,
+            m.USER_NIK
+        FROM hotel_notice n
+        JOIN hotel_member m ON n.MANAGER_ID = m.USER_ID
+        <where>
+            <if test='type!=null and "t".equals(type)'>
+                <!-- 검색조건이 title이라면 -->
+                n.N_TITLE LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "c".equals(type)'>
+                <!-- 검색조건이 content이라면 -->
+                n.N_CONTENT LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "w".equals(type)'>
+                <!-- 검색조건이 writer이라면 -->
+                n.N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "tc".equals(type)'>
+                <!-- 검색조건이 title+content라면 -->
+                (n.N_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR N_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
+            </if>
+        </where>
+        ORDER BY n.N_NO DESC LIMIT #{offset}, #{size}
+    </select>
+
+<!--    게시글 총 갯수-->
+    <select id="NoticeCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM hotel_notice
+        <where>
+            <if test='type!=null and "t".equals(type)'>
+                <!-- 검색조건이 title이라면 -->
+                N_TITLE LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "c".equals(type)'>
+                <!-- 검색조건이 content이라면 -->
+                N_CONTENT LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "w".equals(type)'>
+                <!-- 검색조건이 writer이라면 -->
+                N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "tc".equals(type)'>
+                <!-- 검색조건이 title+content라면 -->
+                (N_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR N_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
+            </if>
+        </where>
+    </select>
+
+</mapper>
