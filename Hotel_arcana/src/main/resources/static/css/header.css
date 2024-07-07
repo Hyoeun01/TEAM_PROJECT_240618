@@ -76,3 +76,8 @@ nav button {
 .imgDiv{
     z-index: 2;
 }
+
+.line {
+    text-decoration-line: none;
+    color: black;
+}

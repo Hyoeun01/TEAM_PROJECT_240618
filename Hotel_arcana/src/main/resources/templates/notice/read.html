@@ -57,19 +57,19 @@
             <a class="btn btn-outline-success" th:href="@{/notice/modify(N_NO=${notice.N_NO})}">수정</a>
             <button class="btn btn-outline-danger" id="removeBtn" type="button">삭제</button>
         </div>
-
+        <script>
+            document.getElementById("removeBtn").addEventListener("click", function (e) {
+                e.preventDefault()
+                e.stopPropagation()
+                if (confirm("삭제하시겠습니까?")) {
+                    let f1 = document.f1
+                    f1.action = "/notice/delete"
+                    f1.submit();
+                }
+            }, false)
+        </script>
     </form>
 </div>
 </body>
-<script>
-    document.getElementById("removeBtn").addEventListener("click", function (e) {
-        e.preventDefault()
-        e.stopPropagation()
-        if (confirm("삭제하시겠습니까?")) {
-            let f1 = document.f1
-            f1.action = "/notice/delete"
-            f1.submit();
-        }
-    }, false)
-</script>
+
 </html>

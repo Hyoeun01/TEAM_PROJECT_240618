@@ -44,3 +44,8 @@
     text-align: center; /* 테이블 데이터도 중앙에 정렬 */
 }
 
+a {
+    text-decoration-line: none;
+    color: black;
+}
+

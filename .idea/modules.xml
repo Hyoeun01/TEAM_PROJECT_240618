@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hotel_arcana.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Hotel_arcana.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hotel_arcana.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Hotel_arcana.test.iml" />
     </modules>
   </component>
 </project>

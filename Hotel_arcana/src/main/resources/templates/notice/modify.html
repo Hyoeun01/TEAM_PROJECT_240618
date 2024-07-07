@@ -50,18 +50,20 @@
         <input type="hidden" name="N_NO" th:value="${notice.N_NO}">
         <a class="btn btn-outline-secondary" th:href="@{/notice/read(N_NO=${notice.N_NO})}">뒤로가기</a>
         <button class="btn btn-outline-success" id="modifyBtn" type="button">수정</button>
+
+        <script>
+            document.getElementById("modifyBtn").addEventListener("click", function (e) {
+                e.preventDefault()
+                e.stopPropagation()
+                if (confirm("수정하시겠습니까?")) {
+                    let f2 = document.f2
+                    f2.action = "/notice/modify"
+                    f2.submit();
+                }
+            }, false)
+        </script>
     </form>
 </div>
 </body>
-<script>
-    document.getElementById("modifyBtn").addEventListener("click", function (e) {
-        e.preventDefault()
-        e.stopPropagation()
-        if (confirm("수정하시겠습니까?")) {
-            let f2 = document.f2
-            f2.action = "/notice/modify"
-            f2.submit();
-        }
-    }, false)
-</script>
+
 </html>

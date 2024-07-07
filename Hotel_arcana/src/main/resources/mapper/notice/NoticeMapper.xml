@@ -86,7 +86,7 @@
             </if>
             <if test='type!=null and "w".equals(type)'>
                 <!-- 검색조건이 writer이라면 -->
-                n.N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
+                m.USER_NIK LIKE CONCAT('%' , #{keyword} , '%')
             </if>
             <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->
