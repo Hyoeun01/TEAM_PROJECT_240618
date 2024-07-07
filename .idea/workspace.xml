@@ -5,16 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e4fa856-d021-4b99-99be-88434221cf63" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/service/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/configtest/MvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/configtest/MvcConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/controller/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/mappers/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/mappers/MemberMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/DetailView.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/gpttest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/headertest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/indextest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/MyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/MyPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/layout/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/layout/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberModify.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberModify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRead.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRead.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRemove.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRemove.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/DELUXE.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/DELUXE.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/testfile.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +38,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/Hotel_arcana">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -78,7 +90,7 @@
     "git-widget-placeholder": "CSS",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/it/Documents/TEAM_PROJECT_240618",
+    "last_opened_file_path": "C:/Users/tjdgn/Documents/TEAM_PROJECT_240618/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -97,6 +109,15 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tjdgn\Documents\TEAM_PROJECT_240618\Hotel_arcana\src\main\java\com\example\hotel_arcana\Main" />
+      <recent name="C:\Users\tjdgn\Documents\TEAM_PROJECT_240618\Hotel_arcana\src\main\resources\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tjdgn\Documents\TEAM_PROJECT_240618\Hotel_arcana\src\main\resources\templates" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="HotelArcanaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />

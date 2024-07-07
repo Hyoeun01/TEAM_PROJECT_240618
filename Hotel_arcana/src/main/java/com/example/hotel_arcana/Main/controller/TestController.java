@@ -1,13 +1,13 @@
-package com.example.hotel_arcana.controller;
+package com.example.hotel_arcana.Main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class TestController {
-    @GetMapping("/test")
+    @GetMapping("/Main")
     public String test() {
-        return "testfile";
+        return "Main";
     }
     @GetMapping("/room/STANDARD")
     public String room1() {
@@ -15,7 +15,6 @@ public class TestController {
     }
     @GetMapping("/room/DELUXE")
     public String room2() {
-
         return "/ROOM/DELUXE";
     }
     @GetMapping("/room/VVIP")

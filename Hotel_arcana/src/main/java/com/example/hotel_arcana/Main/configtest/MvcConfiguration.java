@@ -1,4 +1,4 @@
-package com.example.hotel_arcana.configtest;
+package com.example.hotel_arcana.Main.configtest;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
