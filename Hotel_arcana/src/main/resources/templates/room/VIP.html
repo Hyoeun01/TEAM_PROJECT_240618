@@ -7,14 +7,14 @@
     <div class="container">
         <div class="photo-gallery">
             <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/VIP2.jpg " alt="Main Photo">
+                <img src="/img/VIP.jpg" alt="Main Photo">
             </div>
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/VIP2.jpg" alt="큰 이미지" class="largeImg">
+                <img src="/img/VIP.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
-                    <img src="/img/VIP3.jpg" alt="Photo 1">
+                    <img src="/img/VIP2.jpg" alt="Photo 1">
                 </div>
                 <div class="photo">
                     <img src="/img/VIP4.jpg" alt="Photo 2">
@@ -52,9 +52,9 @@
             </div>
             <div class="info-right">
                 <div class="price section">
-                    <h3>VIP</h3>
-                    <p>2인 기준/최대 8인</p>
-                    <p>300,000원/1박</p>
+                    <h3 th:text="${VIP.ROOM_NAME}"></h3>
+                    <p th:text="'2인 기준/최대 ' + ${VIP.ROOM_LIMIT} + '인'"></p>
+                    <p th:text="'₩' + ${VIP.ROOM_PRICE} + '/1박'"></p>
                     <button class="reserve-button">예약하기</button>
                     <div class="contact-options">
                         <button>숙소 문의</button>
@@ -70,7 +70,7 @@
 </div>
 <script layout:fragment="script" th:inline="javascript">
     let i = 0
-    let imgList = ['VIP2.jpg','VIP3.jpg','VIP4.jpg','VIP5.jpg','VIP6.jpg']
+    let imgList = ['VIP.jpg','VIP2.jpg','VIP4.jpg','VIP5.jpg','VIP6.jpg']
     function showLargeImage() {
         document.getElementById('overlay').style.display = 'block';
     }

@@ -5,25 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e4fa856-d021-4b99-99be-88434221cf63" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Hotel_arcana.main.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/configtest/MvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/configtest/MvcConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/login/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/DetailView.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/gpttest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/headertest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/indextest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/MyPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/MyPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/layout/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/layout/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberModify.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberModify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRead.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRead.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRemove.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/login/memberRemove.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/DELUXE1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/DELUXE.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/STANDARD1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/STANDARD.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/SUITE1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/SUITE.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/SUPERIOR1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/SUPERIOR.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/VIP1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/VIP.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/VIP3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/VVIP1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/static/img/VVIP.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/Main.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/DELUXE.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/DELUXE.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/testfile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/STANDARD.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/STANDARD.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/SUITE.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/SUITE.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/SUPERIOR.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/SUPERIOR.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/VIP.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/VIP.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/VVIP.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/room/VVIP.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +47,11 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Hotel_arcana" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Hotel_arcana" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -59,6 +63,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -80,6 +86,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Gradle.Hotel_arcana 빌드.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -90,7 +97,7 @@
     "git-widget-placeholder": "CSS",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/tjdgn/Documents/TEAM_PROJECT_240618/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main",
+    "last_opened_file_path": "C:/Users/tjdgn/Documents/TEAM_PROJECT_240618/Hotel_arcana/src/main/resources/templates",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -111,8 +118,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\tjdgn\Documents\TEAM_PROJECT_240618\Hotel_arcana\src\main\java\com\example\hotel_arcana\Main" />
       <recent name="C:\Users\tjdgn\Documents\TEAM_PROJECT_240618\Hotel_arcana\src\main\resources\templates" />
+      <recent name="C:\Users\tjdgn\Documents\TEAM_PROJECT_240618\Hotel_arcana\src\main\java\com\example\hotel_arcana\Main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tjdgn\Documents\TEAM_PROJECT_240618\Hotel_arcana\src\main\resources\templates" />
@@ -148,6 +155,12 @@
       <workItem from="1719116114390" duration="11173000" />
       <workItem from="1719554524441" duration="12291000" />
       <workItem from="1720157138058" duration="3422000" />
+      <workItem from="1720359611965" duration="680000" />
+      <workItem from="1720360357989" duration="370000" />
+      <workItem from="1720360770644" duration="120000" />
+      <workItem from="1720360941878" duration="1852000" />
+      <workItem from="1720435206949" duration="67000" />
+      <workItem from="1720443814400" duration="10621000" />
     </task>
     <servers />
   </component>

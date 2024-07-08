@@ -7,10 +7,10 @@
     <div class="container">
         <div class="photo-gallery">
             <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/SUITE1.jpg " alt="Main Photo">
+                <img src="/img/SUITE.jpg" alt="Main Photo">
             </div>
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/SUITE1.jpg" alt="큰 이미지" class="largeImg">
+                <img src="/img/SUITE.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
@@ -52,9 +52,9 @@
             </div>
             <div class="info-right">
                 <div class="price section">
-                    <h3>SUITE</h3>
-                    <p>2인 기준/최대 4인</p>
-                    <p>400,000 원</p>
+                    <h3 th:text="${SUITE.ROOM_NAME}"></h3>
+                    <p th:text="'2인 기준/최대 ' + ${SUITE.ROOM_LIMIT} + '인'"></p>
+                    <p th:text="'₩' + ${SUITE.ROOM_PRICE} + '/1박'"></p>
                     <button class="reserve-button">예약하기</button>
                     <div class="contact-options">
                         <button>숙소 문의</button>
@@ -70,7 +70,7 @@
 </div>
 <script layout:fragment="script" th:inline="javascript">
     let i = 0
-    let imgList = ['SUITE1.jpg','SUITE2.jpg','SUITE3.jpg','SUITE4.jpg','SUITE5.jpg']
+    let imgList = ['SUITE.jpg','SUITE2.jpg','SUITE3.jpg','SUITE4.jpg','SUITE5.jpg']
     function showLargeImage() {
         document.getElementById('overlay').style.display = 'block';
     }

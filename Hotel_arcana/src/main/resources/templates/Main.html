@@ -13,54 +13,68 @@
     <section class="you-die">
         <h2>CHECKED ROOM</h2>
         <div class="room-flex">
+            <!-- Standard Room -->
             <div class="room">
-                <a href="/room/STANDARD"><img src="/img/STANDARD1.jpg" alt="방 이미지"> </a>
-                <p class="H_nickname">STANDARD</p>
-                <p class="H_service">100 Smart Street, LA, USA</p>
-            </div>
-            <div class="room">
-                <a href="/room/DELUXE">
-                    <img src="/img/DELUXE1.jpg" alt="방 이미지">
+                <a th:href="@{'/room/' + ${STANDARD.ROOM_NAME}}">
+                    <img th:src="@{'/img/' + ${STANDARD.ROOM_NAME} + '.jpg'}" alt="Room Image">
                 </a>
-                <p class="H_nickname">DELUXE</p>
-                <p class="H_service">100 Smart Street, LA, USA</p>
-            </div>
-            <div class="room">
-                <a href="/room/SUPERIOR">
-                    <img src="/img/SUPERIOR1.jpg" alt="방 이미지">
-                </a>
-                <p class="H_nickname">SUPERIOR</p>
+                <p class="H_nickname" th:text="${STANDARD.ROOM_NAME}"></p>
                 <p class="H_service">100 Smart Street, LA, USA</p>
             </div>
 
+            <!-- Deluxe Room -->
+            <div class="room">
+                <a th:href="@{'/room/' + ${DELUXE.ROOM_NAME}}">
+                    <img th:src="@{'/img/' + ${DELUXE.ROOM_NAME} + '.jpg'}" alt="Room Image">
+                </a>
+                <p class="H_nickname" th:text="${DELUXE.ROOM_NAME}"></p>
+                <p class="H_service">100 Smart Street, LA, USA</p>
+            </div>
+
+            <!-- Superior Room -->
+            <div class="room">
+                <a th:href="@{'/room/' + ${SUPERIOR.ROOM_NAME}}">
+                    <img th:src="@{'/img/' + ${SUPERIOR.ROOM_NAME} + '.jpg'}" alt="Room Image">
+                </a>
+                <p class="H_nickname" th:text="${SUPERIOR.ROOM_NAME}"></p>
+                <p class="H_service">100 Smart Street, LA, USA</p>
+            </div>
         </div>
     </section>
     <section class="you-die">
         <div class="room-flex">
+
+            <!-- VIP Room -->
             <div class="room">
-                <a href="/room/VIP">
-                    <img src="/img/VIP2.jpg" alt="방 이미지">
+                <a th:href="@{'/room/' + ${VIP.ROOM_NAME}}">
+                    <img th:src="@{'/img/' + ${VIP.ROOM_NAME} + '.jpg'}" alt="Room Image">
                 </a>
-                <p class="H_nickname">VIP</p>
+                <p class="H_nickname" th:text="${VIP.ROOM_NAME}"></p>
                 <p class="H_service">100 Smart Street, LA, USA</p>
             </div>
+
+            <!-- VVIP Room -->
             <div class="room">
-                <a href="/room/VVIP">
-                    <img src="/img/VVIP1.jpg" alt="방 이미지">
+                <a th:href="@{'/room/' + ${VVIP.ROOM_NAME}}">
+                    <img th:src="@{'/img/' + ${VVIP.ROOM_NAME} + '.jpg'}" alt="Room Image">
                 </a>
-                <p class="H_nickname">VVIP</p>
+                <p class="H_nickname" th:text="${VVIP.ROOM_NAME}"></p>
                 <p class="H_service">100 Smart Street, LA, USA</p>
             </div>
+
+            <!-- Suite Room -->
             <div class="room">
-                <a href="/room/SUITE">
-                    <img src="/img/SUITE1.jpg" alt="방 이미지">
+                <a th:href="@{'/room/' + ${SUITE.ROOM_NAME}}">
+                    <img th:src="@{'/img/' + ${SUITE.ROOM_NAME} + '.jpg'}" alt="Room Image">
                 </a>
-                <p class="H_nickname">SUITE</p>
+                <p class="H_nickname" th:text="${SUITE.ROOM_NAME}"></p>
                 <p class="H_service">100 Smart Street, LA, USA</p>
             </div>
         </div>
     </section>
 </div>
+
 <script layout:fragment="script" th:inline="javascript">
 </script>
+
 </html>

@@ -7,10 +7,10 @@
     <div class="container">
         <div class="photo-gallery">
             <div class="main-photo" onclick="showLargeImage()">
-                <img src="/img/VVIP1.jpg " alt="Main Photo">
+                <img src="/img/VVIP.jpg " alt="Main Photo">
             </div>
             <div class="overlay" id="overlay" onclick="hideLargeImage()">
-                <img src="/img/VVIP1.jpg" alt="큰 이미지" class="largeImg">
+                <img src="/img/VVIP.jpg" alt="큰 이미지" class="largeImg">
             </div>
             <div class="other-photos">
                 <div class="photo">
@@ -23,7 +23,7 @@
                     <img src="/img/VVIP4.jpg" alt="Photo 3">
                 </div>
                 <div class="photo">
-                    <img src="/img/VVIP1.jpg" alt="Photo 4" href="/img/트윈%20시티뷰.jpg">
+                    <img src="/img/VVIP.jpg" alt="Photo 4" href="/img/트윈%20시티뷰.jpg">
                 </div>
             </div>
         </div>
@@ -59,9 +59,9 @@
             </div>
             <div class="info-right">
                 <div class="price section">
-                    <h3>VVIP</h3>
-                    <p>2인 기준/최대 8인</p>
-                    <p>350,000원/1박</p>
+                    <h3 th:text="${VVIP.ROOM_NAME}"></h3>
+                    <p th:text="'2인 기준/최대 ' + ${VVIP.ROOM_LIMIT} + '인'"></p>
+                    <p th:text="'₩' + ${VVIP.ROOM_PRICE} + '/1박'"></p>
                     <button class="reserve-button">예약하기</button>
                     <div class="contact-options">
                         <button>숙소 문의</button>
