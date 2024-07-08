@@ -14,4 +14,65 @@
         SELECT * FROM hotel_qna WHERE Q_NO = #{Q_NO}
     </select>
 
+
+    <!--    게시판 목록 페이지-->
+    <select id="QnaPage" resultType="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">
+        SELECT
+        q.Q_NO,
+        q.Q_BOX,
+        q.Q_MAIL,
+        q.Q_PHONE,
+        q.Q_TITLE,
+        q.Q_CONTENT,
+        q.Q_DATE,
+        q.Q_IMG,
+        q.Q_USER_ID,
+        m.USER_NIK
+        FROM hotel_qna q
+        JOIN hotel_member m ON q.Q_USER_ID = m.USER_ID
+        <where>
+            <if test='type!=null and "t".equals(type)'>
+                <!-- 검색조건이 title이라면 -->
+                q.Q_TITLE LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "c".equals(type)'>
+                <!-- 검색조건이 content이라면 -->
+                q.Q_CONTENT LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "w".equals(type)'>
+                <!-- 검색조건이 writer이라면 -->
+                q.Q_USER_ID LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "tc".equals(type)'>
+                <!-- 검색조건이 title+content라면 -->
+                (q.Q_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR q.Q_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
+            </if>
+        </where>
+        ORDER BY q.Q_NO DESC LIMIT #{offset}, #{size}
+    </select>
+
+    <!--    게시글 총 갯수-->
+    <select id="QnaCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM hotel_qna q
+        JOIN hotel_member m ON q.Q_USER_ID = m.USER_ID
+        <where>
+            <if test='type!=null and "t".equals(type)'>
+                <!-- 검색조건이 title이라면 -->
+                q.Q_TITLE LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "c".equals(type)'>
+                <!-- 검색조건이 content이라면 -->
+                q.Q_CONTENT LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "w".equals(type)'>
+                <!-- 검색조건이 writer이라면 -->
+                m.USER_NIK LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='type!=null and "tc".equals(type)'>
+                <!-- 검색조건이 title+content라면 -->
+                (q.Q_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR q.Q_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
+            </if>
+        </where>
+    </select>
+
 </mapper>

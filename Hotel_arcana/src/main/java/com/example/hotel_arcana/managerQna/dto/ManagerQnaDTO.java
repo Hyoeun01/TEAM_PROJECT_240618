@@ -22,9 +22,9 @@ public class ManagerQnaDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDate Q_DATE;
     private String Q_IMG;
-    private String Q_CATEGORY;
     private String Q_USER_ID;
 
+    private String USER_NIK;
 
 
 }

@@ -98,7 +98,8 @@
 
 <!--    게시글 총 갯수-->
     <select id="NoticeCount" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM hotel_notice
+        SELECT COUNT(*) FROM hotel_notice n
+        JOIN hotel_member m ON n.MANAGER_ID = m.USER_ID
         <where>
             <if test='type!=null and "t".equals(type)'>
                 <!-- 검색조건이 title이라면 -->
@@ -110,7 +111,7 @@
             </if>
             <if test='type!=null and "w".equals(type)'>
                 <!-- 검색조건이 writer이라면 -->
-                N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
+                USER_NIK LIKE CONCAT('%' , #{keyword} , '%')
             </if>
             <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->

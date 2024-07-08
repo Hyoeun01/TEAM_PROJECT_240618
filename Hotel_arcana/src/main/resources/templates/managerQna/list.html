@@ -28,40 +28,30 @@
             </tr>
             </thead>
             <tbody class="table-group-divider">
-            <tr th:each="manager : ${managerList}">
+            <tr th:each="manager : ${managerList.dtoList}">
 <!--                <td th:text="${manager.Q_NO}">번호</td>-->
                 <td th:text="${manager.Q_BOX}">유형</td>
                 <td><a th:href="@{/managerQna/read(Q_NO=${manager.Q_NO})}" th:text="${manager.Q_TITLE}"></a></td>
-                <td th:text="${manager.Q_USER_ID}">작성자</td>
+                <td th:text="${manager.USER_NIK}">작성자</td>
                 <td th:text="${manager.Q_DATE}">작성일</td>
             </tr>
             </tbody>
         </table>
 
-        <div class="input-group-append">
-            <input type="search">
-            <button class="btn btn-outline-secondary searchBtn" type="submit">검색</button>
-            <a class="btn btn-outline-secondary" href="/memberQna/register">멤버QnA~</a>
-            <!--        <a href="/managerQna/register" class="btn btn-outline-secondary" >글쓰기</a>-->
-        </div>
-
 <!--        검색기능-->
-<!--        <div>-->
-<!--            <div class="input-group mb-3">-->
-<!--                <select class="form-select" name="type">-->
-<!--                    <option th:selected="${pageRequestDTO.type == 't'}" value="t">제목</option>-->
-<!--                    <option th:selected="${pageRequestDTO.type == 'c'}" value="c">내용</option>-->
-<!--                    <option th:selected="${pageRequestDTO.type == 'w'}" value="w">작성자</option>-->
-<!--                    <option th:selected="${pageRequestDTO.type == 'tc'}" value="tc">제목+내용</option>-->
-<!--                </select>-->
-<!--                <input class="form-control" name="keyword" placeholder="검색" th:value="${pageRequestDTO.keyword}"-->
-<!--                       type="text">-->
-<!--                <div class="input-group-append">-->
-<!--                    <button class="btn btn-outline-secondary searchBtn" type="submit">검색</button>-->
-<!--                    <a class="btn btn-outline-secondary" href="/notice/register">글쓰기</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="input-group mb-3">
+            <select class="form-select" name="type">
+                <option th:selected="${pageRequestDTO.type == 't'}" value="t">제목</option>
+                <option th:selected="${pageRequestDTO.type == 'c'}" value="c">내용</option>
+                <option th:selected="${pageRequestDTO.type == 'w'}" value="w">작성자</option>
+                <option th:selected="${pageRequestDTO.type == 'tc'}" value="tc">제목+내용</option>
+            </select>
+            <input class="form-control" name="keyword" placeholder="검색" th:value="${pageRequestDTO.keyword}"
+                   type="text">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary searchBtn" type="submit">검색</button>
+            </div>
+        </div>
     </form>
 </div>
 </body>
