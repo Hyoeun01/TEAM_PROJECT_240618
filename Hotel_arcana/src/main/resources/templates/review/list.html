@@ -24,8 +24,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="review-content">
+<!--                            모달창 사용-->
                             <img alt="리뷰 이미지" class="review-img" th:if="${review.RE_IMG}"
-                                 th:src="@{'/image/'+${review.RE_IMG}}" onclick="window.open(this.src)">
+                                 th:src="@{'/image/'+${review.RE_IMG}}" onclick="showModal(this.src)">
                             <div class="review-text">
                                 <h5 class="card-title" th:text="${review.RE_WRITER}">작성자</h5>
                                 <p class="card-text" th:text="${review.RE_CONTENT}">내용</p>
@@ -42,6 +43,21 @@
         <div class="text-center">
             <button id="loadMore" class="btn btn-outline-pink col-md-12">더보기</button>
         </div><br>
+
+<!--        이미지 모달창-->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="modalImage" src="" class="img-fluid" alt="리뷰 이미지">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script th:inline="javascript">
             $(document).ready(function() {
@@ -67,6 +83,14 @@
                     }
                 });
             });
+
+            // 이미지 모달창
+            function showModal(src) {
+                $('#modalImage').attr('src', src);
+                var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+                myModal.show();
+            }
+
         </script>
     </form>
 </div>
