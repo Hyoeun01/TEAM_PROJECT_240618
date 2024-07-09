@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+<!--      layout:decorate="~{/layout/sidebar.html}"-->
+>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +46,9 @@
     </div>
 </header>
 <!--<div class="container-fluid" layout:fragment="content"></div>-->
+
 <main layout:fragment="content"></main>
+
 <footer>
     <div class="footer-box">
         <img src="/img/arcana.png" alt="푸터 아르카나 로고" class="footer-img">

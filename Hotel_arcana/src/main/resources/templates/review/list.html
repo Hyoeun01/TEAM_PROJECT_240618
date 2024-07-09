@@ -63,10 +63,10 @@
             $(document).ready(function() {
                 var size = 5; // 한 번에 보여줄 리뷰 개수
 
-                // 초기에는 첫 번째 페이지의 리뷰만 보이도록 설정합니다.
+                // 초기에는 첫 번째 페이지의 리뷰만 보이도록 설정
                 $('#reviewList .col-md-12').slice(0, size).show();
 
-                // 숨겨진 리뷰를 초기화합니다.
+                // 숨겨진 리뷰를 초기화.
                 $('#reviewList .col-md-12').slice(size).hide();
 
                 // 버튼 클릭 시 콘솔에 메시지 출력
@@ -74,10 +74,10 @@
                     e.preventDefault();
                     console.log("더보기 버튼 클릭됨!");
 
-                    // 다음 페이지의 리뷰를 보여줍니다.
+                    // 다음 페이지의 리뷰 보이기
                     $('#reviewList .col-md-12:hidden').slice(0, size).slideDown();
 
-                    // 더 이상 보여줄 리뷰가 없으면 "더 보기" 버튼을 숨깁니다.
+                    // 더 이상 보여줄 리뷰가 없으면 "더 보기" 버튼을 숨기기
                     if ($('#reviewList .col-md-12:hidden').length === 0) {
                         $('#loadMore').fadeOut('slow');
                     }
