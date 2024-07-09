@@ -4,6 +4,7 @@ import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
 import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.service.ReservationService;
+import com.example.hotel_arcana.room.dto.RoomDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import java.security.Principal;
@@ -191,6 +193,20 @@ public class MemberController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/manager/reservationDetails/{RV_ID}")
+    public String getReservationDetails(@PathVariable Long RV_ID, Model model) {
+        ReservationDTO reservation = reservationService.getOne(RV_ID);
+        model.addAttribute("reservation", reservation);
+        return "manager/reservation_details";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/manager/updateResv")
+    public String updateReservation(@ModelAttribute ReservationDTO reservationDTO) {
+        reservationService.modify(reservationDTO);
+        return "redirect:/manager/manageResv";
+    }
 
 
 }

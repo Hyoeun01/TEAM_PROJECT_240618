@@ -73,7 +73,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">수정</button>
+                    <button type="button" class="btn btn-primary" th:attr="onclick='window.location.href=\'/manager/reservationDetails/' + ${reservation.RV_ID} + '\''">수정</button>
                     <button type="button" class="btn btn-danger" th:attr="data-resvid=${reservation.RV_ID}" onclick="confirmAndDelete(this)">삭제</button>
                 </div>
             </div>
