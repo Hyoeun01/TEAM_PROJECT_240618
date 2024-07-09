@@ -4,6 +4,7 @@ import com.example.hotel_arcana.login.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,7 @@ import java.security.Principal;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping("/")
+    @PostMapping("/mypage")
     public String index(Principal principal, Model model) {
         log.info(principal.getName());
         MemberDTO memberDTO = memberService.findMemberById(principal.getName());
@@ -48,7 +49,7 @@ public class MemberController {
     }
 
 
-    //    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("/login/memberRead/{USER_ID}")
     public String read(@PathVariable String USER_ID, Model model) {
         MemberDTO memberDTO = memberService.memberRead(USER_ID);
@@ -81,18 +82,12 @@ public class MemberController {
         model.addAttribute("memberDTO", memberDTO);
 
         return "redirect:/login/memberRead/" + memberDTO.getUSER_ID();
-
-//        memberService.updateMember(memberDTO);
-//        return "redirect:login/memberRead/" + memberDTO.getUSER_ID(); // 수정 후 상세 조회 페이지로 리다이렉트
     }
 
 
-//    @GetMapping("/login/memberRemove/{USER_ID}")
-//    public String MemberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
-//        memberService.deleteMember(USER_ID);
-//        return "redirect:/register"; // 삭제 후 리다이렉트할 페이지 설정
-//    }
 
+
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("/login/memberRemove/{USER_ID}")
     public String memberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
         MemberDTO memberDTO = memberService.memberRead(USER_ID);
@@ -100,6 +95,7 @@ public class MemberController {
         return "login/memberRemove";
     }
 
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping("/login/memberRemove")
     public String deleteMember(@ModelAttribute("memberDTO") MemberDTO memberDTO, @RequestParam("USER_PW") String USER_PW) {
         if (checkPassword(memberDTO, USER_PW)) {
@@ -115,10 +111,6 @@ public class MemberController {
         // 비밀번호 확인 로직
         return memberDTO.getUSER_PW().equals(USER_PW);
     }
-
-    @GetMapping("/testfile")
-    public String test (){
-        return "/testfile";
-    }
 }
+
 

@@ -3,6 +3,7 @@ package com.example.hotel_arcana.login.service;
 import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,7 +39,8 @@ public class MemberServiceImpl implements MemberService{
         if (memberDTO.getUSER_PW() == null || (memberDTO.getUSER_PW().isEmpty())){
             throw new IllegalArgumentException("Password cannot be null or empty");
         }
-        memberDTO.setUSER_PW(passwordEncoder.encode(memberDTO.getUSER_PW()));
+
+        memberDTO.setUSER_PW (passwordEncoder.encode(memberDTO.getUSER_PW()));
         memberMapper.updateMember(memberDTO);
     }
 
