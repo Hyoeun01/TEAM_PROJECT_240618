@@ -1,6 +1,8 @@
 package com.example.hotel_arcana.review.controller;
 
 import com.example.hotel_arcana.notice.dto.NoticeDTO;
+import com.example.hotel_arcana.reservation.dto.ReservationDTO;
+import com.example.hotel_arcana.reservation.service.ReservationService;
 import com.example.hotel_arcana.review.dto.ReviewDTO;
 import com.example.hotel_arcana.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +29,7 @@ import java.util.Optional;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final ReservationService reservationService;
 
 
 
@@ -38,7 +42,10 @@ public class ReviewController {
     }
 
     @GetMapping("/register")
-    public void registerReview(Model model) {
+    public void registerReview(Principal principal, ReservationDTO reservationDTO, Model model) {
+        reservationDTO.setRV_USER_ID(principal.getName());
+        List<ReservationDTO> reservationList = reservationService.selectAllbyId(reservationDTO.getRV_USER_ID());
+        model.addAttribute("reservation", reservationList);
         model.addAttribute("newReview", new ReviewDTO());
     }
 

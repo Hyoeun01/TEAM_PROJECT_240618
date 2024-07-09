@@ -1,5 +1,6 @@
 package com.example.hotel_arcana.review.service;
 
+import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.mapper.ReservationMapper;
 import com.example.hotel_arcana.review.dto.ReviewDTO;
 import com.example.hotel_arcana.review.dto.PageRequestDTO;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
 
+    private final ReservationMapper reservationMapper;
     private final ReviewMapper reviewMapper;
     private ReviewDTO reviewDTO;
 
@@ -46,6 +48,11 @@ public class ReviewServiceImpl implements ReviewService {
         reviewMapper.insert(reviewDTO);
 
         return reviewDTO.getRE_ID();
+    }
+
+    @Override
+    public List<ReservationDTO> selectAllbyId(String RV_USER_ID) {
+        return reservationMapper.selectAllbyId(RV_USER_ID);
     }
 
 }

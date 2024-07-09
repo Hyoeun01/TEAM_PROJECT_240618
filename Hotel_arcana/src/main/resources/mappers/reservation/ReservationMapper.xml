@@ -17,7 +17,6 @@
                  JOIN room r ON res.RV_ROOM_NUMBER = r.ROOM_ID
         where RV_USER_ID=#{RV_USER_ID}
         order by RV_ID desc
-
     </select>
 
 
