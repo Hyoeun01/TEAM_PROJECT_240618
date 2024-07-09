@@ -80,3 +80,7 @@ section {
 .imgDiv{
     z-index: 2;
 }
+.menu-item{
+    text-align: center;
+    text-decoration: none;
+}
