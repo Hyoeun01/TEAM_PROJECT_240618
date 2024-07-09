@@ -1,12 +1,10 @@
 package com.example.hotel_arcana.login.controller;
-
 import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +21,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/")
+    @PostMapping("/mypage")
     public String index(Principal principal, Model model) {
         log.info(principal.getName());
         MemberDTO memberDTO = memberService.findMemberById(principal.getName());
@@ -49,11 +47,12 @@ public class MemberController {
 
     @GetMapping("/login")
     public String showLoginForm() {
+
         return "/login";
     }
 
 
-    //    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("/login/memberRead/{USER_ID}")
     public String read(@PathVariable String USER_ID, Model model) {
         MemberDTO memberDTO = memberService.memberRead(USER_ID);
@@ -98,6 +97,8 @@ public class MemberController {
 //        return "redirect:/register"; // 삭제 후 리다이렉트할 페이지 설정
 //    }
 
+
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("/login/memberRemove/{USER_ID}")
     public String memberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
         MemberDTO memberDTO = memberService.memberRead(USER_ID);
@@ -105,6 +106,7 @@ public class MemberController {
         return "login/memberRemove";
     }
 
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping("/login/memberRemove")
     public String deleteMember(@ModelAttribute("memberDTO") MemberDTO memberDTO, @RequestParam("USER_PW") String USER_PW) {
         if (checkPassword(memberDTO, USER_PW)) {
@@ -120,44 +122,7 @@ public class MemberController {
         // 비밀번호 확인 로직
         return memberDTO.getUSER_PW().equals(USER_PW);
     }
-
-    @GetMapping("/testfile")
-    public String test (){
-        return "/testfile";
-    }
-
-    @GetMapping("/manager/manage")
-    public String manage(Model model) {
-        int totalMembersCount = memberService.getTotalMembersCount();
-        model.addAttribute("totalMembersCount", totalMembersCount);
-
-        List<MemberDTO> members = memberService.getAllMembers();
-        model.addAttribute("members", members);
-
-        return "manager/manage"; // manage.html을 불러오는 경로
-    }
-
-    @GetMapping("/manager/manageUser")
-    public String manageUser(Model model) {
-        int totalMembersCount = memberService.getTotalMembersCount();
-        model.addAttribute("totalMembersCount", totalMembersCount);
-
-        List<MemberDTO> members = memberService.getAllMembers();
-        model.addAttribute("members", members);
-
-        return "manager/manageUser"; // manageUser.html을 불러오는 경로
-    }
-
-    @DeleteMapping("/manager/delete/{userId}")
-    public ResponseEntity<String> deleteMember(@PathVariable String userId) {
-        log.info("---------------userId : " + userId);
-        try {
-            memberService.deleteMember(userId);
-            return ResponseEntity.ok("SUCCESS");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 삭제 실패: " + e.getMessage());
-        }
-    }
+}
 
 }
 
