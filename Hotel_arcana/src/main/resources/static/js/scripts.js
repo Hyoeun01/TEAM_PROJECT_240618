@@ -4,11 +4,11 @@ showSlides();
 function showSlides() {
     let slides = document.getElementsByClassName("slide");
     for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
+        slides[i].style.display = "none";
     }
     slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
-    slides[slideIndex-1].style.display = "block";  
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
     setTimeout(showSlides, 10000); // Change image every 10 seconds
 }
 
@@ -65,3 +65,56 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+$(function () {
+    var today = new Date();
+
+    $("#in_Dates").datepicker({
+        dateFormat: "yy-mm-dd",
+        altField: "#in_Calendar",
+        minDate: today,
+        onSelect: function (selectedDate) {
+            var selectedDateObj = new Date(selectedDate);
+            var nextDay = new Date(selectedDateObj.getTime() + 24 * 60 * 60 * 1000);
+            $("#out_Dates").datepicker("option", "minDate", nextDay);
+        }
+    });
+
+    $("#out_Dates").datepicker({
+        dateFormat: "yy-mm-dd",
+        altField: "#out_Calendar",
+        minDate: null,
+        beforeShow: function(input, inst) {
+            if (!$("#in_Dates").datepicker("getDate")) {
+                return false;
+            }
+        }
+    });
+});
+
+
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let slides = document.getElementsByClassName("slide2");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 5000);
+}
+
+function plusSlides(n) {
+    let slides = document.getElementsByClassName("slide2");
+    slideIndex += n;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    if (slideIndex < 1) {slideIndex = slides.length}
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+}
+

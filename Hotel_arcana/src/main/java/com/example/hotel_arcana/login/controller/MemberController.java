@@ -47,7 +47,6 @@ public class MemberController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-
         return "/login";
     }
 
@@ -122,7 +121,8 @@ public class MemberController {
         // 비밀번호 확인 로직
         return memberDTO.getUSER_PW().equals(USER_PW);
     }
-}
+
+
 
 }
 
