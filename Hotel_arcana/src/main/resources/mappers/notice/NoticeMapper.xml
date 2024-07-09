@@ -37,8 +37,8 @@
 
 <!--    게시글 작성-->
     <insert id="insert">
-        INSERT INTO hotel_notice (N_TITLE, N_CONTENT, N_WRITER, N_VIEW)
-        VALUES (#{N_TITLE}, #{N_CONTENT}, #{N_WRITER}, #{N_VIEW})
+        INSERT INTO hotel_notice (N_TITLE, N_CONTENT, N_WRITER, N_VIEW, MANAGER_ID)
+        VALUES (#{N_TITLE}, #{N_CONTENT}, #{N_WRITER}, #{N_VIEW}, #{MANAGER_ID})
     </insert>
 
 <!--    게시글 보기-->
