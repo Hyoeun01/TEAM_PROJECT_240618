@@ -1,10 +1,12 @@
 package com.example.hotel_arcana.login.controller;
+
 import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -96,8 +98,6 @@ public class MemberController {
 //        return "redirect:/register"; // 삭제 후 리다이렉트할 페이지 설정
 //    }
 
-
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping("/login/memberRemove/{USER_ID}")
     public String memberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
         MemberDTO memberDTO = memberService.memberRead(USER_ID);
@@ -105,7 +105,6 @@ public class MemberController {
         return "login/memberRemove";
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @PostMapping("/login/memberRemove")
     public String deleteMember(@ModelAttribute("memberDTO") MemberDTO memberDTO, @RequestParam("USER_PW") String USER_PW) {
         if (checkPassword(memberDTO, USER_PW)) {
@@ -122,6 +121,59 @@ public class MemberController {
         return memberDTO.getUSER_PW().equals(USER_PW);
     }
 
+//
+//        List<MemberDTO> members = memberService.getAllMembers();
+//        model.addAttribute("members", members);
+//
+//        return "manager/manageUser"; // manageUser.html을 불러오는 경로
+//    }
+//
+//    @DeleteMapping("/manager/delete/{userId}")
+//    public ResponseEntity<String> deleteMember(@PathVariable String userId) {
+//        log.info("---------------userId : " + userId);
+//        try {
+//            memberService.deleteMember(userId);
+//            return ResponseEntity.ok("SUCCESS");
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 삭제 실패: " + e.getMessage());
+//        }
+//    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/manager/manageResv")
+    public String manageReservations(Model model) {
+        // 예약된 모든 정보를 가져옵니다.
+        List<ReservationDTO> reservations = reservationService.getAll();
+        model.addAttribute("reservations", reservations);
+
+        return "manager/manageResv"; // manageResv.html을 불러오는 경로
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/manager/deleteResv/{RV_ID}")
+    public ResponseEntity<String> deleteReservation(@PathVariable("RV_ID") Long RV_ID) {
+        try {
+            reservationService.remove(RV_ID);
+            return ResponseEntity.ok("SUCCESS");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("예약 삭제 실패: " + e.getMessage());
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/manager/reservationDetails/{RV_ID}")
+    public String getReservationDetails(@PathVariable Long RV_ID, Model model) {
+        ReservationDTO reservation = reservationService.getOne(RV_ID);
+        model.addAttribute("reservation", reservation);
+        return "manager/reservation_details";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/manager/updateResv")
+    public String updateReservation(@ModelAttribute ReservationDTO reservationDTO) {
+        reservationService.modify(reservationDTO);
+        return "redirect:/manager/manageResv";
+    }
 
 
 }

@@ -134,3 +134,23 @@
 
         }, false);
     }
+
+    // css 손보기
+    // 가능하다면 총 금액 계산가능하게 만들기
+
+    document.querySelector(".submitBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (confirm("예약을 변경하시겠습니까?")) {
+            document.querySelector("#modifyForm").submit();
+            alert("예약이 변경되었습니다.")
+        }
+
+
+
+
+    }, false);
+</script>
+
+</html>

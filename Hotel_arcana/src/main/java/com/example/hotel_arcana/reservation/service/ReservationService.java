@@ -16,5 +16,5 @@ public interface ReservationService {
     RoomDTO getRoom(Long ROOM_ID);
     List<RoomDTO> getRoomInfo();
 
-
+    int getTotalReservationCount();
 }

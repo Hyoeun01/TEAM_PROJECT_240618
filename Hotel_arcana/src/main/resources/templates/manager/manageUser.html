@@ -15,7 +15,7 @@
         <img src="/img/arcana.png" alt="Hotel Logo">
     </div>
     <ul>
-        <li><a th:href="@{/manager/manage}" >홈페이지관리</a></li>
+        <li><a th:href="@{/manager/manage}">홈페이지관리</a></li>
         <li><a th:href="@{/manager/manageUser}" class="active">회원관리</a></li>
         <li><a th:href="@{/manager/manageResv}">예약관리</a></li>
         <li><a href="#">방관리</a></li>
@@ -26,7 +26,7 @@
 </div>
 <div class="main-content">
     <nav class="navbar">
-        <a href="#" class="logout">Logout</a>
+        <a class="logout" sec:authorize="isAuthenticated()" href="/logout">로그아웃</a>
     </nav>
     <div class="header">
         <h1>회원관리 페이지</h1>
@@ -38,8 +38,14 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">회원 ID: <span th:text="${member.USER_ID}">user</span></h5>
-                        <p class="card-text">이름: <span th:text="${member.USER_NM}">name</span></p>
-                        <p class="card-text">이메일: <span th:text="${member.USER_EML}">email</span></p>
+                        <div th:if="${member.USER_AUTH == 'ADMIN'}">
+                            <p class="card-text">권한: <span th:text="${member.USER_AUTH}">ADMIN</span></p>
+                            <p class="card-text"><span>관리자 계정입니다.</span></p>
+                        </div>
+                        <div th:if="${member.USER_AUTH != 'ADMIN'}">
+                            <p class="card-text">이름: <span th:text="${member.USER_NM}">name</span></p>
+                            <p class="card-text">이메일: <span th:text="${member.USER_EML}">email</span></p>
+                        </div>
                         <button type="button" class="btn btn-primary"
                                 th:data-target="${'#memberModal' + member.USER_ID}" data-toggle="modal">
                             상세보기
@@ -77,17 +83,24 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                     <button type="button" class="btn btn-primary">관리</button>
-                    <button type="button" class="btn btn-danger"
-                            th:attr="data-userid=${member.USER_ID}"
-                            onclick="confirmAndDelete(this)">
-                        탈퇴
-                    </button>
+<!--                    <div th:if="${member.USER_AUTH == 'ADMIN'}">-->
+<!--                    </div>-->
+<!--                    <div th:if="${member.USER_AUTH != 'ADMIN'}">-->
+<!--                    </div>-->
+                    <div th:if="${member.USER_AUTH != 'ADMIN'}">
+                        <button type="button" class="btn btn-danger"
+                                th:attr="data-userid=${member.USER_ID}"
+                                onclick="confirmAndDelete(this)">
+                            탈퇴
+                        </button>
+                    </div>
+                    <div th:if="${member.USER_AUTH == 'ADMIN'}">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -99,12 +112,12 @@
             $.ajax({
                 url: '/manager/delete/' + userId,
                 type: 'DELETE',
-                success: function(response) {
+                success: function (response) {
                     alert(response);
                     // 페이지 새로고침
                     location.reload();
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     alert('회원 삭제 실패: ' + xhr.responseText);
                 }
             });
