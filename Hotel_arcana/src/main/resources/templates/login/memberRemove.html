@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
-      layout:decorate="~{/layout.html}">
+      layout:decorate="~{/layout/layout.html}">
 <div id="container" layout:fragment="content">
     <link rel="stylesheet" href="/css/member.css">
     <div class="container-fluid asd">
@@ -55,7 +55,7 @@
                                     회원을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.
                                 </div>
                                 <button type="submit" class="btn btn-danger">탈퇴</button>
-                                <a href="/login/memberRead" class="btn btn-secondary">취소</a>
+                                <a th:href="@{/login/memberRead/{USER_ID}(USER_ID=${memberDTO.USER_ID})}" class="btn btn-secondary">취소</a>
                             </form>
                         </div>
                     </div>

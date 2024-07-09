@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
-      layout:decorate="~{/layout.html}">
+      layout:decorate="~{/layout/layout.html}">
 <div id="container" layout:fragment="content">
     <link rel="stylesheet" href="/css/member.css">
     <form action="/login/memberRead/{USER_ID}" method="post" class="container-fluid asd">
@@ -40,7 +40,7 @@
             <div class="col-md-9 content">
                 <div class="card custom-card">
                     <div class="card-body">
-                        <h3 class="card-title">마이페이지</h3>
+                        <h1 class="card-title">마이페이지</h1>
                         <div class="container mt-3">
                             <div th:if="${memberDTO != null}">
                                 <h6>아이디: <span th:text="${memberDTO.USER_ID}"></span></h6>

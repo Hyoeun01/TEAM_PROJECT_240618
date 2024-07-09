@@ -4,7 +4,6 @@ import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
 import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.service.ReservationService;
-import com.example.hotel_arcana.room.dto.RoomDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import java.security.Principal;
@@ -27,15 +25,16 @@ import java.security.Principal;
 public class MemberController {
 
     private final MemberService memberService;
-
-    @PostMapping("/MyPage")
-    public String index(Principal principal, Model model) {
-        log.info(principal.getName());
-        MemberDTO memberDTO = memberService.findMemberById(principal.getName());
-        model.addAttribute("memberDTO", memberDTO);
-        log.info(memberDTO);
-        return "/MyPage";
-    }
+    private final ReservationService reservationService;
+//
+//    @PostMapping("/mypage")
+//    public String index(Principal principal, Model model) {
+//        log.info(principal.getName());
+//        MemberDTO memberDTO = memberService.findMemberById(principal.getName());
+//        model.addAttribute("memberDTO", memberDTO);
+//        log.info(memberDTO);
+//        return "MyPage";
+//    }
 
     //회원만 쓸 수 있어서 로그인이 필요한 페이지에 넣기
     //@PreAuthorize("isAuthenticated()")
@@ -58,10 +57,10 @@ public class MemberController {
     }
 
 
-    //    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/login/memberRead/{USER_ID}")
-    public String read(@PathVariable String USER_ID, Model model) {
-        MemberDTO memberDTO = memberService.memberRead(USER_ID);
+//    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/login/memberRead")
+    public String read( Model model, Principal principal) {
+        MemberDTO memberDTO = memberService.memberRead(principal.getName());
         model.addAttribute("memberDTO", memberDTO);
         return "login/memberRead";
     }
@@ -126,51 +125,23 @@ public class MemberController {
         return memberDTO.getUSER_PW().equals(USER_PW);
     }
 
-    @GetMapping("/testfile")
-    public String test (){
-        return "/testfile";
-    }
-
-//--------------------------------------------------------------------------------------------------
-
-    private final ReservationService reservationService;
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/manager/manage")
-    public String manage(Model model) {
-        int totalMembersCount = memberService.getTotalMembersCount();
-        model.addAttribute("totalMembersCount", totalMembersCount);
-        int totalReservationCount = reservationService.getTotalReservationCount();
-        model.addAttribute("totalReservationCount", totalReservationCount);
-        List<MemberDTO> members = memberService.getAllMembers();
-        model.addAttribute("members", members);
-
-        return "manager/manage"; // manage.html을 불러오는 경로
-    }
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/manager/manageUser")
-    public String manageUser(Model model) {
-        int totalMembersCount = memberService.getTotalMembersCount();
-        model.addAttribute("totalMembersCount", totalMembersCount);
-
-        List<MemberDTO> members = memberService.getAllMembers();
-        model.addAttribute("members", members);
-
-        return "manager/manageUser"; // manageUser.html을 불러오는 경로
-    }
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping("/manager/delete/{userId}")
-    public ResponseEntity<String> deleteMember(@PathVariable String userId) {
-        log.info("---------------userId : " + userId);
-        try {
-            memberService.deleteMember(userId);
-            return ResponseEntity.ok("SUCCESS");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 삭제 실패: " + e.getMessage());
-        }
-    }
+//
+//        List<MemberDTO> members = memberService.getAllMembers();
+//        model.addAttribute("members", members);
+//
+//        return "manager/manageUser"; // manageUser.html을 불러오는 경로
+//    }
+//
+//    @DeleteMapping("/manager/delete/{userId}")
+//    public ResponseEntity<String> deleteMember(@PathVariable String userId) {
+//        log.info("---------------userId : " + userId);
+//        try {
+//            memberService.deleteMember(userId);
+//            return ResponseEntity.ok("SUCCESS");
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 삭제 실패: " + e.getMessage());
+//        }
+//    }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/manageResv")
