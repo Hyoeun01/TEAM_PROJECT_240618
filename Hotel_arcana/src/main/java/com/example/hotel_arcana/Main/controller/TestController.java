@@ -24,6 +24,7 @@ public class TestController {
         }
         return "Main";
     }
+//    @GetMapping("/room/{ROOM_NAME}")
     @GetMapping("/room/STANDARD")
     public String showStandardRoom(Model model) {
         Room standardRoom = mainService.getRoomByName("STANDARD");
@@ -38,7 +39,7 @@ public class TestController {
     }
     @GetMapping("/room/VVIP")
     public String showVVIPRoom(Model model) {
-        Room VVIPRoom = mainService.getRoomByName("DELUXE");
+        Room VVIPRoom = mainService.getRoomByName("VVIP");
         model.addAttribute("VVIP", VVIPRoom);
         return "/ROOM/VVIP";
     }

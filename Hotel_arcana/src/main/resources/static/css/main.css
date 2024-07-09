@@ -7,9 +7,11 @@ body {
 .main-page-img{
     display: block;
     width: 1905px;
+    height: 500px;
     overflow: hidden;
     position: relative;
     margin: 0 0 0 -310px;
+
 }
 .search-bar {
     position: absolute;
@@ -53,10 +55,96 @@ body {
     margin: 10px 0 0 0;
 }
 .H_nickname{
-    text-align: left;
+    text-align: center;
     font-weight: bold;
     font-size: large;
 }
 .H_service{
-    text-align: left;
+    text-align: center;
+}
+
+/*.container {*/
+/*    width: 80%;*/
+/*    max-width: 800px;*/
+/*    text-align: center;*/
+/*    background-color: #fff;*/
+/*    padding: 20px;*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: auto;
+    height: 300px;
+    /* 고정된 높이 설정 */
+    margin: 0 auto;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+    overflow: hidden;
+    /*background-color: #FFF;*/
+    transform: translateY(-50%);
+
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.fade2 {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 3.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
 }
