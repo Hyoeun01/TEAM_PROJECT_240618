@@ -20,15 +20,15 @@ import java.security.Principal;
 public class MemberController {
 
     private final MemberService memberService;
-
-    @PostMapping("/mypage")
-    public String index(Principal principal, Model model) {
-        log.info(principal.getName());
-        MemberDTO memberDTO = memberService.findMemberById(principal.getName());
-        model.addAttribute("memberDTO", memberDTO);
-        log.info(memberDTO);
-        return "MyPage";
-    }
+//
+//    @PostMapping("/mypage")
+//    public String index(Principal principal, Model model) {
+//        log.info(principal.getName());
+//        MemberDTO memberDTO = memberService.findMemberById(principal.getName());
+//        model.addAttribute("memberDTO", memberDTO);
+//        log.info(memberDTO);
+//        return "MyPage";
+//    }
 
     //회원만 쓸 수 있어서 로그인이 필요한 페이지에 넣기
     //@PreAuthorize("isAuthenticated()")

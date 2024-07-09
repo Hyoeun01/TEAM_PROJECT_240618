@@ -6,8 +6,8 @@
 
     <!--    QnA 작성-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="Q_NO">
-        INSERT INTO hotel_qna (Q_BOX, Q_MAIL, Q_PHONE, Q_TITLE, Q_CONTENT, Q_IMG)
-        VALUES (#{Q_BOX}, #{Q_MAIL}, #{Q_PHONE}, #{Q_TITLE}, #{Q_CONTENT}, #{Q_IMG})
+        INSERT INTO hotel_qna (Q_BOX, Q_MAIL, Q_PHONE, Q_TITLE, Q_CONTENT, Q_IMG, Q_USER_ID)
+        VALUES (#{Q_BOX}, #{Q_MAIL}, #{Q_PHONE}, #{Q_TITLE}, #{Q_CONTENT}, #{Q_IMG},#{Q_USER_ID})
     </insert>
 
     <insert id="imgInsert">

@@ -6,12 +6,14 @@ import com.example.hotel_arcana.room.dto.RoomDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -32,6 +34,7 @@ public class ReservationController {
         model.addAttribute("list", reservationList);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/roomchoice")
     public void roomlist(Model model){
         List<RoomDTO> roomDTO =  reservationService.getRoomInfo();
@@ -49,7 +52,7 @@ public class ReservationController {
     }
 
 
-
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/register/{ROOM_NAME}")
     public String register(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
     , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests, @PathVariable("ROOM_NAME") String roomName , Model model){
@@ -108,20 +111,21 @@ public class ReservationController {
     }
 
     @PostMapping("/preview")
-    public String previewPost(@Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
+    public String previewPost(Principal principal, @Valid ReservationDTO reservationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes
             , @RequestParam("inDates") String inDates, @RequestParam("outDates") String outDates, @RequestParam("guests") String guests, Model model){
         int TOTAL_NUM = Integer.parseInt(guests);
 
         reservationDTO.setSTART_DATE(LocalDate.parse(inDates));  // inDates를 LocalDate로 변환
         reservationDTO.setEND_DATE(LocalDate.parse(outDates));// outDates를 LocalDate로 변환
         reservationDTO.setTOTAL_NUM(TOTAL_NUM);
-
+        reservationDTO.setRV_USER_ID(principal.getName());
         if (bindingResult.hasErrors()) {
             log.info("에러발생");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
             return "/reservation/roomchoice";
         }
         log.info(reservationDTO);
+
         Long RV_ID = reservationService.register(reservationDTO);
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
         redirectAttributes.addFlashAttribute("result", RV_ID);

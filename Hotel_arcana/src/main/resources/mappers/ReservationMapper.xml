@@ -8,7 +8,9 @@
 
         select res.RV_ID, res.START_DATE, res.END_DATE, res.TOTAL_NUM, res.RV_USER_ID, res.RV_ROOM_NUMBER, r.ROOM_NAME
         from reservation res
-                 JOIN room r ON res.RV_ROOM_NUMBER = r.ROOM_ID  order by RV_ID desc
+                 JOIN room r ON res.RV_ROOM_NUMBER = r.ROOM_ID
+
+                order by RV_ID desc
     </select>
 
     <select id="selectOne" resultType="com.example.hotel_arcana.reservation.dto.ReservationDTO">
@@ -16,8 +18,8 @@
     </select>
 
     <insert id="insert">
-        insert into reservation (START_DATE,END_DATE,TOTAL_NUM,RV_ROOM_NUMBER)
-        VALUES (#{START_DATE},#{END_DATE},#{TOTAL_NUM},#{RV_ROOM_NUMBER})
+        insert into reservation (START_DATE,END_DATE,TOTAL_NUM,RV_ROOM_NUMBER,RV_USER_ID)
+        VALUES (#{START_DATE},#{END_DATE},#{TOTAL_NUM},#{RV_ROOM_NUMBER},#{RV_USER_ID})
     </insert>
 
     <delete id="delete">

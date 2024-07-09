@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -38,8 +39,9 @@ public class MemberQnaController {
 
     //    @PreAuthorize("principal.username == #MemberQnaDTO.Q_USER_ID")
     @PostMapping("/register")
-    public String postQna(@Valid MemberQnaDTO memberQnaDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, List<MultipartFile> files) throws IOException {
+    public String postQna(Principal principal, @Valid MemberQnaDTO memberQnaDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, List<MultipartFile> files) throws IOException {
 
+        memberQnaDTO.setQ_USER_ID(principal.getName());
         Long Q_NO = memberQnaService.register(memberQnaDTO);
 
         // if 이미지가 없을시 null로 저장

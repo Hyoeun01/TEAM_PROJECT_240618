@@ -12,11 +12,13 @@ import java.util.List;
 
 @Controller
 public class TestController {
+
     @Autowired
     private MainService mainService;
 
-    @GetMapping("/Main")
+    @GetMapping("/")
     public String showRooms(Model model) {
+
         List<String> roomNames = Arrays.asList("STANDARD", "DELUXE", "SUPERIOR", "VIP", "VVIP", "SUITE");
         for (String roomName : roomNames) {
             Room room = mainService.getRoom(roomName);
