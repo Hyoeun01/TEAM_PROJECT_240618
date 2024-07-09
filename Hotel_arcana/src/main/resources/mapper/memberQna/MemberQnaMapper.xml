@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel_arcana.memberQna.mapper.MemberQnaMapper">
+
+    <!--    QnA 작성-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="Q_NO">
+        INSERT INTO hotel_qna (Q_BOX, Q_MAIL, Q_PHONE, Q_TITLE, Q_CONTENT, Q_IMG)
+        VALUES (#{Q_BOX}, #{Q_MAIL}, #{Q_PHONE}, #{Q_TITLE}, #{Q_CONTENT}, #{Q_IMG})
+    </insert>
+
+    <insert id="imgInsert">
+        INSERT INTO hotel_qna_img (uuid, filename, ord, Q_NO)
+        VALUES (#{uuid},#{filename},#{ord},#{Q_NO})
+    </insert>
+</mapper>

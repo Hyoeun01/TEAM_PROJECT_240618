@@ -68,6 +68,7 @@ section {
     color: rgba(255, 255, 255, 1);
     font-size: 14px;
     letter-spacing: 0;
+
 }
 .header_text{
     min-width: 150px;
@@ -79,4 +80,9 @@ section {
 }
 .imgDiv{
     z-index: 2;
+}
+
+.line {
+    text-decoration-line: none;
+    color: black;
 }
