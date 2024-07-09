@@ -5,6 +5,9 @@ import com.example.hotel_arcana.login.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,7 +24,8 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/")
+
+    @PostMapping("/mypage")
     public String index(Principal principal, Model model) {
         log.info(principal.getName());
         MemberDTO memberDTO = memberService.findMemberById(principal.getName());
@@ -124,20 +128,39 @@ public class MemberController {
         return "/testfile";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/manage")
-    public void manage(@ModelAttribute MemberDTO memberDTO, Model model) {
+    public String manage(Model model) {
         int totalMembersCount = memberService.getTotalMembersCount();
         model.addAttribute("totalMembersCount", totalMembersCount);
-        // 다른 필요한 데이터도 모델에 추가할 수 있음
+
         List<MemberDTO> members = memberService.getAllMembers();
         model.addAttribute("members", members);
+
+        return "manager/manage"; // manage.html을 불러오는 경로
     }
 
     @GetMapping("/manager/manageUser")
-    public String manageUserPage(Model model) {
+    public String manageUser(Model model) {
+        int totalMembersCount = memberService.getTotalMembersCount();
+        model.addAttribute("totalMembersCount", totalMembersCount);
+
         List<MemberDTO> members = memberService.getAllMembers();
         model.addAttribute("members", members);
-        return "manager/manageUser";
+
+        return "manager/manageUser"; // manageUser.html을 불러오는 경로
     }
+
+    @DeleteMapping("/manager/delete/{userId}")
+    public ResponseEntity<String> deleteMember(@PathVariable String userId) {
+        log.info("---------------userId : " + userId);
+        try {
+            memberService.deleteMember(userId);
+            return ResponseEntity.ok("SUCCESS");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 삭제 실패: " + e.getMessage());
+        }
+    }
+
 }
 
