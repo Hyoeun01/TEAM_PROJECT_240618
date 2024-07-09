@@ -2,11 +2,14 @@ package com.example.hotel_arcana.login.controller;
 
 import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
+import com.example.hotel_arcana.reservation.dto.ReservationDTO;
+import com.example.hotel_arcana.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +25,7 @@ import java.security.Principal;
 public class MemberController {
 
     private final MemberService memberService;
+    private final ReservationService reservationService;
 //
 //    @PostMapping("/mypage")
 //    public String index(Principal principal, Model model) {

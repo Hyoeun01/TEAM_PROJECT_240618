@@ -9,7 +9,7 @@
         select res.RV_ID, res.START_DATE, res.END_DATE, res.TOTAL_NUM, res.RV_USER_ID, res.RV_ROOM_NUMBER, r.ROOM_NAME
         from reservation res
                  JOIN room r ON res.RV_ROOM_NUMBER = r.ROOM_ID
-
+                WHERE RV_USER_ID=#{RV_USER_ID}
                 order by RV_ID desc
     </select>
 
