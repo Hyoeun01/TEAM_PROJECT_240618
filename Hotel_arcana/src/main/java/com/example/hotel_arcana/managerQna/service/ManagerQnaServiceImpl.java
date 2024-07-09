@@ -2,9 +2,8 @@ package com.example.hotel_arcana.managerQna.service;
 
 import com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO;
 import com.example.hotel_arcana.managerQna.mapper.ManagerQnaMapper;
-import com.example.hotel_arcana.notice.dto.NoticeDTO;
-import com.example.hotel_arcana.notice.dto.PageRequestDTO;
-import com.example.hotel_arcana.notice.dto.PageResponseDTO;
+import com.example.hotel_arcana.managerQna.dto.PageRequestDTO;
+import com.example.hotel_arcana.managerQna.dto.PageResponseDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -37,10 +36,10 @@ public class ManagerQnaServiceImpl implements ManagerQnaService {
         int offset = (pageRequestDTO.getPage() - 1) * pageRequestDTO.getSize();
 
         // 데이터베이스에서 QnA 리스트 조회
-        List<ManagerQnaDTO> dtoList = managerQnaMapper.QnaPage(offset, pageRequestDTO.getSize(), pageRequestDTO.getType(), pageRequestDTO.getKeyword());
+        List<ManagerQnaDTO> dtoList = managerQnaMapper.QnaPage(offset, pageRequestDTO.getSize(), pageRequestDTO.getType(), pageRequestDTO.getKeyword(), pageRequestDTO.getQ_BOX());
 
         // 데이터베이스에서 QnA 총 개수 조회
-        Integer count = managerQnaMapper.QnaCount(pageRequestDTO.getType(), pageRequestDTO.getKeyword());
+        Integer count = managerQnaMapper.QnaCount(pageRequestDTO.getType(), pageRequestDTO.getKeyword(),pageRequestDTO.getQ_BOX());
 
         // 총 개수 설정
         int total = count != null ? count : 0;

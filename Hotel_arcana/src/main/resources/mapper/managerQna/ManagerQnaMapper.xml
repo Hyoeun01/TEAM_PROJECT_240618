@@ -4,15 +4,45 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hotel_arcana.managerQna.mapper.ManagerQnaMapper">
 
+    <resultMap id="ManagerQnaMap" type="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">
+        <result property="Q_NO" column="Q_NO" />
+        <result property="Q_BOX" column="Q_BOX" />
+        <result property="Q_MAIL" column="Q_MAIL" />
+        <result property="Q_PHONE" column="Q_PHONE" />
+        <result property="Q_TITLE" column="Q_TITLE" />
+        <result property="Q_CONTENT" column="Q_CONTENT" />
+        <result property="Q_DATE" column="Q_DATE" />
+        <result property="Q_IMG" column="Q_IMG" />
+        <result property="Q_USER_ID" column="Q_USER_ID" />
+        <result property="USER_NIK" column="USER_NIK" />
+        <collection  property="hotelQnaImgDTOS" javaType="List" ofType="com.example.hotel_arcana.memberQna.dto.HotelQnaImgDTO" >
+            <result property="qna_img_no" column="qna_img_no" />
+            <result property="uuid" column="uuid" />
+            <result property="filename" column="filename" />
+            <result property="ord" column="ord" />
+            <result property="Q_NO" column="Q_NO" />
+            <result property="regdate" column="regdate" />
+        </collection>
+    </resultMap>
+
     <!--    QnA 관리자 게시판 목록-->
     <select id="selectAll" resultType="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">
         SELECT * FROM hotel_qna ORDER BY Q_NO DESC
     </select>
 
     <!--    QnA 보기-->
-    <select id="selectOne" resultType="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">
-        SELECT * FROM hotel_qna WHERE Q_NO = #{Q_NO}
+<!--    <select id="selectOne" resultType="com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO">-->
+    <select id="selectOne" resultMap="ManagerQnaMap">
+        SELECT q.*, i.*
+        FROM hotel_qna q LEFT OUTER JOIN hotel_qna_img i ON q.Q_NO = i.Q_NO
+        WHERE q.Q_NO = #{Q_NO}
     </select>
+
+<!--    <select id="imgList" resultType="com.example.hotel_arcana.memberQna.dto.HotelQnaImgDTO">-->
+<!--        SELECT *-->
+<!--        FROM hodel_qna_img -->
+<!--        WHERE Q_NO = #{Q_NO}-->
+<!--    </select>-->
 
 
     <!--    게시판 목록 페이지-->
@@ -31,6 +61,7 @@
         FROM hotel_qna q
         JOIN hotel_member m ON q.Q_USER_ID = m.USER_ID
         <where>
+
             <if test='type!=null and "t".equals(type)'>
                 <!-- 검색조건이 title이라면 -->
                 q.Q_TITLE LIKE CONCAT('%' , #{keyword} , '%')
@@ -41,12 +72,16 @@
             </if>
             <if test='type!=null and "w".equals(type)'>
                 <!-- 검색조건이 writer이라면 -->
-                q.Q_USER_ID LIKE CONCAT('%' , #{keyword} , '%')
+                m.USER_NIK LIKE CONCAT('%' , #{keyword} , '%')
             </if>
             <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->
                 (q.Q_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR q.Q_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
             </if>
+            <if test='Q_BOX != null and Q_BOX != ""'>
+                AND q.Q_BOX = #{Q_BOX}
+            </if>
+
         </where>
         ORDER BY q.Q_NO DESC LIMIT #{offset}, #{size}
     </select>
@@ -71,6 +106,12 @@
             <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->
                 (q.Q_TITLE LIKE CONCAT('%' , #{keyword} , '%') OR q.Q_CONTENT LIKE CONCAT('%' , #{keyword} , '%'))
+            </if>
+            <if test='type!=null and "q".equals(type)'>
+                q.Q_BOX LIKE CONCAT('%' , #{keyword} , '%')
+            </if>
+            <if test='Q_BOX != null and Q_BOX != ""'>
+                AND q.Q_BOX = #{Q_BOX}
             </if>
         </where>
     </select>

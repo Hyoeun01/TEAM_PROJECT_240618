@@ -14,7 +14,7 @@ public interface ManagerQnaMapper {
 
     ManagerQnaDTO selectOne(Long Q_NO);
 
-    List<ManagerQnaDTO> QnaPage(@Param("offset") int offset, @Param("size") int size, @Param("type") String type, @Param("keyword") String keyword);
+    List<ManagerQnaDTO> QnaPage(@Param("offset") int offset, @Param("size") int size, @Param("type") String type, @Param("keyword") String keyword, @Param("Q_BOX") String Q_BOX);
 
-    Integer QnaCount(@Param("type") String type, @Param("keyword") String keyword);
+    Integer QnaCount(@Param("type") String type, @Param("keyword") String keyword, @Param("Q_BOX") String Q_BOX);
 }

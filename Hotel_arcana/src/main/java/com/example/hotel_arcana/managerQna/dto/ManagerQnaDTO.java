@@ -1,9 +1,11 @@
 package com.example.hotel_arcana.managerQna.dto;
 
+import com.example.hotel_arcana.memberQna.dto.HotelQnaImgDTO;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @ToString
 @Data
@@ -25,6 +27,7 @@ public class ManagerQnaDTO {
     private String Q_USER_ID;
 
     private String USER_NIK;
+    private List<HotelQnaImgDTO> hotelQnaImgDTOS;
 
 
 }

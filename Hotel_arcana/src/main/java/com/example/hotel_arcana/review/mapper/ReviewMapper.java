@@ -15,10 +15,10 @@ public interface ReviewMapper {
 
     void insert(ReviewDTO reviewDTO);
 
-//    void delete(Long RE_ID);
-    void delete(@Param("RE_ID") Long RE_ID);
-
-    void update(ReviewDTO reviewDTO);
+//    void delete(@Param("RE_ID") Long RE_ID);
+//
+//    void update(ReviewDTO reviewDTO);
 
     ReviewDTO selectById(@Param("RE_ID") Long RE_ID);
+
 }

@@ -1,5 +1,6 @@
 package com.example.hotel_arcana.memberQna.service;
 
+import com.example.hotel_arcana.memberQna.dto.HotelQnaImgDTO;
 import com.example.hotel_arcana.memberQna.dto.MemberQnaDTO;
 import com.example.hotel_arcana.memberQna.mapper.MemberQnaMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +16,15 @@ public class MemberQnaServiceImpl implements MemberQnaService {
 
     @Override
     public Long register(MemberQnaDTO memberQnaDTO) {
+
         log.info("Register memberQnaDTO: " + memberQnaDTO);
         memberQnaMapper.insert(memberQnaDTO);
 //        return 1L;
         return memberQnaDTO.getQ_NO();
+    }
+
+    @Override
+    public void registerImg(HotelQnaImgDTO hotelQnaImgDTO) {
+        memberQnaMapper.imgInsert(hotelQnaImgDTO);
     }
 }

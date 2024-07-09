@@ -21,6 +21,7 @@ public class PageRequestDTO {
   @Builder.Default
   private int size = 10;
   private String type; //t,c,w,tc,tw,twc
+  private String Q_BOX;
   private String keyword;
 
   public String[] getTypes(){
@@ -45,6 +46,13 @@ public class PageRequestDTO {
       if(keyword != null){
         try{
           builder.append("&keyword="+ URLEncoder.encode(keyword,"UTF-8"));
+        }catch(UnsupportedEncodingException e){
+          e.printStackTrace();
+        }
+      }
+      if(Q_BOX != null){
+        try{
+          builder.append("&Q_BOX="+ URLEncoder.encode(Q_BOX,"UTF-8"));
         }catch(UnsupportedEncodingException e){
           e.printStackTrace();
         }

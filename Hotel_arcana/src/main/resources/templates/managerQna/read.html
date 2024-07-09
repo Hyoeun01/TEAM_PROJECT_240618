@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html layout:decorate="~{/layout/layout.html}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/layout.html}">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>QnA</title>
@@ -45,17 +45,17 @@
                     <textarea class="form-control" id="content" name="Q_CONTENT" readonly rows="10">[[${managerQna.Q_CONTENT}]]</textarea>
                 </div>
             </div>
-            <div class="QnA-content">
-            <img alt="QnA 이미지" class="qna-img" th:if="${managerQna.Q_IMG}"
-                 th:src="'/image/'+${managerQna.Q_IMG}">
+            <div class="QnA-content" >
+                <img th:each="file: ${managerQna.hotelQnaImgDTOS}" alt="QnA 이미지" class="qna-img" th:if="${file.uuid}"
+                     th:src="'/image/'+${file.uuid}+'_'+${file.filename}">
             </div>
         </div>
 
 
         <div>
             <a class="btn btn-outline-secondary" href="/managerQna/list">목록</a>
-<!--            <a class="btn btn-outline-success" th:href="@{/managerQna/modify(Q_NO=${managerQna.Q_NO})}">수정</a>-->
-            <button id="removeBtn" type="button" class="btn btn-outline-danger">삭제</button>
+            <!--            <a class="btn btn-outline-success" th:href="@{/managerQna/modify(Q_NO=${managerQna.Q_NO})}">수정</a>-->
+            <button class="btn btn-outline-danger" id="removeBtn" type="button">삭제</button>
         </div>
     </form>
 </div>

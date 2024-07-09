@@ -47,13 +47,4 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewDTO.getRE_ID();
     }
 
-    @Override
-    public void updateReview(ReviewDTO reviewDTO) {
-        reviewMapper.update(reviewDTO);
-    }
-
-    @Override
-    public void deleteReview(Long RE_ID) {
-        reviewMapper.delete(RE_ID);
-    }
 }

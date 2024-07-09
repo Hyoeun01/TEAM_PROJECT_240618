@@ -2,8 +2,8 @@ package com.example.hotel_arcana.managerQna.controller;
 
 import com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO;
 import com.example.hotel_arcana.managerQna.service.ManagerQnaService;
-import com.example.hotel_arcana.notice.dto.PageRequestDTO;
-import com.example.hotel_arcana.notice.dto.PageResponseDTO;
+import com.example.hotel_arcana.managerQna.dto.PageRequestDTO;
+import com.example.hotel_arcana.managerQna.dto.PageResponseDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;

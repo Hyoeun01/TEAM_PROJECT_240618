@@ -1,9 +1,8 @@
 package com.example.hotel_arcana.managerQna.service;
 
 import com.example.hotel_arcana.managerQna.dto.ManagerQnaDTO;
-import com.example.hotel_arcana.notice.dto.NoticeDTO;
-import com.example.hotel_arcana.notice.dto.PageRequestDTO;
-import com.example.hotel_arcana.notice.dto.PageResponseDTO;
+import com.example.hotel_arcana.managerQna.dto.PageRequestDTO;
+import com.example.hotel_arcana.managerQna.dto.PageResponseDTO;
 
 import java.util.List;
 
