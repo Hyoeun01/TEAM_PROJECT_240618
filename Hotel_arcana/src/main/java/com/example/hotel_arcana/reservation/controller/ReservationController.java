@@ -130,7 +130,7 @@ public class ReservationController {
         Long RV_ID = reservationService.register(reservationDTO);
         RoomDTO roomDTO = reservationService.getRoom(reservationDTO.getRV_ROOM_NUMBER());
         redirectAttributes.addFlashAttribute("result", RV_ID);
-        return "redirect:/reservation/list";
+        return "redirect:/";
     }
 
     @GetMapping("/read")

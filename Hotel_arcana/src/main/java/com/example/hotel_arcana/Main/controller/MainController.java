@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-public class TestController {
+public class MainController {
 
     @Autowired
     private MainService mainService;
