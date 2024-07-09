@@ -52,9 +52,9 @@ public class MemberController {
 
 
 //    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/login/memberRead/{USER_ID}")
-    public String read(@PathVariable String USER_ID, Model model) {
-        MemberDTO memberDTO = memberService.memberRead(USER_ID);
+    @GetMapping("/login/memberRead")
+    public String read( Model model, Principal principal) {
+        MemberDTO memberDTO = memberService.memberRead(principal.getName());
         model.addAttribute("memberDTO", memberDTO);
         return "login/memberRead";
     }
