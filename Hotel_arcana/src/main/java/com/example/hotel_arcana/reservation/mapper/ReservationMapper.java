@@ -21,4 +21,6 @@ public interface ReservationMapper {
 
     int getTotalReservationCount();
 
+    List<ReservationDTO> selectAllbyId(String RV_USER_ID);
+
 }

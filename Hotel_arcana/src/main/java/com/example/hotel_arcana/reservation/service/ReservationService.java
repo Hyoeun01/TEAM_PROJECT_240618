@@ -17,4 +17,6 @@ public interface ReservationService {
     List<RoomDTO> getRoomInfo();
 
     int getTotalReservationCount();
+    List<ReservationDTO> selectAllbyId(String RV_USER_ID);
+
 }

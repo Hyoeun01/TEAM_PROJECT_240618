@@ -65,4 +65,9 @@ public class ReservationServiceImpl implements ReservationService {
     public int getTotalReservationCount() {
         return reservationMapper.getTotalReservationCount();
     }
+
+    @Override
+    public List<ReservationDTO> selectAllbyId(String RV_USER_ID) {
+        return reservationMapper.selectAllbyId(RV_USER_ID);
+    }
 }

@@ -29,8 +29,9 @@ public class ReservationController {
 
 
     @GetMapping("/list")
-    public void getReservation(Model model) {
-        List<ReservationDTO> reservationList = reservationService.getAll();
+    public void getReservation(@Valid ReservationDTO reservationDTO, Principal principal,Model model) {
+        reservationDTO.setRV_USER_ID(principal.getName());
+        List<ReservationDTO> reservationList = reservationService.selectAllbyId(reservationDTO.getRV_USER_ID());
         model.addAttribute("list", reservationList);
     }
 
