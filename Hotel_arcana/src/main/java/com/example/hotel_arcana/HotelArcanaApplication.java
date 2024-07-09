@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //@MapperScan("com.example.hotel_arcana.login.mapper")
+//@MapperScan("com.example.**")
 public class HotelArcanaApplication {
 
     public static void main(String[] args) {
