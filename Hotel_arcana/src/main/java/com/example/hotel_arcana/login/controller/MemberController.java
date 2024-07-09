@@ -193,6 +193,19 @@ public class MemberController {
         }
     }
 
+    @GetMapping("/manager/memberDetails/{USER_ID}")
+    public String getMemberDetails(@PathVariable String USER_ID, Model model) {
+        MemberDTO member = memberService.findMemberById(USER_ID);
+        model.addAttribute("member", member);
+        return "member_details";
+    }
+
+    @PostMapping("/manager/updateMember")
+    public String updateMember(MemberDTO member) {
+        memberService.updateMember(member);
+        return "redirect:/manager/manageUser";
+    }
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/reservationDetails/{RV_ID}")
     public String getReservationDetails(@PathVariable Long RV_ID, Model model) {
@@ -207,7 +220,6 @@ public class MemberController {
         reservationService.modify(reservationDTO);
         return "redirect:/manager/manageResv";
     }
-
 
 }
 
