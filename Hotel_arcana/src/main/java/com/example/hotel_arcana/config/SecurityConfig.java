@@ -42,7 +42,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         log.info("-------configure-------");
         //커스텀 로그인 페이지
-        http.formLogin().loginPage("/login").successForwardUrl("/mypage");
+        http.formLogin().loginPage("/login").successForwardUrl("/MyPage");
 //        http.formLogin().loginPage("/login").successHandler(핸들러이름);
 //        http.authorizeHttpRequests(request-> request
 //                .requestMatchers("/","/login","/register").permitAll()

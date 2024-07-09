@@ -2,6 +2,8 @@ package com.example.hotel_arcana.login.controller;
 
 import com.example.hotel_arcana.login.dto.MemberDTO;
 import com.example.hotel_arcana.login.service.MemberService;
+import com.example.hotel_arcana.reservation.dto.ReservationDTO;
+import com.example.hotel_arcana.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +26,13 @@ public class MemberController {
 
     private final MemberService memberService;
 
-
-    @PostMapping("/mypage")
+    @PostMapping("/MyPage")
     public String index(Principal principal, Model model) {
         log.info(principal.getName());
         MemberDTO memberDTO = memberService.findMemberById(principal.getName());
         model.addAttribute("memberDTO", memberDTO);
         log.info(memberDTO);
-        return "MyPage";
+        return "/MyPage";
     }
 
     //회원만 쓸 수 있어서 로그인이 필요한 페이지에 넣기
@@ -128,18 +129,24 @@ public class MemberController {
         return "/testfile";
     }
 
+//--------------------------------------------------------------------------------------------------
+
+    private final ReservationService reservationService;
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/manage")
     public String manage(Model model) {
         int totalMembersCount = memberService.getTotalMembersCount();
         model.addAttribute("totalMembersCount", totalMembersCount);
-
+        int totalReservationCount = reservationService.getTotalReservationCount();
+        model.addAttribute("totalReservationCount", totalReservationCount);
         List<MemberDTO> members = memberService.getAllMembers();
         model.addAttribute("members", members);
 
         return "manager/manage"; // manage.html을 불러오는 경로
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/manageUser")
     public String manageUser(Model model) {
         int totalMembersCount = memberService.getTotalMembersCount();
@@ -151,6 +158,7 @@ public class MemberController {
         return "manager/manageUser"; // manageUser.html을 불러오는 경로
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/manager/delete/{userId}")
     public ResponseEntity<String> deleteMember(@PathVariable String userId) {
         log.info("---------------userId : " + userId);
@@ -161,6 +169,29 @@ public class MemberController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 삭제 실패: " + e.getMessage());
         }
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/manager/manageResv")
+    public String manageReservations(Model model) {
+        // 예약된 모든 정보를 가져옵니다.
+        List<ReservationDTO> reservations = reservationService.getAll();
+        model.addAttribute("reservations", reservations);
+
+        return "manager/manageResv"; // manageResv.html을 불러오는 경로
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/manager/deleteResv/{RV_ID}")
+    public ResponseEntity<String> deleteReservation(@PathVariable("RV_ID") Long RV_ID) {
+        try {
+            reservationService.remove(RV_ID);
+            return ResponseEntity.ok("SUCCESS");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("예약 삭제 실패: " + e.getMessage());
+        }
+    }
+
+
 
 }
 

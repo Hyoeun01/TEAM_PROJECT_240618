@@ -26,7 +26,7 @@
 </div>
 <div class="main-content">
     <nav class="navbar">
-        <a href="#" class="logout">Logout</a>
+        <a class="logout" sec:authorize="isAuthenticated()" href="/logout">로그아웃</a>
     </nav>
     <div class="header">
         <h1>회원관리 페이지</h1>

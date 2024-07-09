@@ -25,132 +25,85 @@
         <li><a href="#">Q&A관리</a></li>
         <li><a href="#">리뷰관리</a></li>
     </ul>
-    </div>
-    <div class="main-content">
-        <nav class="navbar">
-            <a href="#" class="logout">Logout</a>
-        </nav>
-        <div class="content">
-            <h2>예약관리</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">RV_ID: RV1</h5>
-                            <p class="card-text">시작일: 2024/06/02</p>
-                            <p class="card-text">종료일: 2024/06/07</p>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#resvModal1">
-                                상세보기
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">RV_ID: RV2</h5>
-                            <p class="card-text">시작일: 2024/06/02</p>
-                            <p class="card-text">종료일: 2024/06/07</p>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#resvModal2">
-                                상세보기
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">RV_ID: RV3</h5>
-                            <p class="card-text">시작일: 2024/06/02</p>
-                            <p class="card-text">종료일: 2024/06/07</p>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#resvModal3">
-                                상세보기
-                            </a>
-                        </div>
+</div>
+<div class="main-content">
+    <nav class="navbar">
+        <a class="logout" sec:authorize="isAuthenticated()" href="/logout">로그아웃</a>
+    </nav>
+    <div class="content">
+        <h2>예약관리</h2>
+        <div class="row" >
+            <div class="col-md-4" th:each="reservation : ${reservations}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">RV_ID: <span th:text="${reservation.RV_ID}">RV_ID</span></h5>
+                        <p class="card-text">방이름: <span th:text="${reservation.ROOM_NAME}">방이름</span></p>
+                        <p class="card-text">시작일: <span th:text="${reservation.START_DATE}">시작일</span></p>
+                        <p class="card-text">종료일: <span th:text="${reservation.END_DATE}">종료일</span></p>
+                        <a href="#" class="btn btn-primary" th:data-target="'#resvModal' + ${reservation.RV_ID}" data-toggle="modal">
+                            상세보기
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 모달 -->
-    <div class="modal fade" id="resvModal1" tabindex="-1" role="dialog" aria-labelledby="resvModalLabel1"
-        aria-hidden="true">
+<!-- 모달 -->
+<div th:each="reservation : ${reservations}">
+    <div class="modal fade" th:id="'resvModal' + ${reservation.RV_ID}" tabindex="-1" role="dialog"
+         aria-labelledby="resvModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="resvModalLabel1">예약 상세 정보</h5>
+                    <h5 class="modal-title" th:text="'예약 상세 정보 - ' + ${reservation.RV_ID}">예약 상세 정보</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>예약 ID:</strong> RV1</p>
-                    <p><strong>시작일:</strong> 2024/06/02</p>
-                    <p><strong>종료일:</strong> 2024/06/07</p>
-                    <p><strong>예약자 ID:</strong> user1</p>
+                    <p><strong>예약 ID:</strong> <span th:text="${reservation.RV_ID}">RV_ID</span></p>
+                    <p><strong>시작일:</strong> <span th:text="${reservation.START_DATE}">시작일</span></p>
+                    <p><strong>종료일:</strong> <span th:text="${reservation.END_DATE}">종료일</span></p>
+                    <p><strong>예약자 ID:</strong> <span th:text="${reservation.RV_USER_ID}">예약자 ID</span></p>
+                    <p><strong>방 번호:</strong> <span th:text="${reservation.RV_ROOM_NUMBER}">방 번호</span></p>
+                    <p><strong>방 이름:</strong> <span th:text="${reservation.ROOM_NAME}">방 이름</span></p>
+                    <p><strong>총 인원:</strong> <span th:text="${reservation.TOTAL_NUM}">총 인원</span></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                     <button type="button" class="btn btn-primary">수정</button>
-                    <button type="button" class="btn btn-danger">삭제</button>
+                    <button type="button" class="btn btn-danger" th:attr="data-resvid=${reservation.RV_ID}" onclick="confirmAndDelete(this)">삭제</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="resvModal2" tabindex="-1" role="dialog" aria-labelledby="resvModalLabel2"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resvModalLabel2">예약 상세 정보</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>예약 ID:</strong> RV2</p>
-                    <p><strong>시작일:</strong> 2024/06/02</p>
-                    <p><strong>종료일:</strong> 2024/06/07</p>
-                    <p><strong>예약자 ID:</strong> user2</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">수정</button>
-                    <button type="button" class="btn btn-danger">삭제</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="resvModal3" tabindex="-1" role="dialog" aria-labelledby="resvModalLabel3"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resvModalLabel3">예약 상세 정보</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>예약 ID:</strong> RV3</p>
-                    <p><strong>시작일:</strong> 2024/06/02</p>
-                    <p><strong>종료일:</strong> 2024/06/07</p>
-                    <p><strong>예약자 ID:</strong> user3</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">수정</button>
-                    <button type="button" class="btn btn-danger">삭제</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script th:inline="javascript">
+    function confirmAndDelete(button) {
+        var resvId = $(button).data('resvid');
+        if (confirm('정말로 이 예약을 삭제하시겠습니까?')) {
+            $.ajax({
+                url: '/manager/deleteResv/' + resvId,
+                type: 'DELETE',
+                success: function (response) {
+                    alert(response);
+                    // 페이지 새로고침
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert('예약 삭제 실패: ' + xhr.responseText);
+                }
+            });
+        }
+    }
+</script>
 </body>
 
 </html>

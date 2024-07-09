@@ -61,5 +61,8 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationMapper.getRoomInfo();
     }
 
-
+    @Override
+    public int getTotalReservationCount() {
+        return reservationMapper.getTotalReservationCount();
+    }
 }
