@@ -41,7 +41,7 @@
         <td th:text="${reservation.RV_ROOM_NUMBER}">방번호</td>
         <td th:text="${reservation.ROOM_NAME}">방종류</td>
         <td><a type="button" class="w-30 btn btn-lg btn-outline-primary" th:href="@{/reservation/read(RV_ID=${reservation.RV_ID})}">예약변경</a></td>
-        <td><a type="button" class="w-30 btn btn-lg btn-outline-secondary" th:href="@{/review/list}">리뷰쓰기</a></td>
+        <td><a type="button" class="w-30 btn btn-lg btn-outline-secondary" th:href="@{/review/register(RV_ID=${reservation.RV_ID})}">리뷰쓰기</a></td>
     </tr>
     </tbody>
 </table>

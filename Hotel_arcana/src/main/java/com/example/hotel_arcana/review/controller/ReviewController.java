@@ -38,7 +38,9 @@ public class ReviewController {
     }
 
     @GetMapping("/register")
-    public void registerReview(Model model) {model.addAttribute("newReview", new ReviewDTO());}
+    public void registerReview(Model model) {
+        model.addAttribute("newReview", new ReviewDTO());
+    }
 
 
     @PostMapping( "/register")

@@ -14,7 +14,7 @@
 </head>
 <div class="form-container" layout:fragment="content">
 <!--    <form enctype="multipart/form-data" method="post" th:action="@{/review}" th:object="${newReview}">-->
-        <form enctype="multipart/form-data" method="post" th:action="@{/review/register}" th:object="${newReview}">
+        <form enctype="multipart/form-data" method="post" th:action="@{/review/register(RV_ID=${reservation.RV_ID})}" th:object="${newReview}">
         <h1 class="mt-4">리뷰 게시판</h1>
         <hr>
 

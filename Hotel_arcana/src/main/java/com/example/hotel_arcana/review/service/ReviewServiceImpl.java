@@ -1,5 +1,6 @@
 package com.example.hotel_arcana.review.service;
 
+import com.example.hotel_arcana.reservation.mapper.ReservationMapper;
 import com.example.hotel_arcana.review.dto.ReviewDTO;
 import com.example.hotel_arcana.review.dto.PageRequestDTO;
 import com.example.hotel_arcana.review.dto.PageResponseDTO;
