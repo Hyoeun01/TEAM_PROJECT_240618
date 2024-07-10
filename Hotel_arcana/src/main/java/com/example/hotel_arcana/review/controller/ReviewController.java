@@ -34,9 +34,14 @@ public class ReviewController {
 
 
     @GetMapping("/list")
-    public String getAllReviews(Model model) {
+    public String getAllReviews(Principal principal, ReservationDTO reservationDTO, Model model) {
         List<ReviewDTO> reviewList = reviewService.getAllReviews();
+
+        reservationDTO.setRV_USER_ID(principal.getName());
+        ReservationDTO reservation = reservationService.getOne(reservationDTO.getRV_ID());
+
         model.addAttribute("reviews", reviewList);
+        model.addAttribute("reservation", reservation);
         model.addAttribute("newReview", new ReviewDTO()); // 새 리뷰를 입력할 폼을 위한 객체 추가
         return "review/list";
     }
@@ -44,14 +49,16 @@ public class ReviewController {
     @GetMapping("/register")
     public void registerReview(Principal principal, ReservationDTO reservationDTO, Model model) {
         reservationDTO.setRV_USER_ID(principal.getName());
-        List<ReservationDTO> reservationList = reservationService.selectAllbyId(reservationDTO.getRV_USER_ID());
-        model.addAttribute("reservation", reservationList);
+        ReservationDTO reservation = reservationService.getOne(reservationDTO.getRV_ID());
+//        List<ReservationDTO> reservationList = reservationService.selectAllbyId(reservationDTO.getRV_USER_ID());
+        model.addAttribute("reservation", reservation);
+//        model.addAttribute("reservation", reservationList);
         model.addAttribute("newReview", new ReviewDTO());
     }
 
 
     @PostMapping( "/register")
-    public String addReview(ReviewDTO reviewDTO, RedirectAttributes redirectAttributes, MultipartFile file,
+    public String addReview(Principal principal,ReviewDTO reviewDTO, RedirectAttributes redirectAttributes, MultipartFile file,
                             BindingResult bindingResult) throws IOException {
 
         //사진이없어도 게시글 업로드
@@ -74,6 +81,7 @@ public class ReviewController {
             return "redirect:/review/list";
         }
 
+        reviewDTO.setRE_USER_ID(principal.getName());
         Long RE_ID = reviewService.addReview(reviewDTO);
         redirectAttributes.addAttribute("id", RE_ID);
 
