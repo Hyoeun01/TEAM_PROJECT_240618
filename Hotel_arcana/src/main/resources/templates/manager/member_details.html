@@ -18,6 +18,7 @@
         <div class="form-group">
             <label for="USER_PW">비밀번호</label>
             <input type="password" class="form-control" id="USER_PW" th:field="*{USER_PW}">
+            <small class="form-text text-muted">새 비밀번호를 입력하세요. 비밀번호를 변경하지 않으려면 비워두세요.</small>
         </div>
         <div class="form-group">
             <label for="USER_NM">이름</label>
@@ -41,7 +42,10 @@
         </div>
         <div class="form-group">
             <label for="USER_AUTH">권한</label>
-            <input type="text" class="form-control" id="USER_AUTH" th:field="*{USER_AUTH}">
+            <select class="form-control" id="USER_AUTH" th:field="*{USER_AUTH}">
+                <option value="USER" th:selected="${member.USER_AUTH == 'USER'}">USER</option>
+                <option value="ADMIN" th:selected="${member.USER_AUTH == 'ADMIN'}">ADMIN</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">저장</button>
     </form>

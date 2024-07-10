@@ -82,7 +82,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary"><a th:href="@{'/manager/memberDetails/' + ${member.USER_ID}}" class="btn btn-primary">관리</a></button>
+                    <a th:href="@{'/manager/memberDetails/' + ${member.USER_ID}}" class="btn btn-primary">관리</a>
 <!--                    <div th:if="${member.USER_AUTH == 'ADMIN'}">-->
 <!--                    </div>-->
 <!--                    <div th:if="${member.USER_AUTH != 'ADMIN'}">-->

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -91,17 +92,7 @@ public class MemberController {
         model.addAttribute("memberDTO", memberDTO);
 
         return "redirect:/login/memberRead/" + memberDTO.getUSER_ID();
-
-//        memberService.updateMember(memberDTO);
-//        return "redirect:login/memberRead/" + memberDTO.getUSER_ID(); // 수정 후 상세 조회 페이지로 리다이렉트
     }
-
-
-//    @GetMapping("/login/memberRemove/{USER_ID}")
-//    public String MemberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
-//        memberService.deleteMember(USER_ID);
-//        return "redirect:/register"; // 삭제 후 리다이렉트할 페이지 설정
-//    }
 
     @GetMapping("/login/memberRemove/{USER_ID}")
     public String memberRemove(@PathVariable("USER_ID") String USER_ID, Model model) {
@@ -127,13 +118,16 @@ public class MemberController {
     }
 
     @GetMapping("/testfile")
-    public String test (){
+    public String test() {
         return "/testfile";
     }
 
 //--------------------------------------------------------------------------------------------------
 
     private final ReservationService reservationService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/manage")
@@ -197,13 +191,20 @@ public class MemberController {
     public String getMemberDetails(@PathVariable String USER_ID, Model model) {
         MemberDTO member = memberService.findMemberById(USER_ID);
         model.addAttribute("member", member);
-        return "member_details";
+        return "manager/member_details";
     }
 
     @PostMapping("/manager/updateMember")
-    public String updateMember(MemberDTO member) {
+    public String updateMember(@ModelAttribute MemberDTO member) {
+        if (member.getUSER_PW() != null && !member.getUSER_PW().isEmpty()) {
+            String encodedPassword = passwordEncoder.encode(member.getUSER_PW());
+            member.setUSER_PW(encodedPassword);
+        } else {
+            MemberDTO existingMember = memberService.findMemberById(member.getUSER_ID());
+            member.setUSER_PW(existingMember.getUSER_PW());
+        }
         memberService.updateMember(member);
-        return "redirect:/manager/manageUser";
+        return "redirect:/manager/manageUser"; // Redirect to manageUser page after update
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -220,6 +221,5 @@ public class MemberController {
         reservationService.modify(reservationDTO);
         return "redirect:/manager/manageResv";
     }
-
 }
 
