@@ -17,28 +17,18 @@
 <div class="form-container" layout:fragment="content">
     <form action="/notice/read" method="POST" name="f1">
         <div class="row g-3 align-items-center">
-            <!--            <div class="col-auto">-->
-            <!--                <label class="col-form-label" for="title">제목</label>-->
-            <!--            </div>-->
-            <!--            <div class="mb-3">-->
-            <!--                <input class="form-control" id="title" name="N_TITLE" readonly th:value="${notice.N_TITLE}" type="text">-->
-            <!--            </div>-->
             <div class="mb-3">
                 <p class="big-input" id="title" name="N_TITLE" readonly th:text="${notice.N_TITLE}"></p>
             </div>
+            <div class="mb-3">
+                <p class="small-input" id="writer" name="USER_NIK" readonly th:text="${notice.USER_NIK}"></p>
+            </div>
         </div>
-        <!--        <div class="row g-3 align-items-center">-->
-        <!--            <div class="col-auto">-->
-        <!--                <label class="col-form-label" for="writer">작성자</label>-->
-        <!--            </div>-->
-        <!--            <div class="mb-3">-->
-        <!--                <p class="form-control small-input" id="writer" name="N_WRITER" readonly th:value="${notice.N_WRITER}"-->
-        <!--                   type="text"></p>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <div>
-            <p class="small-input" id="writer" name="N_WRITER" readonly th:text="${notice.N_WRITER}"></p>
-        </div>
+<!--                <div class="row g-3 align-items-center">-->
+<!--                    <div class="mb-3">-->
+<!--                        <p class="form-control small-input" id="writer" name="USER_NIK" readonly th:value="${notice.USER_NIK}"></p>-->
+<!--                    </div>-->
+<!--                </div>-->
         <hr>
 
         <div class="row g-3 align-items-center">

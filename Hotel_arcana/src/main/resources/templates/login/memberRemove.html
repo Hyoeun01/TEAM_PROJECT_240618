@@ -11,13 +11,13 @@
                 <div class="d-flex flex-column flex-shrink-0 p-3 aws" style="width: 280px;">
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a th:href="@{/login/memberRead/{USER_ID}(USER_ID=${memberDTO.USER_ID})}"class="nav-link link-body-emphasis">
+                            <a th:href="@{/login/memberRead}"class="nav-link link-body-emphasis">
                                 <svg class="bi pe-none me-2 hi" width="16" height="16"><use xlink:href="/login/memberRead/"/></svg>
                                 마이페이지
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link link-body-emphasis">
+                            <a href="/reservation/list" class="nav-link link-body-emphasis">
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#"/></svg>
                                 예약 내역 조회
                             </a>

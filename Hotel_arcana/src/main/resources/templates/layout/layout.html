@@ -30,7 +30,7 @@
         </div>
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown button
+            메뉴
         </button>
         <ul class="dropdown-menu">
             <li id="login-menu" class="menu-item" >
@@ -49,7 +49,7 @@
                 <a class="dropdown-item"  th:href="@{/login/memberRead}">마이페이지</a>
             </li>
             <li sec:authorize="hasRole('ROLE_ADMIN')">
-                <a class="dropdown-item"  th:href="@{/login/memberRead}">관리자페이지</a>
+                <a class="dropdown-item"  th:href="@{/manager/manage}">관리자페이지</a>
             </li>
 
 

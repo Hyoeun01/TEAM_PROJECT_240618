@@ -36,6 +36,7 @@ public class NoticeController {
         return "/notice/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public void registerGET(Model model){
         model.addAttribute("noticeDTO", new NoticeDTO());
