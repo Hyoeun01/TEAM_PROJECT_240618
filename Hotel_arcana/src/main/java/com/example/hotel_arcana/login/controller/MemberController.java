@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +29,10 @@ public class MemberController {
 
     private final MemberService memberService;
     private final ReservationService reservationService;
-//
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
 //    @PostMapping("/mypage")
 //    public String index(Principal principal, Model model) {
 //        log.info(principal.getName());
@@ -124,8 +128,7 @@ public class MemberController {
 
 //--------------------------------------------------------------------------------------------------
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/manage")
