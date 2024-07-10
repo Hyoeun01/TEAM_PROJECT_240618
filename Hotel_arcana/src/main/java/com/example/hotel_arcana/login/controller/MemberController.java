@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +27,7 @@ public class MemberController {
 
     private final MemberService memberService;
     private final ReservationService reservationService;
-//
+//   private final ReservationService reservationService;
 //    @PostMapping("/mypage")
 //    public String index(Principal principal, Model model) {
 //        log.info(principal.getName());
@@ -143,6 +144,50 @@ public class MemberController {
 //        }
 //    }
 
+//
+
+    //--------------------------------------------------------------------------------------------------
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/manager/manage")
+    public String manage(Model model) {
+        int totalMembersCount = memberService.getTotalMembersCount();
+        model.addAttribute("totalMembersCount", totalMembersCount);
+        int totalReservationCount = reservationService.getTotalReservationCount();
+        model.addAttribute("totalReservationCount", totalReservationCount);
+        List<MemberDTO> members = memberService.getAllMembers();
+        model.addAttribute("members", members);
+
+        return "manager/manage"; // manage.html을 불러오는 경로
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/manager/manageUser")
+    public String manageUser(Model model) {
+        int totalMembersCount = memberService.getTotalMembersCount();
+        model.addAttribute("totalMembersCount", totalMembersCount);
+
+        List<MemberDTO> members = memberService.getAllMembers();
+        model.addAttribute("members", members);
+
+        return "manager/manageUser"; // manageUser.html을 불러오는 경로
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/manager/delete/{userId}")
+    public ResponseEntity<String> deleteMember(@PathVariable String userId) {
+        log.info("---------------userId : " + userId);
+        try {
+            memberService.deleteMember(userId);
+            return ResponseEntity.ok("SUCCESS");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 삭제 실패: " + e.getMessage());
+        }
+    }
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/manageResv")
     public String manageReservations(Model model) {
@@ -164,6 +209,26 @@ public class MemberController {
         }
     }
 
+    @GetMapping("/manager/memberDetails/{USER_ID}")
+    public String getMemberDetails(@PathVariable String USER_ID, Model model) {
+        MemberDTO member = memberService.findMemberById(USER_ID);
+        model.addAttribute("member", member);
+        return "manager/member_details";
+    }
+
+    @PostMapping("/manager/updateMember")
+    public String updateMember(@ModelAttribute MemberDTO member) {
+        if (member.getUSER_PW() != null && !member.getUSER_PW().isEmpty()) {
+            String encodedPassword = passwordEncoder.encode(member.getUSER_PW());
+            member.setUSER_PW(encodedPassword);
+        } else {
+            MemberDTO existingMember = memberService.findMemberById(member.getUSER_ID());
+            member.setUSER_PW(existingMember.getUSER_PW());
+        }
+        memberService.updateMember(member);
+        return "redirect:/manager/manageUser"; // Redirect to manageUser page after update
+    }
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/manager/reservationDetails/{RV_ID}")
     public String getReservationDetails(@PathVariable Long RV_ID, Model model) {
@@ -178,7 +243,6 @@ public class MemberController {
         reservationService.modify(reservationDTO);
         return "redirect:/manager/manageResv";
     }
-
 
 }
 

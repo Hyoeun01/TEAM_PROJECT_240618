@@ -43,7 +43,18 @@
 
 <!--    게시글 보기-->
     <select id="selectOne" resultType="com.example.hotel_arcana.notice.dto.NoticeDTO">
-        SELECT * FROM hotel_notice WHERE N_NO = #{N_NO}
+        SELECT
+            n.N_NO,
+            n.N_TITLE,
+            n.N_DATE,
+            n.N_CONTENT,
+            n.N_WRITER,
+            n.N_VIEW,
+            n.MANAGER_ID,
+            m.USER_NIK
+        FROM hotel_notice n
+                 JOIN hotel_member m ON n.MANAGER_ID = m.USER_ID
+        WHERE N_NO = #{N_NO}
     </select>
 
 <!--    게시글 삭제-->
@@ -53,7 +64,17 @@
 
 <!--    게시글 수정-->
     <update id="update">
-        UPDATE hotel_notice SET N_TITLE=#{N_TITLE} , N_CONTENT=#{N_CONTENT}
+        UPDATE
+            n.N_NO,
+            n.N_TITLE,
+            n.N_DATE,
+            n.N_CONTENT,
+            n.N_WRITER,
+            n.N_VIEW,
+            n.MANAGER_ID,
+            m.USER_NIK
+        FROM hotel_notice n
+            JOIN hotel_member m ON n.MANAGER_ID = m.USER_ID
         WHERE N_NO = #{N_NO}
     </update>
 

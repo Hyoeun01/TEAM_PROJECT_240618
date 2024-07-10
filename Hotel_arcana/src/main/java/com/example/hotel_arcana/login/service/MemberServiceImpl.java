@@ -8,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -52,6 +54,16 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void deleteMember(String USER_ID) {
         memberMapper.deleteMemberById(USER_ID);
+    }
+
+    @Override
+    public int getTotalMembersCount() {
+        return memberMapper.getTotalMembersCount();
+    }
+
+    @Override
+    public List<MemberDTO> getAllMembers() {
+        return memberMapper.findAllMembers();
     }
 
 }

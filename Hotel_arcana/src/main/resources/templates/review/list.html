@@ -27,7 +27,6 @@
                                  th:src="@{'/image/'+${review.RE_IMG}}" onclick="window.open(this.src)">
                             <div class="review-text">
                                 <h5 class="card-title" th:text="${review.RE_WRITER}">작성자</h5>
-                                <p>/ [[${reservation.START_DATE}]] ~ [[${reservation.END_DATE}]] / [[${reservation.ROOM_NAME}]]룸 </p>
                                 <p class="card-text" th:text="${review.RE_CONTENT}">내용</p>
                                 <div class="review-meta">
                                     <span th:text="${review.RE_DATE}">작성일</span>

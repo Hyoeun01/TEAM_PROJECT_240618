@@ -12,7 +12,9 @@
 <body>
 <div class="sidebar">
     <div class="logo">
-        <img src="/img/arcana.png" alt="Hotel Logo">
+        <a href="/">
+            <img src="/img/arcana.png" alt="Hotel Logo">
+        </a>
     </div>
     <ul>
         <li><a th:href="@{/manager/manage}">홈페이지관리</a></li>
@@ -82,8 +84,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">관리</button>
-<!--                    <div th:if="${member.USER_AUTH == 'ADMIN'}">-->
+                    <a th:href="@{/manager/memberDetails/{USER_ID}(USER_ID=${member.USER_ID})}" class="btn btn-primary">관리</a>
+
+                    <!--                    <div th:if="${member.USER_AUTH == 'ADMIN'}">-->
 <!--                    </div>-->
 <!--                    <div th:if="${member.USER_AUTH != 'ADMIN'}">-->
 <!--                    </div>-->

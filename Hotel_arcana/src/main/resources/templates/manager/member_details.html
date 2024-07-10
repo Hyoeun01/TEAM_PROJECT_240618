@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보 수정</title>
+    <link rel="stylesheet" href="/css/manage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>회원 정보 수정</h1>
+    <form th:action="@{/manager/updateMember}" th:object="${member}" method="post">
+        <div class="form-group">
+            <label for="USER_ID">회원 ID</label>
+            <input type="text" class="form-control" id="USER_ID" th:field="*{USER_ID}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="USER_PW">비밀번호</label>
+            <input type="password" class="form-control" id="USER_PW" th:field="*{USER_PW}">
+            <small class="form-text text-muted">새 비밀번호를 입력하세요. 비밀번호를 변경하지 않으려면 비워두세요.</small>
+        </div>
+        <div class="form-group">
+            <label for="USER_NM">이름</label>
+            <input type="text" class="form-control" id="USER_NM" th:field="*{USER_NM}">
+        </div>
+        <div class="form-group">
+            <label for="USER_ADR">주소</label>
+            <input type="text" class="form-control" id="USER_ADR" th:field="*{USER_ADR}">
+        </div>
+        <div class="form-group">
+            <label for="USER_EML">이메일</label>
+            <input type="email" class="form-control" id="USER_EML" th:field="*{USER_EML}">
+        </div>
+        <div class="form-group">
+            <label for="USER_TEL">전화번호</label>
+            <input type="text" class="form-control" id="USER_TEL" th:field="*{USER_TEL}">
+        </div>
+        <div class="form-group">
+            <label for="USER_NIK">닉네임</label>
+            <input type="text" class="form-control" id="USER_NIK" th:field="*{USER_NIK}">
+        </div>
+        <div class="form-group">
+            <label for="USER_AUTH">권한</label>
+            <select class="form-control" id="USER_AUTH" th:field="*{USER_AUTH}">
+                <option value="USER" th:selected="${member.USER_AUTH == 'USER'}">USER</option>
+                <option value="ADMIN" th:selected="${member.USER_AUTH == 'ADMIN'}">ADMIN</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">저장</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

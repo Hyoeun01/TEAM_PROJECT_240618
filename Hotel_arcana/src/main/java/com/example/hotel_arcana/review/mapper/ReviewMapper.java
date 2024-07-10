@@ -21,4 +21,5 @@ public interface ReviewMapper {
 
     ReviewDTO selectById(@Param("RE_ID") Long RE_ID);
 
+
 }

@@ -5,8 +5,10 @@ import com.example.hotel_arcana.reservation.dto.ReservationDTO;
 import com.example.hotel_arcana.reservation.service.ReservationService;
 import com.example.hotel_arcana.review.dto.ReviewDTO;
 import com.example.hotel_arcana.review.service.ReviewService;
+import com.example.hotel_arcana.security.dto.MemberSecurityDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,18 +39,22 @@ public class ReviewController {
     public String getAllReviews(Principal principal, ReservationDTO reservationDTO, Model model) {
         List<ReviewDTO> reviewList = reviewService.getAllReviews();
 
-        reservationDTO.setRV_USER_ID(principal.getName());
-        ReservationDTO reservation = reservationService.getOne(reservationDTO.getRV_ID());
-
+//
+//        reservationDTO.setRV_USER_ID(principal.getName());
+//        ReservationDTO reservation = reservationService.getOne(reservationDTO.getRV_ID());
+//        model.addAttribute("reservation", reservation);
         model.addAttribute("reviews", reviewList);
-        model.addAttribute("reservation", reservation);
+
         model.addAttribute("newReview", new ReviewDTO()); // 새 리뷰를 입력할 폼을 위한 객체 추가
         return "review/list";
     }
 
     @GetMapping("/register")
-    public void registerReview(Principal principal, ReservationDTO reservationDTO, Model model) {
-        reservationDTO.setRV_USER_ID(principal.getName());
+    public void registerReview( Authentication authentication, ReservationDTO reservationDTO, Model model) {
+
+        MemberSecurityDTO memberSecurityDTO =(MemberSecurityDTO) authentication.getPrincipal();
+        reservationDTO.setRV_USER_ID(memberSecurityDTO.getUSER_ID());
+
         ReservationDTO reservation = reservationService.getOne(reservationDTO.getRV_ID());
 //        List<ReservationDTO> reservationList = reservationService.selectAllbyId(reservationDTO.getRV_USER_ID());
         model.addAttribute("reservation", reservation);
@@ -58,7 +64,7 @@ public class ReviewController {
 
 
     @PostMapping( "/register")
-    public String addReview(Principal principal,ReviewDTO reviewDTO, RedirectAttributes redirectAttributes, MultipartFile file,
+    public String addReview( Authentication authentication,ReviewDTO reviewDTO, RedirectAttributes redirectAttributes, MultipartFile file,
                             BindingResult bindingResult) throws IOException {
 
         //사진이없어도 게시글 업로드
@@ -81,7 +87,10 @@ public class ReviewController {
             return "redirect:/review/list";
         }
 
-        reviewDTO.setRE_USER_ID(principal.getName());
+        MemberSecurityDTO memberSecurityDTO =(MemberSecurityDTO) authentication.getPrincipal();
+
+        reviewDTO.setRE_USER_ID(memberSecurityDTO.getUSER_ID());
+        reviewDTO.setRE_WRITER(memberSecurityDTO.getUSER_NIK());
         Long RE_ID = reviewService.addReview(reviewDTO);
         redirectAttributes.addAttribute("id", RE_ID);
 
