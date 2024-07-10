@@ -27,12 +27,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
@@ -57,15 +61,6 @@ dependencies {
 
     implementation 'org.hibernate.validator:hibernate-validator:6.2.1.Final'
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
-
-    implementation group: 'commons-io', name: 'commons-io', version: '2.16.1'
-    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
-
-    // Thumbnailator : 썸네일 관련 라이브러리
-    implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.16'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'

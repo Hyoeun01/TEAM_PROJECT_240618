@@ -1,0 +1,45 @@
+.form-container {
+    max-width: 1200px;
+    margin: auto;
+}
+.card {
+    margin-bottom: 20px;
+}
+.review-img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    object-fit: cover; /* 이미지가 원의 크기에 맞게 잘리도록 설정 */
+    border-radius: 50%; /* 원형으로 만들기 위해 반지름을 50%로 설정 */
+}
+.review-content {
+    display: flex;
+    align-items: center;
+}
+.review-text {
+    flex-grow: 1;
+}
+.review-meta {
+    font-size: 0.8em;
+    color: #888;
+}
+.review-button {
+    float: right;
+}
+
+/*업로드 버튼*/
+.btn-outline-pink {
+    color: #ff69b4;
+    border-color: #ff69b4;
+}
+.btn-outline-pink:hover {
+    color: #fff;
+    background-color: #ff69b4;
+    border-color: #ff69b4;
+}
+.btn-outline-pink:focus, .btn-outline-pink:active {
+    box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.5);
+}
+.hidden {
+    visibility: hidden;
+}

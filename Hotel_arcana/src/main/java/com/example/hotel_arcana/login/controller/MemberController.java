@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,15 +27,16 @@ import java.security.Principal;
 public class MemberController {
 
     private final MemberService memberService;
-
-    @PostMapping("/MyPage")
-    public String index(Principal principal, Model model) {
-        log.info(principal.getName());
-        MemberDTO memberDTO = memberService.findMemberById(principal.getName());
-        model.addAttribute("memberDTO", memberDTO);
-        log.info(memberDTO);
-        return "/MyPage";
-    }
+    private final ReservationService reservationService;
+//
+//    @PostMapping("/mypage")
+//    public String index(Principal principal, Model model) {
+//        log.info(principal.getName());
+//        MemberDTO memberDTO = memberService.findMemberById(principal.getName());
+//        model.addAttribute("memberDTO", memberDTO);
+//        log.info(memberDTO);
+//        return "MyPage";
+//    }
 
     //회원만 쓸 수 있어서 로그인이 필요한 페이지에 넣기
     //@PreAuthorize("isAuthenticated()")
@@ -59,10 +59,10 @@ public class MemberController {
     }
 
 
-    //    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/login/memberRead/{USER_ID}")
-    public String read(@PathVariable String USER_ID, Model model) {
-        MemberDTO memberDTO = memberService.memberRead(USER_ID);
+//    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/login/memberRead")
+    public String read( Model model, Principal principal) {
+        MemberDTO memberDTO = memberService.memberRead(principal.getName());
         model.addAttribute("memberDTO", memberDTO);
         return "login/memberRead";
     }
@@ -123,8 +123,6 @@ public class MemberController {
     }
 
 //--------------------------------------------------------------------------------------------------
-
-    private final ReservationService reservationService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;

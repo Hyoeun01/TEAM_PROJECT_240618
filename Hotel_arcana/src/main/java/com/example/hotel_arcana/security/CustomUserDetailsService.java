@@ -38,9 +38,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_"+memberDTO.getUSER_AUTH()));
-        if(memberDTO.getUSER_AUTH().equals("ADMIN")){
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        }
+//        if(memberDTO.getUSER_AUTH().equals("ADMIN")){
+//            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+//        }
         //Member객체를 MemberSecurityDTO객체로 변환
         MemberSecurityDTO memberSecurityDTO =
                 new MemberSecurityDTO(

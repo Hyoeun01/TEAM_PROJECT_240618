@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel_arcana.login.mapper.MemberMapper">
+    <select id="findMemberById" parameterType="string" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
+        SELECT * FROM hotel_member WHERE USER_ID = #{USER_ID}
+    </select>
+
+    <insert id="insertMember">
+        INSERT INTO hotel_member (USER_ID, USER_PW, USER_NM, USER_ADR, USER_EML, USER_TEL, USER_NIK, USER_AUTH)
+        VALUES (#{USER_ID}, #{USER_PW}, #{USER_NM}, #{USER_ADR}, #{USER_EML}, #{USER_TEL}, #{USER_NIK}, #{USER_AUTH})
+    </insert>
+
+    <select id="selectMember" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
+        SELECT *
+        FROM hotel_member
+        WHERE USER_ID = #{USER_ID}
+    </select>
+
+    <select id="getMemberRead" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
+        SELECT m.USER_ID   AS USER_ID
+             , m.USER_PW   AS USER_PW
+             , m.USER_NM   AS USER_NM
+             , m.USER_ADR  AS USER_ADR
+             , m.USER_EML  AS USER_EML
+             , m.USER_TEL  AS USER_TEL
+             , m.USER_NIK  AS USER_NIK
+             , m.USER_AUTH AS USER_AUTH
+        FROM hotel_member;
+    </select>
+
+    <update id="updateMember">
+        UPDATE hotel_member
+        set USER_NM =#{USER_NM},
+            USER_PW=#{USER_PW},
+            USER_ADR=#{USER_ADR},
+            USER_EML=#{USER_EML},
+            USER_TEL=#{USER_TEL},
+            USER_NIK=#{USER_NIK}
+        WHERE USER_ID = #{USER_ID}
+    </update>
+
+    <delete id="deleteMemberById">
+        DELETE
+        FROM hotel_member
+        WHERE USER_ID = #{USER_ID}
+    </delete>
+
+    <select id="getTotalMembersCount" resultType="int">
+        SELECT COUNT(*) FROM hotel_member
+    </select>
+
+    <select id="findAllMembers" resultType="com.example.hotel_arcana.login.dto.MemberDTO">
+        SELECT * FROM hotel_member order by USER_ID desc
+    </select>
+
+</mapper>
