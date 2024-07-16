@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity6"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf=extras=springsecurity4"
       xmlns:th="http://www.thymeleaf.org">
+<!--      layout:decorate="~{/layout/sidebar.html}"-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,56 +17,46 @@
 </head>
 <header class="headerDiv">
     <div style>
-        <a href="/">
+        <a href="/indextest.html">
         <img src="/img/arcana.png"  alt="아르카나 로고" >
         </a>
     </div>
         <div class="container text-center">
             <div class="row">
-                <a class="col header_text" href="/notice/list">공지사항</a>
-                <a class="col header_text" href="/reservation/roomchoice">예약하기</a>
-                <a class="col header_text" href="/memberQna/register">QnA</a>
-                <a class="col header_text" href="/review/list">리뷰</a>
+                <a class="col header_text line" href="/notice/list">공지사항</a>
+                <div class="col header_text" href="#">예약하기</div>
+                <a class="col header_text line" href="/memberQna/register">QnA</a>
+                <a class="col header_text line" href="/review/register">리뷰</a>
             </div>
         </div>
-    <div class="dropdown">
+    <div class="dropdown" style="margin-left: 90px">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown button
         </button>
         <ul class="dropdown-menu">
-            <li id="login-menu" class="menu-item" >
-                <a sec:authorize="isAnonymous()" href="/login" style="color: black;  text-decoration: none;" >로그인</a>
-                <br>
-                <a sec:authorize="isAnonymous()" href="/register" style="color: black; text-decoration: none;">회원가입</a>
+            <li id="login-menu" class="menu-item">
+                <a sec:authorize="isAnonymous()" href="/login">로그인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="isAuthenticated()" href="/logout" style="color: black; text-decoration: none;">로그아웃</a>
+                <a class="nav-link" sec:authorize="isAuthenticated()" href="/logout">로그아웃</a>
             </li>
-            <!--            <li>-->
-            <!--                <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{/login/memberRead/{USER_ID}(USER_ID=${memberDTO.USER_ID})}">마이페이지</a>-->
-            <!--            -->
-            <!--            </li>-->
-            <li sec:authorize="hasRole('ROLE_USER')">
-                <a class="dropdown-item"  th:href="@{/login/memberRead}">마이페이지</a>
-            </li>
-            <li sec:authorize="hasRole('ROLE_ADMIN')">
-                <a class="dropdown-item"  th:href="@{/login/memberRead}">관리자페이지</a>
-            </li>
+            <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/login/memberRead/">마이페이지</a></li>
         </ul>
-
     </div>
 </header>
-<div class="container-fluid" layout:fragment="content">
-</div>
+<!--<div class="container-fluid" layout:fragment="content"></div>-->
+
+<main layout:fragment="content"></main>
+
 <footer>
     <div class="footer-box">
         <img src="/img/arcana.png" alt="푸터 아르카나 로고" class="footer-img">
     </div>
     <div class="footer-box">
-        <div><a class="notice_footer" href="#">SubService</a></div>
-        <div><a class="footer-text2" href="/notice/list">Notice</a></div>
-        <div><a class="footer-text2" href="/reservation/roomchoice">Reservation</a></div>
-        <div><a class="footer-text2" href="/review/list">Review</a></div>
+        <a class="notice_footer" href="#">SubService</a>
+        <p class="footer-text2" href="#">Notice</p>
+        <p class="footer-text2" href="#">Reservation</p>
+        <p class="footer-text2" href="#">Review</p>
     </div>
     <div class="footer-box">
         <a class="notice_footer">제작자 연락처</a>
@@ -73,8 +64,7 @@
         <p class="footer-text2">북한대표남자</p>
         <p class="footer-text2">북괴 스상준</p>
     </div>
-
 </footer>
-<th:block layout:fragment="script"></th:block>
-
+<th:block layout:fragment="script">
+</th:block>
 </html>

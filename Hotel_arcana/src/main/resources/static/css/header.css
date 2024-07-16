@@ -10,9 +10,9 @@ header {
     z-index: 1;
 }
 header img {
-    max-width: 250px;
+    width: 250px;
     height: auto;
-    margin-right: 20px;
+    margin-left: 20px;
 }
 header div {
     text-align: center;
@@ -39,6 +39,9 @@ nav button {
     background: none;
     border: none;
     cursor: pointer;
+}
+section {
+    padding: 20px 0;
 }
 .auth-buttons {
     position: relative;
@@ -68,10 +71,11 @@ nav button {
 
 }
 .header_text{
-    min-width: 150px;
-    font-size: 30px;
-    margin-left: 100px;
+    min-width: 110px;
+    font-size: 24px;
     font-weight: 600;
+    text-decoration: none;
+    color: black;
 }
 .imgDiv{
     z-index: 2;
@@ -80,4 +84,16 @@ nav button {
 .line {
     text-decoration-line: none;
     color: black;
+}
+.dropdown {
+    margin-right: 20px;
+}
+.nowrap {    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5* var(--bs-gutter-x));
+    margin-left: calc(-.5* var(--bs-gutter-x));}
+@media (min-width: 1400px){
+
 }
