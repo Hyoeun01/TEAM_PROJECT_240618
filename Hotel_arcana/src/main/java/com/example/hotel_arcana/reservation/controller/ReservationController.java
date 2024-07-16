@@ -43,6 +43,7 @@ public class ReservationController {
         model.addAttribute("rooms",roomDTO);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/register/{ROOM_NAME}")
     public String register(@PathVariable("ROOM_NAME") String roomName, Model model) {
         model.addAttribute("rooms", reservationService.getRooms(roomName));

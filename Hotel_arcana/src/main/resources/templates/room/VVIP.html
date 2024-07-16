@@ -62,14 +62,14 @@
                     <h3 th:text="${VVIP.ROOM_NAME}"></h3>
                     <p th:text="'2인 기준/최대 ' + ${VVIP.ROOM_LIMIT} + '인'"></p>
                     <p th:text="'₩' + ${#numbers.formatInteger(VVIP.ROOM_PRICE,3,'COMMA')} + '/1박'"></p>
-                    <button class="reserve-button">예약하기</button>
+                    <button class="reserve-button"><a href="/reservation/register/VVIP">예약하기</a></button>
                     <div class="contact-options">
-                        <button>숙소 문의</button>
+                        <a href="/memberQna/register">숙소 문의</a>
                     </div>
                 </div>
                 <div class="reviews section">
                     <h3>후기</h3>
-                    <button class="show-reviews-button">후기 10개 모두 보기</button>
+                    <a  class="show-reviews-button" href="/review/list">후기 모두 보기</a>
                 </div>
             </div>
         </div>

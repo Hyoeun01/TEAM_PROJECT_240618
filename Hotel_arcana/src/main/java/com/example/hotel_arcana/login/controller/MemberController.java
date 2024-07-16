@@ -30,8 +30,7 @@ public class MemberController {
     private final MemberService memberService;
     private final ReservationService reservationService;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
 //    @PostMapping("/mypage")
 //    public String index(Principal principal, Model model) {

@@ -1,15 +1,15 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    background-color: #f4f4f4;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100vh;*/
+/*}*/
 
-.container {
+.imgtain {
     width: 80%;
     max-width: 800px;
     text-align: center;
@@ -106,6 +106,10 @@ body {
     align-items: center;
     margin-top: 20px;
 }
+#ui-datepicker-div{
+    background-color: white;
+    border: 1px solid black;
+}
 /*.form-group {*/
 /*    display: flex;*/
 /*    flex: 1 1 50%;*/
@@ -124,6 +128,7 @@ label {
     padding: 5px;
     font-size: 16px;
     width: 150px;
+
 }
 #in_Calendar,
 #out_Calendar {/*추가된 css*/

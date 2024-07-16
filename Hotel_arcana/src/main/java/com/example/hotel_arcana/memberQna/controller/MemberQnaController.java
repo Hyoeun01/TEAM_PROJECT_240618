@@ -33,6 +33,7 @@ public class MemberQnaController {
     private final MemberQnaService memberQnaService;
     private final MemberQnaServiceImpl memberQnaServiceImpl;
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/register")
     public void getQna() {
     }
