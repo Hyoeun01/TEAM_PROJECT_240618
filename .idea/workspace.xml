@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e4fa856-d021-4b99-99be-88434221cf63" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/java/com/example/hotel_arcana/Main/service/MainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/notice/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/notice/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +161,7 @@
       <workItem from="1720481263531" duration="2877000" />
       <workItem from="1720485713792" duration="9535000" />
       <workItem from="1722849809777" duration="164000" />
-      <workItem from="1722904592588" duration="8170000" />
+      <workItem from="1722904592588" duration="11262000" />
     </task>
     <servers />
   </component>
