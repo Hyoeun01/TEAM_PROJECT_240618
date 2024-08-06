@@ -30,7 +30,7 @@
                 <!-- <td th:text="${notice.N_NO}">번호</td> -->
                 <td><a th:href="@{/notice/read(N_NO=${notice.N_NO})}" th:text="${notice.N_TITLE}"></a></td>
                 <td th:text="${notice.N_DATE}">작성일</td>
-                <td th:text="${notice.N_WRITER}">작성자</td> <!-- USER_NIK 필드를 추가 -->
+                <td th:text="${notice.USER_NIK}">작성자</td> <!-- USER_NIK 필드를 추가 -->
                 <td th:text="${notice.N_VIEW}">조회수</td>
             </tr>
             </tbody>
