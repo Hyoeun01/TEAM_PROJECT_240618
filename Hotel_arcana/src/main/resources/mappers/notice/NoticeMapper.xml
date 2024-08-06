@@ -72,11 +72,11 @@
             n.N_WRITER,
             n.N_VIEW,
             n.MANAGER_ID,
-            m.USER_NIK
-        FROM hotel_notice n
-            JOIN hotel_member m ON n.MANAGER_ID = m.USER_ID
-        WHERE N_NO = #{N_NO}
-    </update>
+            n.N_WRITER
+    <!--    FROM hotel_notice n
+         JOIN hotel_member m ON n.MANAGER_ID = m.USER_ID-->
+     WHERE N_NO = #{N_NO}
+ </update>
 
 <!--    게시글 조회수 증가-->
     <update id="ViewCount">
@@ -107,7 +107,7 @@
             </if>
             <if test='type!=null and "w".equals(type)'>
                 <!-- 검색조건이 writer이라면 -->
-                m.USER_NIK LIKE CONCAT('%' , #{keyword} , '%')
+                n.N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
             </if>
             <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->
@@ -132,7 +132,7 @@
             </if>
             <if test='type!=null and "w".equals(type)'>
                 <!-- 검색조건이 writer이라면 -->
-                USER_NIK LIKE CONCAT('%' , #{keyword} , '%')
+                N_WRITER LIKE CONCAT('%' , #{keyword} , '%')
             </if>
             <if test='type!=null and "tc".equals(type)'>
                 <!-- 검색조건이 title+content라면 -->
