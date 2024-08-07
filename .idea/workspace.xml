@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4e4fa856-d021-4b99-99be-88434221cf63" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/notice/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel_arcana/src/main/resources/templates/notice/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,17 +25,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Hotel_arcana" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Hotel_arcana" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -161,7 +150,7 @@
       <workItem from="1720481263531" duration="2877000" />
       <workItem from="1720485713792" duration="9535000" />
       <workItem from="1722849809777" duration="164000" />
-      <workItem from="1722904592588" duration="11262000" />
+      <workItem from="1722904592588" duration="12227000" />
     </task>
     <servers />
   </component>
